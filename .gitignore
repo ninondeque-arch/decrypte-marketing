@@ -1,0 +1,8 @@
+node_modules/
+.venv/
+.env
+.tiktok-tokens.json
+.DS_Store
+# Visuels bruts téléchargés (droits des marques) : seules les slides finales sont publiées
+posts/*/images/
+.studio/

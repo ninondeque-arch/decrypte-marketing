@@ -1,0 +1,216 @@
+{
+  "date": "2026-11-01",
+  "sujets": [
+    {
+      "id": "iphone-duo-rupture",
+      "sujet": "L'iPhone Duo épuisé jusqu'en janvier dès l'ouverture des précommandes",
+      "angle": "Rupture organisée ou vraie demande ? Comment un lancement en peu de pays et un stock limité fabriquent un objet que tout le monde veut",
+      "accroche": "Un téléphone à 1 999 $ peut-il vraiment être en rupture en 3 heures ?",
+      "rubrique": "Pourquoi tu l'as acheté",
+      "secteur": "Tech",
+      "startup": false,
+      "actu": "Précommandes ouvertes le 16 octobre 2026, sortie le 23 octobre, nouveaux marchés le 30 octobre",
+      "pourquoi_maintenant": "La deuxième vague de pays arrive le 30 octobre et les délais de livraison restent fixés à fin janvier ; le sujet est encore chaud alors que la rupture date de plus de 7 jours",
+      "chiffres_cles": [
+        "Livraison estimée au 25 janvier pour toutes les configurations (Apple Store US)",
+        "Prix de 1 999 $ (256 Go) à 3 199 $ (2 To)",
+        "Épuisé environ 3 heures après l'ouverture des précommandes, selon Daring Fireball"
+      ],
+      "sources": [
+        {
+          "titre": "iThinkDifferent – Apple Says iPhone Duo Demand Is Extraordinary After Sell-Out",
+          "url": "https://www.ithinkdiff.com/iphone-duo-demand-extraordinary/",
+          "date": "2026-10-17"
+        },
+        {
+          "titre": "Daring Fireball – iPhone Duo Pre-Orders Launched, and Three Hours Later It's Sold Out Through the End of January",
+          "url": "https://daringfireball.net/linked/2026/10/16/duo-preorders-sellout",
+          "date": "2026-10-16"
+        },
+        {
+          "titre": "C'est pour ma pomme – iPhone Duo en rupture de stock : pourquoi ça ne prouve rien",
+          "url": "https://cestpourmapomme.com/2026/10/22/iphone-duo-rupture-stock-ternus/",
+          "date": "2026-10-22"
+        }
+      ],
+      "potentiel": 5
+    },
+    {
+      "id": "crocs-q3-heydude",
+      "sujet": "Crocs bondit en Bourse et relance Hey Dude",
+      "angle": "Comment une chaussure jugée moche tient encore la hype, et ce que dit le retour à la croissance de Hey Dude sur l'art de relancer une marque qui s'essouffle",
+      "accroche": "Pourquoi Crocs vend encore plus d'un milliard par trimestre ?",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Mode",
+      "startup": false,
+      "actu": "Résultats du 3e trimestre 2026 publiés le 29 octobre 2026",
+      "pourquoi_maintenant": "Résultats publiés cette semaine, action en hausse d'environ 19 % le jour même",
+      "chiffres_cles": [
+        "1 043 M$ de chiffre d'affaires, +4,6 %",
+        "Marque Crocs : 873 M$, +4,4 %, dont 434 M$ à l'international (+11,8 %)",
+        "Hey Dude : 170 M$, +6,1 %",
+        "Prévision annuelle relevée à environ +3 %, contre +1 à 2 % auparavant",
+        "Action en hausse de 19,3 % à 142,52 $ après les résultats"
+      ],
+      "sources": [
+        {
+          "titre": "Crocs, Inc. – Communiqué de résultats T3 2026 (SEC, 8-K)",
+          "url": "https://www.sec.gov/Archives/edgar/data/0001334036/000133403626000058/croxq32026-pressrelease.htm",
+          "date": "2026-10-29"
+        },
+        {
+          "titre": "StockStory via FinancialContent – Crocs reports upbeat Q3 2026, stock jumps 19.3%",
+          "url": "https://markets.financialcontent.com/stocks/article/stockstory-2026-10-29-crocs-nasdaqcrox-reports-upbeat-q3-2026-stock-jumps-193",
+          "date": "2026-10-29"
+        }
+      ],
+      "potentiel": 4
+    },
+    {
+      "id": "sephora-sethphora",
+      "sujet": "Sephora renomme un magasin « Sethphora » pour Seth Rogen",
+      "angle": "Pourquoi une marque de beauté choisit un acteur qui n'y connaît rien pour parler aux gens qui achètent un cadeau sans rien y connaître non plus",
+      "accroche": "Pourquoi Sephora a choisi Seth Rogen pour Noël ?",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Beauté",
+      "startup": false,
+      "actu": "Campagne « We All Sephora » lancée le 29 octobre 2026 aux États-Unis et au Canada, précédée d'un teasing en magasin à The Grove (Los Angeles)",
+      "pourquoi_maintenant": "Campagne de Noël lancée cette semaine, avec un nouveau positionnement qui vise les gens qui offrent des cadeaux plutôt que les fans de beauté",
+      "chiffres_cles": [],
+      "sources": [
+        {
+          "titre": "Marketing Dive – Sephora casts Seth Rogen for holiday ads targeted at gift-givers",
+          "url": "https://www.marketingdive.com/news/sephora-casts-seth-rogen-for-holiday-ads-targeted-at-gift-givers/872877/",
+          "date": "2026-10-28"
+        }
+      ],
+      "potentiel": 4
+    },
+    {
+      "id": "wabi-licorne-ia",
+      "sujet": "Wabi, la startup de la fondatrice de Replika, devient une licorne",
+      "angle": "Valorisée 1,25 milliard sans chiffre d'affaires : comment une IA pensée pour les groupes d'amis se vend aux investisseurs face à Muse de Meta",
+      "accroche": "Comment une appli gratuite vaut 1,25 milliard ?",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "IA",
+      "startup": true,
+      "actu": "Levée de 55 M$ menée par IVP, annoncée le 29 octobre 2026, dix jours après le lancement public de Wabi 2.0",
+      "pourquoi_maintenant": "Levée annoncée cette semaine, en pleine course aux assistants IA grand public (Muse de Meta, Instinct)",
+      "chiffres_cles": [
+        "55 M$ levés pour une valorisation de 1,25 Md$",
+        "Environ 75 M$ levés au total",
+        "Lancement public le 19 octobre 2026 sur iOS, Android et Mac"
+      ],
+      "sources": [
+        {
+          "titre": "Tech Funding News – Wabi raises $55M from IVP at $1.25B",
+          "url": "https://techfundingnews.com/wabi-55m-funding-1-25b-valuation-ai-messenger/",
+          "date": "2026-10-30"
+        },
+        {
+          "titre": "TechCrunch – Replika founder raises $20M pre-seed for Wabi",
+          "url": "https://techcrunch.com/2025/11/05/replika-founder-raises-20m-pre-seed-for-wabi-the-youtube-of-apps",
+          "date": "2025-11-05"
+        }
+      ],
+      "potentiel": 4
+    },
+    {
+      "id": "falcons-logo-flop",
+      "sujet": "Les Atlanta Falcons retirent leur photo de profil rétro après des comparaisons avec l'imagerie nazie",
+      "angle": "Comment un simple changement de photo de profil devient un fiasco vu des dizaines de millions de fois, et pourquoi le contexte visuel compte plus que le logo",
+      "accroche": "Comment une photo de profil a mis la NFL dans l'embarras ?",
+      "rubrique": "Le flop",
+      "secteur": "Sport",
+      "startup": false,
+      "actu": "Image publiée le 21 octobre 2026 sur X et Instagram, remplacée dans les jours suivants",
+      "pourquoi_maintenant": "Bad buzz récent (un peu plus de 7 jours), largement repris dans la presse internationale, avec une leçon claire sur la vérification d'un visuel avant publication",
+      "chiffres_cles": [
+        "43 millions de vues sur le post X le vendredi matin, selon El-Balad"
+      ],
+      "sources": [
+        {
+          "titre": "NBC Sports Boston – Atlanta Falcons retro image social media",
+          "url": "https://www.nbcsportsboston.com/nfl/atlanta-falcons-retro-image-social-media/808936/",
+          "date": "2026-10-22"
+        },
+        {
+          "titre": "El-Balad – Falcons Throwback Logo draws backlash after 43 million-view X post",
+          "url": "https://www.el-balad.com/17060309",
+          "date": "2026-10-23"
+        }
+      ],
+      "potentiel": 4
+    },
+    {
+      "id": "novig-sydney-sweeney",
+      "sujet": "Novig : la startup de paris sportifs qui a misé sur Sydney Sweeney",
+      "angle": "Une pub provocante, un bad buzz assumé, une suite et une valorisation multipliée par 4 : la polémique comme stratégie de croissance",
+      "accroche": "Comment une pub a multiplié par 4 la valeur d'une startup ?",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Paris sportifs",
+      "startup": true,
+      "actu": "Deuxième pub publiée le 11 octobre 2026 ; Powerade a répondu par une contre-campagne",
+      "pourquoi_maintenant": "L'actu date de 3 semaines mais le débat continue sur le recours aux célébrités et sur l'effet Sweeney ; à traiter vite ou à recouper avec une nouvelle actu",
+      "chiffres_cles": [
+        "Valorisation passée de 500 M$ à 2 Md$ fin septembre, selon le Wall Street Journal cité par le Daily Beast",
+        "Plus de 200 000 abonnés perdus par Sydney Sweeney au départ, selon le Daily Beast"
+      ],
+      "sources": [
+        {
+          "titre": "The Daily Beast – Sydney Sweeney Posts Topless Video to Mock Novig Ad Backlash",
+          "url": "https://www.thedailybeast.com/sydney-sweeney-posts-topless-video-to-mock-novig-ad-backlash",
+          "date": "2026-10-12"
+        }
+      ],
+      "potentiel": 4
+    },
+    {
+      "id": "pringles-urne",
+      "sujet": "Pringles fait gagner une urne funéraire en forme de boîte",
+      "angle": "Comment Pringles transforme une anecdote réelle (l'inventeur de la boîte enterré dedans) en jeu concours d'Halloween porté par un croque-mort de TikTok",
+      "accroche": "Pourquoi Pringles offre une urne pour Halloween ?",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Food",
+      "startup": false,
+      "actu": "Campagne « Once You Drop » lancée le 13 octobre 2026, gagnant annoncé autour d'Halloween",
+      "pourquoi_maintenant": "Halloween vient de passer et le gagnant doit être annoncé maintenant",
+      "chiffres_cles": [
+        "200 ans de Pringles offerts au gagnant",
+        "Participations du 13 au 22 octobre 2026"
+      ],
+      "sources": [
+        {
+          "titre": "Adweek – Pringles Offers One Die-Hard Fan a Final Resting Place in a Branded Urn",
+          "url": "https://www.adweek.com/creativity/pringles-offers-one-die-hard-fan-a-final-resting-place-in-a-branded-urn/",
+          "date": "2026-10-13"
+        }
+      ],
+      "potentiel": 3
+    },
+    {
+      "id": "chipotle-margarita-tour",
+      "sujet": "Chipotle ressuscite sa margarita, mais seulement dans 5 restaurants",
+      "angle": "60 heures de service dans 0,1 % des restaurants : la rareté comme moteur de désir et de contenu pour les réseaux",
+      "accroche": "Pourquoi faire la queue pour une margarita à 6 $ ?",
+      "rubrique": "Pourquoi tu l'as acheté",
+      "secteur": "Restauration",
+      "startup": false,
+      "actu": "« Summon the Spirits Tour », un week-end par ville en octobre, dernière étape à La Nouvelle-Orléans les 30 et 31 octobre 2026",
+      "pourquoi_maintenant": "Tournée terminée cette semaine, juste avant le Boorito d'Halloween",
+      "chiffres_cles": [
+        "Margarita à 6 $ dans 5 villes",
+        "Environ 0,1 % des plus de 4 200 restaurants",
+        "60 heures de service au total sur 10 jours d'ouverture"
+      ],
+      "sources": [
+        {
+          "titre": "DesignRush – Chipotle Summon the Spirits Tour",
+          "url": "https://news.designrush.com/chipotle-halloween-summon-the-spirits-tour-margaritas",
+          "date": "2026-09-28"
+        }
+      ],
+      "potentiel": 3
+    }
+  ]
+}

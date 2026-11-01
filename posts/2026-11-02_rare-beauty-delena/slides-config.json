@@ -1,0 +1,172 @@
+{
+  "sujet": "Rare Beauty réunit Selena Gomez et Demi Lovato pour un blush « Delena »",
+  "rubrique": "Le marketing derrière la culture pop",
+  "secteur": "Beauté",
+  "startup": false,
+  "statut": "prêt",
+  "accroches": [
+    "Ton enfance Disney Channel coûte 50 $.",
+    "Comment vendre un blush avec un téléfilm de 2009 ?",
+    "« Delena is back » : la nostalgie a un prix."
+  ],
+  "theme": {
+    "brand": "Rare Beauty",
+    "source": "Couleurs relevées sur rarebeauty.com : prune #7F2549 (couleur principale des boutons et bandeaux), bordeaux #6F0F38 (boutons), crème #FDF6F0 (fonds), encre #000914 (texte)",
+    "palettes": {
+      "prune": {
+        "bg": "#7F2549",
+        "ink": "#FFFFFF",
+        "boxBg": "#FDF6F0",
+        "boxInk": "#6F0F38"
+      },
+      "creme": {
+        "bg": "#FDF6F0",
+        "ink": "#000914",
+        "boxBg": "#7F2549",
+        "boxInk": "#FFFFFF"
+      },
+      "nuit": {
+        "bg": "#000914",
+        "ink": "#FDF6F0",
+        "boxBg": "#7F2549",
+        "boxInk": "#FFFFFF"
+      },
+      "bordeaux": {
+        "bg": "#6F0F38",
+        "ink": "#FFFFFF",
+        "boxBg": "#FDF6F0",
+        "boxInk": "#6F0F38"
+      }
+    },
+    "sequence": [
+      "prune",
+      "creme",
+      "nuit",
+      "creme",
+      "bordeaux",
+      "creme",
+      "nuit",
+      "prune"
+    ]
+  },
+  "slides": [
+    {
+      "type": "hook",
+      "title": "« Delena is back » : la nostalgie a un prix.",
+      "highlight": [
+        "Delena is back"
+      ],
+      "cta": "On décrypte →",
+      "photo": {
+        "src": "images/hypebae-rare-1.jpg",
+        "credit": "Rare Beauty via Hypebae",
+        "focusY": 0.3
+      }
+    },
+    {
+      "type": "text",
+      "label": "Le contexte",
+      "body": "Amies à 7 ans. « Plus amies » en 2020, d'après Demi. Le 28 octobre, réunies pour Rare Beauty, la marque de Selena.",
+      "highlight": [
+        "réunies pour Rare Beauty"
+      ],
+      "photo": {
+        "src": "images/complex-hero.jpg",
+        "caption": "Selena Gomez et Demi Lovato pour Rare Beauty",
+        "credit": "Instagram @rarebeauty via Complex",
+        "focusY": 0.35
+      }
+    },
+    {
+      "type": "text",
+      "label": "L'idée",
+      "body": "Le coffret s'appelle « Delena », leur surnom de fans. Le shooting rejoue l'affiche de Princess Protection Program, téléfilm Disney Channel de 2009.",
+      "highlight": [
+        "leur surnom de fans"
+      ],
+      "photo": {
+        "src": "images/comparaison-campagne-telefilm.jpg",
+        "caption": "En haut 2026, en bas 2009",
+        "credit": "Laughing Place",
+        "focusY": 0.5
+      }
+    },
+    {
+      "type": "list",
+      "label": "La mécanique",
+      "items": [
+        "Une vidéo façon vlog YouTube de 2008, brosse à cheveux en guise de micro",
+        "Un playback de « One and the Same », la chanson du film",
+        "Des questions signées de pseudos que les fans de Camp Rock reconnaîtront"
+      ],
+      "highlight": [
+        "vlog YouTube de 2008"
+      ],
+      "photo": {
+        "src": "images/hypebae-rare-3.jpg",
+        "caption": "Le décor de chambre façon vlog",
+        "credit": "Rare Beauty via Hypebae",
+        "focusY": 0.4
+      }
+    },
+    {
+      "type": "text",
+      "label": "Le produit",
+      "body": "Dedans : 2 blushs liquides Soft Pinch (Hope et Virtue) et un pinceau. Des teintes qui existaient déjà, réunies en édition limitée.",
+      "highlight": [
+        "qui existaient déjà"
+      ],
+      "photo": {
+        "src": "images/hypebae-rare-2.jpg",
+        "caption": "Le coffret : 2 blushs et le pinceau",
+        "credit": "Rare Beauty via Hypebae",
+        "focusY": 0.55
+      }
+    },
+    {
+      "type": "quote",
+      "label": "La réaction",
+      "quote": "IM LITERALLY CRYING, THE NOSTALGIA IS SO REAL",
+      "attribution": "Commentaire TikTok sous le post de Rare Beauty",
+      "body": "Même la presse résume la cible en deux mots : « Millennials rejoice ».",
+      "highlight": [
+        "la cible"
+      ],
+      "photo": {
+        "src": "images/newbeauty-lead.png",
+        "caption": "Les portraits « princesse » de la campagne",
+        "credit": "Rare Beauty via NewBeauty",
+        "focusY": 0.3
+      }
+    },
+    {
+      "type": "stats",
+      "label": "Les chiffres",
+      "items": [
+        {
+          "value": "50 $",
+          "text": "le coffret, pour une « valeur » annoncée de 76 $"
+        },
+        {
+          "value": "18 ans",
+          "text": "après leur vlog de 2008 : « Delena is back »"
+        },
+        {
+          "value": "≈ 25 ans",
+          "text": "d'amitié, depuis leur rencontre, enfants, sur Barney"
+        }
+      ],
+      "source": "Sources : IBTimes UK, NewBeauty, Hypebae, octobre 2026"
+    },
+    {
+      "type": "outro",
+      "title": "Résultat ?",
+      "lesson": "La nostalgie ne crée pas le produit : elle lui donne une histoire.",
+      "highlight": [
+        "une histoire."
+      ],
+      "conclusion": "Rare Beauty n'a rien inventé, sauf une raison de racheter son best-seller.",
+      "cta": "Abonne-toi pour le prochain décryptage. Et toi, tu l'achètes pour le blush ou pour Delena ?"
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "sujet": "Visit Norway transforme l'insulte de Trump en campagne",
+  "rubrique": "Le marketing derrière la culture pop",
+  "secteur": "Tourisme",
+  "startup": false,
+  "statut": "programmé",
+  "accroches": [
+    "Trump les insulte. La Norvège en fait une pub.",
+    "Comment des toilettes ont répondu à Trump ?",
+    "Une insulte présidentielle, 540 fois plus de trafic."
+  ],
+  "theme": {
+    "brand": "Visit Norway",
+    "source": "Couleurs relevées sur visitnorway.com (texte #06132A, boutons #004DE8) + rouge du drapeau du logo",
+    "palettes": {
+      "blue": {
+        "bg": "#004DE8",
+        "ink": "#FFFFFF",
+        "boxBg": "#06132A",
+        "boxInk": "#FFFFFF"
+      },
+      "white": {
+        "bg": "#FFFFFF",
+        "ink": "#06132A",
+        "boxBg": "#004DE8",
+        "boxInk": "#FFFFFF"
+      },
+      "navy": {
+        "bg": "#06132A",
+        "ink": "#FFFFFF",
+        "boxBg": "#004DE8",
+        "boxInk": "#FFFFFF"
+      },
+      "red": {
+        "bg": "#BA0C2F",
+        "ink": "#FFFFFF",
+        "boxBg": "#06132A",
+        "boxInk": "#FFFFFF"
+      }
+    },
+    "sequence": [
+      "blue",
+      "white",
+      "navy",
+      "white",
+      "navy",
+      "blue",
+      "red"
+    ]
+  },
+  "slides": [
+    {
+      "type": "hook",
+      "title": "Comment des toilettes ont répondu à Trump ?",
+      "highlight": [
+        "des toilettes"
+      ],
+      "cta": "On décrypte →",
+      "photo": {
+        "src": "images/ig-1.jpg",
+        "credit": "Instagram @visitnorway",
+        "focusY": 0.08
+      }
+    },
+    {
+      "type": "quote",
+      "label": "Le contexte",
+      "quote": "Norway has become a shithouse country.",
+      "attribution": "Donald Trump, meeting dans le Michigan, fin octobre 2026",
+      "body": "En cause : un prix Nobel de la paix qu'il n'a pas reçu.",
+      "highlight": [
+        "prix Nobel de la paix"
+      ],
+      "photo": {
+        "src": "images/ig-4.jpg",
+        "caption": "Le « Brutalist Flower », Ryfylke",
+        "credit": "Instagram @visitnorway",
+        "focusY": 0.55
+      }
+    },
+    {
+      "type": "text",
+      "label": "L'idée",
+      "body": "Dès le lundi soir, Visit Norway retouche une vieille page sur ses toilettes publiques. Nouveau titre : « Norway makes shithouses great again! »",
+      "highlight": [
+        "une vieille page"
+      ],
+      "photo": {
+        "src": "images/ig-2.jpg",
+        "caption": "Le post Instagram de Visit Norway",
+        "credit": "Instagram @visitnorway",
+        "focusY": 0.1
+      }
+    },
+    {
+      "type": "list",
+      "label": "La mécanique",
+      "items": [
+        "Recycler un contenu qui existe déjà",
+        "Reprendre l'insulte mot pour mot, avec humour",
+        "Montrer le meilleur du pays : des toilettes signées par des architectes"
+      ],
+      "highlight": [
+        "mot pour mot"
+      ],
+      "photo": {
+        "src": "images/ig-3.jpg",
+        "caption": "Le « Golden toilet », Senja",
+        "credit": "Instagram @visitnorway",
+        "focusY": 0.3
+      }
+    },
+    {
+      "type": "text",
+      "label": "Le secret",
+      "body": "Une équipe de 7 personnes « always-on », qui travaille comme une rédaction. Elle réagit dès le lendemain, puis enchaîne avec une pub à Times Square.",
+      "highlight": [
+        "comme une rédaction"
+      ],
+      "photo": {
+        "src": "images/ig-5.jpg",
+        "caption": "« Hobbit » et « Space ship », Hardanger",
+        "credit": "Instagram @visitnorway",
+        "focusY": 0.5
+      }
+    },
+    {
+      "type": "stats",
+      "label": "Les chiffres",
+      "items": [
+        {
+          "value": "80 000+",
+          "text": "vues en 5 jours, depuis plus de 170 pays"
+        },
+        {
+          "value": "× 540",
+          "text": "de trafic par rapport à la semaine précédente"
+        },
+        {
+          "value": "< 10 000 $",
+          "text": "de posts sponsorisés, ≈ 90 % du trafic organique"
+        }
+      ],
+      "source": "Source : Skift, 30 octobre 2026"
+    },
+    {
+      "type": "outro",
+      "title": "Résultat ?",
+      "lesson": "Une insulte, c'est de l'attention gratuite. Encore faut-il savoir la retourner.",
+      "highlight": [
+        "attention gratuite."
+      ],
+      "conclusion": "Visit Norway avait déjà le contenu. Il lui manquait juste le bon moment.",
+      "cta": "Abonne-toi pour le prochain décryptage. Et toi, tu aurais osé ?"
+    }
+  ],
+  "programmation": {
+    "date": "2026-11-01T16:50:00+01:00",
+    "auto": true,
+    "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7799384&openWithPostUuid=-6694960871840987912",
+    "id": "413018946",
+    "compte": "ninarth92",
+    "musiqueAuto": true
+  }
+}

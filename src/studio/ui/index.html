@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Décrypte Studio</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#/veille" aria-label="Décrypte Studio, accueil"><span class="brand-mark">DÉCRYPTE</span><span class="brand-sub">studio</span></a>
+  <nav class="nav" aria-label="Navigation principale">
+    <a class="nav-link" href="#/veille" data-route="veille">Veille <span class="badge" id="badge-veille"></span></a>
+    <a class="nav-link" href="#/posts" data-route="posts">Posts <span class="badge" id="badge-posts"></span></a>
+    <a class="nav-link" href="#/reglages" data-route="reglages">Réglages <span class="dot" id="dot-reglages" hidden></span></a>
+  </nav>
+  <div class="topbar-actions">
+    <button class="btn-activity" id="btn-activity" type="button" aria-expanded="false" aria-controls="activity">
+      <span class="pulse" id="activity-pulse" hidden></span>Activité <span class="badge" id="badge-activity"></span>
+    </button>
+    <button class="btn btn-accent" id="btn-new" type="button">+ Nouveau post</button>
+  </div>
+</header>
+
+<main class="view" id="view" tabindex="-1"></main>
+
+<aside class="drawer" id="activity" aria-label="Activité" hidden>
+  <div class="drawer-head">
+    <h2 class="drawer-title">Activité</h2>
+    <button class="icon-btn" id="close-activity" type="button" aria-label="Fermer">×</button>
+  </div>
+  <ul class="jobs" id="jobs"></ul>
+</aside>
+
+<dialog class="modal" id="modal">
+  <h2 class="modal-title" id="modal-title"></h2>
+  <div class="modal-body" id="modal-body"></div>
+  <div class="modal-actions" id="modal-actions"></div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="/app.js" type="module"></script>
+</body>
+</html>

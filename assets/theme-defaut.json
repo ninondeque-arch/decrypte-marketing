@@ -1,0 +1,9 @@
+{
+  "brand": "Décrypte (thème par défaut, si la charte de la marque est introuvable)",
+  "palettes": {
+    "noir":  { "bg": "#111111", "ink": "#FFFFFF", "boxBg": "#FFE14D", "boxInk": "#111111" },
+    "blanc": { "bg": "#FFFFFF", "ink": "#111111", "boxBg": "#111111", "boxInk": "#FFFFFF" },
+    "jaune": { "bg": "#FFE14D", "ink": "#111111", "boxBg": "#111111", "boxInk": "#FFFFFF" }
+  },
+  "sequence": ["jaune", "blanc", "noir", "blanc", "noir", "jaune", "noir"]
+}

@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Décrypte Studio : veille marketing quotidienne, carrousels TikTok sourcés aux couleurs des marques, programmation via Metricool.">
+<title>Décrypte Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+/* Mise en page : affiche typographique (style des slides) + fenêtre de l'outil reconstituée, sections empilées. */
+:root {
+  --bg: #F4F2EE; --surface: #FFFFFF; --ink: #111111; --muted: #6B6760; --line: #E2DED6;
+  --accent: #FFE14D; --accent-ink: #111111; --chrome: #111111; --chrome-ink: #F4F2EE; --chrome-muted: #9C978E;
+  --ok: #1F8A4C; --warn: #B26A00; --zone: rgba(0, 220, 110, .38);
+  --display: 'Anton', Impact, 'Arial Narrow', sans-serif;
+  --text: 'Inter', -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121211; --surface: #1C1B19; --ink: #F4F2EE; --muted: #A8A39A; --line: #2E2C29;
+  --chrome: #000000; --chrome-ink: #F4F2EE; --chrome-muted: #8A857D; --ok: #5BC98A; --warn: #E0A23A; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121211; --surface: #1C1B19; --ink: #F4F2EE; --muted: #A8A39A; --line: #2E2C29;
+  --chrome: #000000; --chrome-ink: #F4F2EE; --chrome-muted: #8A857D; --ok: #5BC98A; --warn: #E0A23A; color-scheme: dark }
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 16px/1.55 var(--text); }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; text-transform: uppercase; letter-spacing: .01em; text-wrap: balance; margin: 0; line-height: 1.02; }
+p { margin: 0; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.mark { display: inline-block; font: 26px/1 var(--display); background: var(--accent); color: var(--accent-ink); padding: 5px 8px 2px; }
+.hl { background: var(--accent); color: var(--accent-ink); padding: 0 .12em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.eyebrow { font-size: 12px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
+
+/* En-tête */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--chrome); }
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; background: var(--chrome); color: var(--chrome-ink); }
+.top .wrap { display: flex; align-items: center; gap: 24px; min-height: 60px; flex-wrap: wrap; }
+.top nav { display: flex; gap: 18px; margin-left: auto; flex-wrap: wrap; }
+.top nav a { text-decoration: none; font-weight: 700; font-size: 14px; color: var(--chrome-muted); }
+.top nav a:hover { color: var(--chrome-ink); }
+
+/* Ouverture */
+.hero { padding-block: 64px 56px; }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: 56px; align-items: center; }
+.hero h1 { font-size: clamp(48px, 7.4vw, 104px); margin-top: 14px; }
+.hero .lede { margin-top: 22px; font-size: 19px; max-width: 54ch; color: var(--muted); }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 34px; border-top: 2px solid var(--ink); }
+.fact { padding: 14px 16px 0 0; }
+.fact b { display: block; font: 40px/1 var(--display); }
+.fact span { font-size: 14px; color: var(--muted); }
+.phone { width: min(330px, 100%); margin: 0 auto; background: #000; border-radius: 34px; padding: 12px; box-shadow: 0 30px 60px rgba(0,0,0,.25); }
+.phone-screen { border-radius: 24px; overflow: hidden; position: relative; aspect-ratio: 3 / 4; max-width: 100%; background: #222; }
+.phone-screen img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.phone-count { position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,.55); color: #fff; font: 600 12px/1 var(--text); padding: 5px 9px; border-radius: 999px; }
+.dots { display: flex; gap: 6px; justify-content: center; padding: 12px 0 4px; }
+.dots button { width: 8px; height: 8px; border-radius: 50%; border: 0; padding: 0; background: #555; cursor: pointer; }
+.dots button[aria-current="true"] { background: #fff; }
+.phone-cap { color: #ddd; font-size: 12px; text-align: center; padding: 4px 6px 6px; }
+
+section { padding-block: 64px; }
+.sec-head { display: grid; gap: 12px; margin-bottom: 28px; max-width: 760px; }
+.sec-head h2 { font-size: clamp(36px, 5vw, 60px); }
+.sec-head p { color: var(--muted); font-size: 17px; max-width: 62ch; }
+.band { background: var(--surface); border-block: 1px solid var(--line); }
+
+/* Démo : fenêtre du studio */
+.app { border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: var(--bg); box-shadow: 0 24px 60px rgba(0,0,0,.12); }
+.app-bar { background: var(--chrome); color: var(--chrome-ink); display: flex; align-items: center; gap: 18px; padding: 0 16px; min-height: 54px; flex-wrap: wrap; }
+.app-bar .mark { font-size: 20px; }
+.app-tabs { display: flex; gap: 2px; align-self: stretch; }
+.app-tabs button { background: none; border: 0; border-bottom: 3px solid transparent; color: var(--chrome-muted); font: 18px/1 var(--display); text-transform: uppercase; padding: 0 12px; cursor: pointer; }
+.app-tabs button[aria-selected="true"] { color: var(--chrome-ink); border-bottom-color: var(--accent); }
+.app-note { margin-left: auto; font-size: 12px; color: var(--chrome-muted); }
+.app-body { padding: 22px; min-height: 520px; }
+.badge { display: inline-block; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; padding: 4px 8px; border-radius: 6px; background: var(--line); color: var(--ink); }
+.badge.dark { background: var(--ink); color: var(--bg); }
+.badge.yel { background: var(--accent); color: var(--accent-ink); }
+.badge.culte { background: #EADCFF; color: #4B1F8C; }
+.badge.actu { background: #DCE8FF; color: #0B3A8C; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.card h3 { font-size: 21px; line-height: 1.08; }
+.card .tags { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; }
+.stars { margin-left: auto; font-size: 12px; letter-spacing: 1px; }
+.card .why { font-size: 13.5px; color: var(--muted); }
+.card .hook { font-size: 14px; font-weight: 700; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; border-radius: 8px; border: 2px solid var(--ink); background: var(--surface); font-weight: 700; cursor: pointer; }
+.btn:hover { background: var(--ink); color: var(--bg); }
+.btn.primary { background: var(--ink); color: var(--bg); }
+.btn:disabled { opacity: .5; cursor: progress; }
+.card .btn { margin-top: auto; }
+.log { background: #0E0E0D; color: #E9E5DD; font: 12.5px/1.65 ui-monospace, 'SF Mono', Menlo, monospace; padding: 12px 14px; border-radius: 8px; white-space: pre-wrap; min-height: 120px; }
+.posts { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.post { text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; padding: 0; cursor: pointer; display: flex; flex-direction: column; }
+.post img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; max-width: 100%; }
+.post div { padding: 12px; display: grid; gap: 4px; }
+.post strong { line-height: 1.3; }
+.post small { color: var(--muted); }
+.viewer { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 28px; align-items: start; }
+.stage { position: relative; aspect-ratio: 3 / 4; max-width: 100%; border-radius: 12px; overflow: hidden; background: var(--line); }
+.stage img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.zone { position: absolute; background: var(--zone); pointer-events: none; display: none; }
+.zones-on .zone { display: block; }
+.z-top { inset: 0 0 auto 0; height: calc(110 / 1440 * 100%); }
+.z-bot { inset: auto 0 0 0; height: calc(120 / 1440 * 100%); }
+.z-right { right: 0; width: calc(150 / 1080 * 100%); top: calc(860 / 1440 * 100%); bottom: calc(120 / 1440 * 100%); }
+.strip { display: flex; gap: 8px; overflow-x: auto; padding: 10px 2px 4px; }
+.strip button { flex: 0 0 56px; aspect-ratio: 3 / 4; padding: 0; border: 2px solid transparent; border-radius: 5px; overflow: hidden; cursor: pointer; background: var(--line); }
+.strip button[aria-current="true"] { border-color: var(--ink); }
+.strip img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.toggle { display: flex; gap: 8px; align-items: center; font-size: 14px; margin-top: 10px; cursor: pointer; }
+.subtabs { display: flex; gap: 4px; border-bottom: 2px solid var(--ink); margin-bottom: 14px; flex-wrap: wrap; }
+.subtabs button { background: none; border: 0; padding: 8px 12px 6px; font: 17px/1 var(--display); text-transform: uppercase; color: var(--muted); cursor: pointer; }
+.subtabs button[aria-selected="true"] { background: var(--ink); color: var(--bg); }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px; min-width: 0; }
+.legend { white-space: pre-wrap; font-size: 15px; }
+.srcs { overflow-x: auto; font-size: 13.5px; }
+.srcs table { border-collapse: collapse; width: 100%; }
+.srcs th, .srcs td { text-align: left; vertical-align: top; padding: 7px 8px; border-bottom: 1px solid var(--line); }
+.srcs a { overflow-wrap: anywhere; }
+.srcs h4 { font: 18px/1 var(--display); text-transform: uppercase; margin: 14px 0 6px; font-weight: 400; }
+.pal { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+.pal div { border-radius: 8px; padding: 14px 12px; font: 16px/1 var(--display); text-transform: uppercase; display: grid; gap: 8px; }
+.pal span { justify-self: start; padding: 3px 6px 1px; }
+.check { padding: 9px 12px; border-left: 4px solid var(--ok); background: var(--surface); border-radius: 6px; font-size: 14px; margin-bottom: 12px; }
+.view-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 14px; margin-bottom: 16px; flex-wrap: wrap; }
+.view-head h3 { font-size: 30px; }
+.back { background: none; border: 0; padding: 0; font-weight: 700; color: var(--muted); cursor: pointer; margin-bottom: 8px; }
+
+/* Fonctionnement */
+.steps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; counter-reset: s; }
+.step { padding: 18px 18px 0 0; border-top: 2px solid var(--ink); min-width: 0; }
+.step::before { counter-increment: s; content: counter(s, decimal-leading-zero); font: 44px/1 var(--display); display: block; margin-bottom: 10px; }
+.step h3 { font-size: 22px; margin-bottom: 8px; }
+.step p { font-size: 14.5px; color: var(--muted); }
+.step code { font-size: 12.5px; }
+
+/* Choix */
+.choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; }
+.choice { padding: 26px 28px 26px 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 18px; }
+.choice b { font: 26px/1.05 var(--display); text-transform: uppercase; font-weight: 400; }
+.choice p { color: var(--muted); font-size: 15px; }
+.result { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 28px; align-items: center; background: var(--accent); color: var(--accent-ink); border-radius: 14px; padding: 28px 32px; }
+.result b { font: clamp(64px, 9vw, 112px)/.9 var(--display); }
+.result p { font-size: 18px; max-width: 52ch; }
+.stack { display: flex; flex-wrap: wrap; gap: 8px; }
+.stack span { border: 1.5px solid var(--ink); border-radius: 999px; padding: 7px 14px; font-weight: 600; font-size: 14px; }
+footer { padding-block: 40px 56px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+
+@media (max-width: 900px) {
+  .hero .wrap, .viewer { grid-template-columns: minmax(0, 1fr); }
+  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 24px; }
+  .choices { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 520px) {
+  .facts { grid-template-columns: minmax(0, 1fr); }
+  .fact { padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+  .steps { grid-template-columns: minmax(0, 1fr); }
+  .choice { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .result { grid-template-columns: minmax(0, 1fr); }
+  .app-body { padding: 14px; }
+  .app-note { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+<style>html{color-scheme:light}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <span class="mark">DÉCRYPTE</span>
+  <nav aria-label="Sections"><a href="#demo">Démo</a><a href="#fonctionnement">Fonctionnement</a><a href="#choix">Choix</a><a href="#stack">Stack</a></nav>
+</div></header>
+
+<main>
+<div class="hero"><div class="wrap">
+  <div>
+    <p class="eyebrow">Projet perso · outil de création de contenu social media</p>
+    <h1>De l’actu marketing au <span class="hl">carrousel TikTok</span>.</h1>
+    <p class="lede">Décrypte repère chaque matin les sujets marketing qui font parler, rédige un carrousel sourcé aux couleurs de la marque, génère les slides au format TikTok et les programme. Je garde la main sur chaque texte, chaque visuel et chaque publication.</p>
+    <div class="facts">
+      <div class="fact"><b>8</b><span>sujets proposés par la veille chaque matin</span></div>
+      <div class="fact"><b>0</b><span>chiffre publié sans source vérifiée</span></div>
+      <div class="fact"><b>3:4</b><span>slides 1080 × 1440, au format exact de TikTok</span></div>
+    </div>
+  </div>
+  <figure class="phone" style="margin:0 auto">
+    <div class="phone-screen"><img id="hero-img" src="img/norway-1.jpg" alt="Slide 1 du carrousel Visit Norway : Comment des toilettes ont répondu à Trump ?"><span class="phone-count" id="hero-count">1/7</span></div>
+    <div class="dots" id="hero-dots" role="group" aria-label="Slides du carrousel"></div>
+    <figcaption class="phone-cap">Carrousel « Visit Norway » généré par l’outil</figcaption>
+  </figure>
+</div></div>
+
+<section id="demo" class="band"><div class="wrap">
+  <div class="sec-head">
+    <p class="eyebrow">Démo interactive</p>
+    <h2>Le studio, comme je l’utilise</h2>
+    <p>Une reconstitution de l’interface avec mes vraies données : la veille du 1<sup>er</sup> novembre 2026 et deux carrousels produits par l’outil. Dans la démo, la rédaction est simulée ; dans l’outil, Claude cherche et rédige pendant 5 à 15 minutes.</p>
+  </div>
+  <div class="app">
+    <div class="app-bar">
+      <span class="mark">DÉCRYPTE</span>
+      <div class="app-tabs" role="tablist" aria-label="Pages du studio">
+        <button role="tab" id="tab-veille" aria-selected="true">Veille</button>
+        <button role="tab" id="tab-posts" aria-selected="false">Posts</button>
+      </div>
+      <span class="app-note">Démo · données réelles, actions simulées</span>
+    </div>
+    <div class="app-body" id="app"></div>
+  </div>
+</div></section>
+
+<section id="fonctionnement"><div class="wrap">
+  <div class="sec-head">
+    <p class="eyebrow">Fonctionnement</p>
+    <h2>Cinq étapes, une seule interface</h2>
+    <p>Le studio est une application web locale (Node.js) qui pilote Claude Code pour la recherche et l’écriture, et un moteur de rendu maison pour les visuels.</p>
+  </div>
+  <div class="steps">
+    <div class="step"><h3>Veille</h3><p>Chaque matin, recherche web sur l’actualité marketing des 7 derniers jours et sur des cas cultes. Huit sujets variés, avec angle, accroche, chiffres et sources.</p></div>
+    <div class="step"><h3>Rédaction</h3><p>Un clic sur un sujet : lecture des sources, récupération des visuels officiels, relevé des couleurs de la marque, écriture de 6 à 8 slides et de la légende.</p></div>
+    <div class="step"><h3>Rendu</h3><p>Slides dessinées sans navigateur (canvas), en 1080 × 1440, puis compressées. Les photos ne sont jamais coupées au mauvais endroit.</p></div>
+    <div class="step"><h3>Contrôles</h3><p>Chaque nombre affiché doit figurer dans <code>sources.md</code>, l’accroche fait moins de 10 mots, les contrastes respectent le WCAG. Sinon, rien n’est généré.</p></div>
+    <div class="step"><h3>Programmation</h3><p>Envoi à Metricool avec la date que je choisis : publication automatique, ou notification pour finir dans l’appli avec un son tendance.</p></div>
+  </div>
+</div></section>
+
+<section id="choix" class="band"><div class="wrap">
+  <div class="sec-head">
+    <p class="eyebrow">Choix de conception</p>
+    <h2>Ce qui fait la différence</h2>
+  </div>
+  <div class="choices">
+    <div class="choice"><b>Aucun chiffre inventé</b><p>Un contrôle automatique compare chaque nombre des slides avec le fichier des sources. Les liens sont conservés pour chaque fait et chaque image.</p></div>
+    <div class="choice"><b>La charte de chaque marque</b><p>Couleurs relevées sur le site ou la charte de la marque, palettes modifiables et vérifiées pour rester lisibles. La mise en page, elle, reste celle du compte.</p></div>
+    <div class="choice"><b>Pensé pour TikTok</b><p>Format 3:4, zones recouvertes par l’interface mesurées sur l’appli, accroche courte, mots-clés mis en valeur, typographie française soignée.</p></div>
+    <div class="choice"><b>Je garde la main</b><p>Rien n’est publié sans moi : je choisis le sujet, retouche chaque slide dans l’éditeur et décide de la date de publication.</p></div>
+  </div>
+  <div class="result" style="margin-top:36px">
+    <b>747</b>
+    <p>vues en 5 heures pour le premier carrousel publié avec l’outil, « Comment des toilettes ont répondu à Trump ? ».</p>
+  </div>
+</div></section>
+
+<section id="stack"><div class="wrap">
+  <div class="sec-head">
+    <p class="eyebrow">Stack</p>
+    <h2>Sous le capot</h2>
+  </div>
+  <div class="stack">
+    <span>Node.js</span><span>@napi-rs/canvas</span><span>sharp</span><span>Claude Code (mode non interactif)</span><span>Connecteur Metricool</span><span>HTML, CSS, JS sans framework</span><span>node:test</span><span>rembg (détourage)</span>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">Décrypte Studio · projet personnel · démo reconstituée à partir des données réelles de l’outil. Les visuels des marques appartiennent à leurs auteurs et sont cités dans les sources de chaque post.</div></footer>
+
+<script id="data" type="application/json">{"norway": {"sujet": "Visit Norway transforme l'insulte de Trump en campagne", "rubrique": "Le marketing derrière la culture pop", "secteur": "Tourisme", "statut": "programmé", "n": 7, "accroches": ["Trump les insulte. La Norvège en fait une pub.", "Comment des toilettes ont répondu à Trump ?", "Une insulte présidentielle, 540 fois plus de trafic."], "legende": "Trump traite la Norvège de « shithouse country »… Visit Norway répond avec ses toilettes 🚽🇳🇴\nUne vieille page web, une soirée, et 540 fois plus de trafic. Décryptage d'un bad buzz retourné en pub.\nTu aurais osé ? 👇\n\n#marketing #badbuzz #visitnorway #communication #marketingdigital", "sources": "# Sources — Visit Norway « Norway makes shithouses great again »\n\n## Faits et chiffres\n| Slide | Affirmation | Source |\n|---|---|---|\n| 2 | Citation de Trump « Norway has become a shithouse country », meeting à Port Huron (Michigan), lien avec le prix Nobel de la paix | [Salon, 31/10/2026](https://www.salon.com/2026/10/31/norway-makes-toilets-great-again/) · [Skift, 30/10/2026](https://skift.com/2026/10/30/visit-norway-trump-insult-most-viewed-page/) |\n| 3 | Page existante modifiée le lundi soir ; titre « Norway makes shithouses great again! » | [Skift](https://skift.com/2026/10/30/visit-norway-trump-insult-most-viewed-page/) · [page Visit Norway](https://www.visitnorway.com/plan-your-trip/travel-tips-a-z/norwegian-scenic-routes/worlds-best-toilets/) |\n| 4 | Toilettes conçues par des cabinets d'architectes (« All except one are designed by well-known or up and coming Norwegian architecture firms ») | [page Visit Norway](https://www.visitnorway.com/plan-your-trip/travel-tips-a-z/norwegian-scenic-routes/worlds-best-toilets/) |\n| 5 | Équipe « always-on » de 7 personnes fonctionnant comme une rédaction ; pub à Times Square | [Skift](https://skift.com/2026/10/30/visit-norway-trump-insult-most-viewed-page/) |\n| 6 | 80 000+ vues en 5 jours, 170+ pays, ×540 vs semaine précédente, < 10 000 $ de posts sponsorisés, ≈ 90 % de trafic organique (Christine Baglo, rédactrice en chef de visitnorway.com) | [Skift](https://skift.com/2026/10/30/visit-norway-trump-insult-most-viewed-page/) |\n\nCouverture complémentaire : [CNN](https://www.cnn.com/2026/10/30/travel/visit-norway-toilets-trump-scli-intl) · [Bloomberg](https://www.bloomberg.com/news/articles/2026-10-30/norway-turns-trump-s-toilet-insults-into-a-tourist-ploy) (non lus : accès bloqué)\n\n## Images\nVisuels du carrousel Instagram de la campagne (droits : Visit Norway et photographes crédités sur chaque image), utilisés pour illustrer le décryptage.\nPost : https://www.instagram.com/p/De947fvgvpT/ (récupéré le 01/11/2026 : 76,7 K j'aime, 1,9 K commentaires, 2,5 K partages)\n\n| Fichier | Slide | Contenu |\n|---|---|---|\n| ig-1.jpg | 1 | « Meet the world's most beautiful ~~shit houses~~ toilets » (Ureddplassen) |\n| ig-4.jpg | 2 | « The \"Brutalist Flower\" toilet in Ryfylke » |\n| ig-2.jpg | 3 | « Yes, Norway is home to some of the most spectacular (and probably the most expensive) toilets in the world » |\n| ig-3.jpg | 4 | « Like the \"Golden toilet\" in Senja » |\n| ig-5.jpg | 5 | « The \"Hobbit toilet\" or the \"Space ship\" toilets in Hardanger » |\n\nAutres visuels du post non utilisés : ig-6, ig-7, ig-8. Photos de la page visitnorway.com (vn-*.jpg) et capture de page conservées en réserve.\n\n## Thème visuel\nCouleurs relevées sur visitnorway.com : texte #06132A, bleu des boutons #004DE8 ; rouge #BA0C2F du drapeau (logo).", "brand": "Visit Norway", "palettes": {"blue": {"bg": "#004DE8", "ink": "#FFFFFF", "boxBg": "#06132A", "boxInk": "#FFFFFF"}, "white": {"bg": "#FFFFFF", "ink": "#06132A", "boxBg": "#004DE8", "boxInk": "#FFFFFF"}, "navy": {"bg": "#06132A", "ink": "#FFFFFF", "boxBg": "#004DE8", "boxInk": "#FFFFFF"}, "red": {"bg": "#BA0C2F", "ink": "#FFFFFF", "boxBg": "#06132A", "boxInk": "#FFFFFF"}}}, "delena": {"sujet": "Rare Beauty réunit Selena Gomez et Demi Lovato pour un blush « Delena »", "rubrique": "Le marketing derrière la culture pop", "secteur": "Beauté", "statut": "prêt", "n": 8, "accroches": ["Ton enfance Disney Channel coûte 50 $.", "Comment vendre un blush avec un téléfilm de 2009 ?", "« Delena is back » : la nostalgie a un prix."], "legende": "Selena Gomez + Demi Lovato + un téléfilm Disney de 2009 = un coffret blush à 50 $ 💗👑\nRare Beauty ressort le surnom « Delena » et recycle deux teintes déjà en vente. Décryptage d'une campagne qui vend un souvenir.\nTu l'achètes pour le blush ou pour Delena ? 👇\n\n#marketing #rarebeauty #delena #nostalgie #disneychannel", "sources": "# Sources — Rare Beauty × Selena Gomez & Demi Lovato, coffret « Delena »\n\n## Faits et chiffres\n| Slide | Affirmation | Source |\n|---|---|---|\n| 1 | Coffret vendu 50 $ ; campagne qui renvoie au téléfilm Disney Channel *Princess Protection Program* | [Hypebae, 28/10/2026](https://hypebae.com/2026/10/selena-gomez-demi-lovato-rare-beauty-campaign-delena-bundle-soft-pinch-liquid-blush-where-to-buy) · [Complex, 28/10/2026](https://www.complex.com/style/a/jaelaniturnerwilliams/selena-gomez-demi-lovato-rare-beauty-delena-blush) |\n| 2 | Amies depuis l'âge de 7 ans (« We've been friends since we were 7 years old when we met on Barney », Demi Lovato à ELLE) | [Complex](https://www.complex.com/style/a/jaelaniturnerwilliams/selena-gomez-demi-lovato-rare-beauty-delena-blush) |\n| 2 | En 2020, Demi Lovato dit à Harper's Bazaar « I'm not friends with her » | [IBTimes UK, 29/10/2026](https://www.ibtimes.co.uk/selena-gomez-demi-lovato-rare-beauty-campaign-1828686) |\n| 2 | Campagne lancée le mercredi 28 octobre (2026) | [Complex](https://www.complex.com/style/a/jaelaniturnerwilliams/selena-gomez-demi-lovato-rare-beauty-delena-blush) · [IBTimes UK](https://www.ibtimes.co.uk/selena-gomez-demi-lovato-rare-beauty-campaign-1828686) |\n| 3 | Nom « Delena » = référence au surnom donné au duo | [Laughing Place, 28/10/2026](https://www.laughingplace.com/disney-entertainment/princess-protection-program-rare-beauty/) · [The Zoe Report, 28/10/2026](https://www.thezoereport.com/culture/selena-gomez-demi-lovato-rare-beauty-collaboration) |\n| 3 | Shooting façon affiche de *Princess Protection Program*, téléfilm Disney Channel de 2009 (valises vintage) | [Complex](https://www.complex.com/style/a/jaelaniturnerwilliams/selena-gomez-demi-lovato-rare-beauty-delena-blush) · [NewBeauty, 28/10/2026](https://www.newbeauty.com/view/selena-gomez-demi-lovato-rare-beauty-delena-bundle) |\n| 4 | Reel façon vlog maison de 2008, chant dans une brosse à cheveux ; carnet de questions de fans signé de pseudos reconnaissables par les fans de *Camp Rock* | [NewBeauty](https://www.newbeauty.com/view/selena-gomez-demi-lovato-rare-beauty-delena-bundle) |\n| 4 | Playback sur « One and the Same », chanson enregistrée pour le film | [IBTimes UK](https://www.ibtimes.co.uk/selena-gomez-demi-lovato-rare-beauty-campaign-1828686) · [IBTimes UK (réactions)](https://www.ibtimes.co.uk/selena-gomez-demi-lovato-rare-beauty-delena-campaign-1828724) |\n| 5 | 2 Soft Pinch Liquid Blush (Hope, Virtue) + Soft Pinch Blush Brush ; « two existing shades » ; édition limitée ; Soft Pinch = best-seller (« best-selling Soft Pinch Liquid Blush ») | [IBTimes UK](https://www.ibtimes.co.uk/selena-gomez-demi-lovato-rare-beauty-campaign-1828686) · [NewBeauty](https://www.newbeauty.com/view/selena-gomez-demi-lovato-rare-beauty-delena-bundle) · [Hypebae](https://hypebae.com/2026/10/selena-gomez-demi-lovato-rare-beauty-campaign-delena-bundle-soft-pinch-liquid-blush-where-to-buy) |\n| 6 | Commentaire TikTok « IM LITERALLY CRYING, THE NOSTALGIA IS SO REAL » sous le post de Rare Beauty | [IBTimes UK (réactions)](https://www.ibtimes.co.uk/selena-gomez-demi-lovato-rare-beauty-delena-campaign-1828724) |\n| 6 | Sous-titre « Millennials rejoice » | [The Zoe Report](https://www.thezoereport.com/culture/selena-gomez-demi-lovato-rare-beauty-collaboration) |\n| 7 | 50 $, « advertised as having a $76 (£57) value » | [IBTimes UK (réactions)](https://www.ibtimes.co.uk/selena-gomez-demi-lovato-rare-beauty-delena-campaign-1828724) |\n| 7 | Légende du reel : « YO YO YO 18 years later, Delena is back with a vlog », clin d'œil à leur vidéo YouTube de 2008 | [NewBeauty](https://www.newbeauty.com/view/selena-gomez-demi-lovato-rare-beauty-delena-bundle) |\n| 7 | « almost 25 years of friendship » ; rencontre enfants sur *Barney* | [Hypebae](https://hypebae.com/2026/10/selena-gomez-demi-lovato-rare-beauty-campaign-delena-bundle-soft-pinch-liquid-blush-where-to-buy) · [Complex](https://www.complex.com/style/a/jaelaniturnerwilliams/selena-gomez-demi-lovato-rare-beauty-delena-blush) |\n\nNotes :\n- Date de disponibilité : 28 octobre selon Complex et The Zoe Report, 29 octobre selon IBTimes UK et People (cité par EntertainmentNow). Le carrousel ne mentionne que le lancement de la campagne (28 octobre).\n- Prix unitaires du blush et du pinceau non trouvés dans les sources lues : la « valeur » de 76 $ est celle annoncée par la marque, rapportée par IBTimes UK.\n- Aucun chiffre de ventes du coffret ni de vues de la campagne trouvé : rien de tel n'apparaît sur les slides.\n\n## Images\nVisuels de la campagne Rare Beauty « Still Making Each Other Blush » (droits : Rare Beauty), repris par la presse, utilisés pour illustrer le décryptage.\n\n| Fichier | Slide | Sujet | URL d'origine |\n|---|---|---|---|\n| hypebae-rare-1.jpg | 1 | Selena et Demi en robes de princesse sur des valises (clin d'œil à l'affiche du film) | https://image-cdn.hypb.st/https%3A%2F%2Fbae.hypebeast.com%2Ffiles%2F2026%2F10%2F28%2Frare-1.jpg |\n| complex-hero.jpg | 2 | Le duo se maquille devant un mur en bois | https://images.complex.com/complex/image/upload/sanity-new/pf8854ik5bfl9gryenae |\n| comparaison-campagne-telefilm.jpg | 3 | Comparaison campagne 2026 (en haut) / téléfilm de 2009 (en bas), recomposée verticalement à partir de laughingplace-ppp.jpg | https://www.laughingplace.com/uploads/media/2026/10/Rare-Beauty-Princess-Protection-Program.jpg |\n| hypebae-rare-3.jpg | 4 | Décor de chambre façon vlog, moquette rose | https://image-cdn.hypb.st/https%3A%2F%2Fbae.hypebeast.com%2Ffiles%2F2026%2F10%2F28%2Frare-3.jpg |\n| hypebae-rare-2.jpg | 5 | Les 2 blushs et le pinceau du coffret | https://image-cdn.hypb.st/https%3A%2F%2Fbae.hypebeast.com%2Ffiles%2F2026%2F10%2F28%2Frare-2.jpg |\n| newbeauty-lead.png | 6 | Portraits « princesse » sur fond rose | https://cdn.sanity.io/images/0vv8moc6/newbeauty/0116fe8fb5beada05cec4b465cfaf8c97200b37b-1920x1080.png |\n\nEn réserve : zoe-valises.jpg (plan large du décor de chambre, The Zoe Report).\n\n## Thème visuel\nCouleurs relevées dans le code de rarebeauty.com : prune #7F2549 (primaryColor, bandeaux), bordeaux #6F0F38 (boutons), crème #FDF6F0 (fonds), encre #000914 (texte).", "brand": "Rare Beauty", "palettes": {"prune": {"bg": "#7F2549", "ink": "#FFFFFF", "boxBg": "#FDF6F0", "boxInk": "#6F0F38"}, "creme": {"bg": "#FDF6F0", "ink": "#000914", "boxBg": "#7F2549", "boxInk": "#FFFFFF"}, "nuit": {"bg": "#000914", "ink": "#FDF6F0", "boxBg": "#7F2549", "boxInk": "#FFFFFF"}, "bordeaux": {"bg": "#6F0F38", "ink": "#FFFFFF", "boxBg": "#FDF6F0", "boxInk": "#6F0F38"}}}, "veille": [{"sujet": "La Switch 2 édition Zelda 40 ans sort, introuvable au prix officiel", "type": "actu", "rubrique": "Pourquoi tu l'as acheté", "secteur": "Jeux vidéo", "startup": false, "accroche": "Pourquoi payer 800 $ une console à 520 $ ?", "angle": "Une console quasi identique à la normale, 20 $ plus chère, épuisée en précommande et revendue 800 $ : comment la nostalgie et l'édition limitée créent un objet de collection", "pourquoi_maintenant": "Sortie cette semaine, juste avant le remake de Zelda: Ocarina of Time attendu en novembre, avec des reventes au-dessus du double du prix", "potentiel": 5, "post": null}, {"sujet": "Les fondateurs d'Airbnb ont sauvé leur startup en vendant des céréales", "type": "culte", "rubrique": "Le marketing derrière la culture pop", "secteur": "Voyage", "startup": true, "accroche": "Comment des céréales ont sauvé Airbnb ?", "angle": "Ruinés, ils transforment l'élection présidentielle de 2008 en produit dérivé : des boîtes « Obama O's » et « Cap'n McCain's » vendues 40 $ qui financent la boîte et attirent l'œil de Y Combinator", "pourquoi_maintenant": "Histoire culte du « fais des choses qui ne passent pas à l'échelle », contre-intuitive et très visuelle ; la saison électorale et les produits dérivés politiques lui font toujours écho", "potentiel": 5, "post": null}, {"sujet": "Rare Beauty réunit Selena Gomez et Demi Lovato pour un blush « Delena »", "type": "actu", "rubrique": "Le marketing derrière la culture pop", "secteur": "Beauté", "startup": false, "accroche": "Comment un film Disney de 2009 fait vendre du blush ?", "angle": "Recycler un surnom de fans et un téléfilm Disney de 2009 pour vendre un coffret à 50 $ : la nostalgie de la génération Disney Channel comme argument de vente", "pourquoi_maintenant": "Lancée cette semaine, très partagée par les fans, avec un clin d'œil direct à Princess Protection Program", "potentiel": 5, "post": "2026-11-02_rare-beauty-delena"}, {"sujet": "Le nouveau logo de Gap n'a tenu que six jours", "type": "culte", "rubrique": "Le flop", "secteur": "Mode", "startup": false, "accroche": "Comment un logo a tenu seulement 6 jours ?", "angle": "Un rebranding estimé à 100 millions, enterré par Internet en moins d'une semaine : la première grande leçon sur le pouvoir des réseaux sociaux face à une marque", "pourquoi_maintenant": "16 ans tout juste après, c'est toujours l'exemple de référence à chaque rebranding raté (Cracker Barrel en 2025) ; l'histoire se raconte en six jours, parfait pour un carrousel", "potentiel": 4, "post": null}, {"sujet": "Walmart rejoue Le Noël des Muppets avec Walton Goggins en Scrooge", "type": "actu", "rubrique": "Le marketing derrière la culture pop", "secteur": "Retail", "startup": false, "accroche": "Pourquoi Walmart a engagé les Muppets ?", "angle": "Pourquoi un supermarché loue un film culte de 1992 et transforme les trois fantômes de Noël en arguments promo : une seule histoire pour toute la saison dans la période la plus encombrée de l'année", "pourquoi_maintenant": "Lancée cette semaine, premier gros spot de Noël de l'année, après le Grinch de 2025 avec le même acteur", "potentiel": 4, "post": null}, {"sujet": "Prada fait dessiner sa pub de Noël à la main par un ancien animateur Disney", "type": "actu", "rubrique": "Le marketing derrière la culture pop", "secteur": "Luxe", "startup": false, "accroche": "Pourquoi Prada a dessiné sa pub au crayon ?", "angle": "En pleine vague de pubs générées par IA, le luxe mise sur le crayon : l'artisanat visible comme preuve de valeur", "pourquoi_maintenant": "Sortie cette semaine avec Sadie Sink et Maya Hawke (Stranger Things), alors que les pubs de Noël en IA ont déclenché des bad buzz ces deux dernières années", "potentiel": 4, "post": null}, {"sujet": "Liquid Death : de l'eau en canette valorisée 1,4 milliard", "type": "culte", "rubrique": "Pourquoi tu l'as acheté", "secteur": "Boissons", "startup": true, "accroche": "Pourquoi payer de l'eau dans une canette de bière ?", "angle": "Vendre de l'eau plate comme une bière de métalleux : comment le packaging et l'humour noir font payer plus cher le produit le plus banal du monde", "pourquoi_maintenant": "Cas d'école de branding cité dès qu'une marque « ennuyeuse » veut devenir virale ; histoire surprenante qui marche sans actualité", "potentiel": 4, "post": null}, {"sujet": "Doctolib parle aux aidants avec Guillaume de Tonquédec", "type": "actu", "rubrique": "Le marketing derrière la culture pop", "secteur": "Santé", "startup": true, "accroche": "Pourquoi Doctolib parle de ceux qui ne prennent pas rendez-vous ?", "angle": "Comment une startup de prise de rendez-vous utilise ses propres données d'utilisateurs et des créateurs de contenu pour devenir une marque qui prend soin, pas seulement une appli", "pourquoi_maintenant": "Lancée cette semaine, sujet français, avec une étude maison et quatre créateurs de contenu", "potentiel": 3, "post": null}]}</script>
+<script>
+(() => {
+  const D = JSON.parse(document.getElementById('data').textContent);
+  const $ = s => document.querySelector(s);
+  const el = (tag, attrs = {}, ...kids) => {
+    const n = document.createElement(tag);
+    for (const [k, v] of Object.entries(attrs)) {
+      if (v == null || v === false) continue;
+      if (k.startsWith('on')) n.addEventListener(k.slice(2), v); else if (k === 'class') n.className = v; else n.setAttribute(k, v === true ? '' : v);
+    }
+    for (const c of kids.flat(Infinity)) if (c != null && c !== false) n.append(c instanceof Node ? c : document.createTextNode(String(c)));
+    return n;
+  };
+  const POSTS = { norway: { ...D.norway, date: '3 nov. 2026' }, delena: { ...D.delena, date: '2 nov. 2026' } };
+  const slugFor = { '2026-11-02_rare-beauty-delena': 'delena', '2026-11-03_visit-norway-toilettes': 'norway' };
+
+  // ----- Téléphone de l'ouverture -----
+  let heroI = 1;
+  const heroDots = $('#hero-dots');
+  const showHero = i => {
+    heroI = i;
+    $('#hero-img').src = `img/norway-${i}.jpg`;
+    $('#hero-count').textContent = `${i}/7`;
+    heroDots.querySelectorAll('button').forEach((b, k) => b.setAttribute('aria-current', String(k + 1 === i)));
+  };
+  for (let i = 1; i <= 7; i++) heroDots.append(el('button', { 'aria-label': `Slide ${i}`, 'aria-current': String(i === 1), onclick: () => showHero(i) }));
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) setInterval(() => showHero(heroI % 7 + 1), 3200);
+
+  // ----- Studio -----
+  const app = $('#app');
+  let view = 'veille';
+  const setTab = v => { view = v; $('#tab-veille').setAttribute('aria-selected', String(v === 'veille')); $('#tab-posts').setAttribute('aria-selected', String(v !== 'veille')); };
+  $('#tab-veille').onclick = () => { setTab('veille'); renderVeille(); };
+  $('#tab-posts').onclick = () => { setTab('posts'); renderPosts(); };
+
+  const rubBadge = r => el('span', { class: 'badge dark' }, r);
+
+  function renderVeille() {
+    app.replaceChildren(
+      el('div', { class: 'view-head' }, el('div', {}, el('p', { class: 'eyebrow' }, 'Veille du 1er novembre 2026 · actualité et cas cultes'), el('h3', {}, '8 sujets proposés'))),
+      el('div', { class: 'cards' }, D.veille.map(s => {
+        const done = slugFor[s.post];
+        const stars = Math.max(0, Math.min(5, s.potentiel || 0));
+        return el('article', { class: 'card' },
+          el('div', { class: 'tags' }, rubBadge(s.rubrique), el('span', { class: `badge ${s.type === 'culte' ? 'culte' : 'actu'}` }, s.type === 'culte' ? 'Cas culte' : 'Actu'),
+            el('span', { class: 'badge' }, s.secteur), s.startup && el('span', { class: 'badge yel' }, 'Startup'),
+            el('span', { class: 'stars', 'aria-label': `Potentiel ${stars} sur 5` }, '★'.repeat(stars) + '☆'.repeat(5 - stars))),
+          el('h3', {}, s.sujet),
+          s.accroche && el('p', { class: 'hook' }, s.accroche),
+          s.pourquoi_maintenant && el('p', { class: 'why' }, s.pourquoi_maintenant),
+          done ? el('button', { class: 'btn', onclick: () => openPost(done) }, 'Voir le post')
+               : el('button', { class: 'btn primary', onclick: () => simulate(s) }, 'Générer le slideshow'));
+      })));
+  }
+
+  function simulate(s) {
+    const log = el('div', { class: 'log', role: 'log', 'aria-live': 'polite' });
+    const next = el('button', { class: 'btn primary', hidden: true, onclick: () => openPost('norway') }, 'Voir un post produit par l’outil');
+    app.replaceChildren(
+      el('button', { class: 'back', onclick: renderVeille }, '← Veille'),
+      el('div', { class: 'view-head' }, el('div', {}, el('p', { class: 'eyebrow' }, 'Rédaction (simulée dans la démo)'), el('h3', {}, s.sujet))),
+      log, el('div', { style: 'margin-top:14px' }, next));
+    const steps = [
+      `🔎 Recherche : ${s.sujet.split(' ').slice(0, 6).join(' ')}…`,
+      '🌐 Lecture des sources (presse, communiqué de la marque)',
+      '🧭 Récupération des visuels officiels de la campagne',
+      '🎨 Relevé des couleurs de la marque sur son site',
+      '✏️  Écrit : slides-config.json, légende, sources.md',
+      '▶ Contrôles : chiffres sourcés, longueurs, contrastes ✓',
+      '🖼  8 slides générées en 1080 × 1440',
+      '\n✅ Post prêt à relire dans « Posts ».',
+    ];
+    let i = 0;
+    const tick = () => { log.textContent += (i ? '\n' : '') + steps[i++]; if (i < steps.length) setTimeout(tick, 650); else next.hidden = false; };
+    tick();
+  }
+
+  function renderPosts() {
+    app.replaceChildren(
+      el('div', { class: 'view-head' }, el('div', {}, el('p', { class: 'eyebrow' }, 'Galerie'), el('h3', {}, 'Mes carrousels'))),
+      el('div', { class: 'posts' }, Object.entries(POSTS).map(([k, p]) =>
+        el('button', { class: 'post', onclick: () => openPost(k) },
+          el('img', { src: `img/${k}-1.jpg`, alt: '' }),
+          el('div', {}, el('strong', {}, p.sujet), el('small', {}, `${p.date} · ${p.secteur} · ${p.statut}`))))));
+  }
+
+  function renderSources(md) {
+    const box = el('div', { class: 'srcs' });
+    const lines = md.split('\n');
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+      if (line.startsWith('|')) {
+        const rows = [];
+        while (i < lines.length && lines[i].startsWith('|')) { if (!/^\|[\s|:-]+\|$/.test(lines[i].trim())) rows.push(lines[i]); i++; }
+        i--;
+        const cells = r => r.trim().replace(/^\||\|$/g, '').split('|').map(c => c.trim());
+        const inline = t => { const out = []; let last = 0, m; const re = /\[([^\]]+)\]\((https?:[^)\s]+)\)|(https?:\/\/[^\s|)]+)/g; while ((m = re.exec(t))) { out.push(t.slice(last, m.index)); out.push(el('a', { href: m[2] || m[3], target: '_blank', rel: 'noopener' }, m[1] || 'lien')); last = re.lastIndex; } out.push(t.slice(last)); return out.map(x => typeof x === 'string' ? x.replace(/\*\*|`/g, '') : x); };
+        const [head, ...body] = rows;
+        box.append(el('table', {}, el('thead', {}, el('tr', {}, cells(head).map(c => el('th', {}, inline(c))))), el('tbody', {}, body.map(r => el('tr', {}, cells(r).map(c => el('td', {}, inline(c))))))));
+      } else if (/^#{2,3} /.test(line)) box.append(el('h4', {}, line.replace(/^#+ /, '')));
+    }
+    return box;
+  }
+
+  function openPost(k) {
+    setTab('posts');
+    const p = POSTS[k];
+    let cur = 1, sub = 'legende';
+    const img = el('img', { alt: '' });
+    const stage = el('div', { class: 'stage' }, img, el('div', { class: 'zone z-top' }), el('div', { class: 'zone z-bot' }), el('div', { class: 'zone z-right' }));
+    const strip = el('div', { class: 'strip', role: 'group', 'aria-label': 'Slides' });
+    const show = i => { cur = i; img.src = `img/${k}-${i}.jpg`; img.alt = `Slide ${i} sur ${p.n}`; strip.querySelectorAll('button').forEach((b, j) => b.setAttribute('aria-current', String(j + 1 === i))); };
+    for (let i = 1; i <= p.n; i++) strip.append(el('button', { 'aria-label': `Slide ${i}`, onclick: () => show(i) }, el('img', { src: `img/${k}-${i}.jpg`, alt: '' })));
+    const panel = el('div', { class: 'panel' });
+    const tabs = el('div', { class: 'subtabs', role: 'tablist' });
+    const drawSub = () => {
+      tabs.querySelectorAll('button').forEach(b => b.setAttribute('aria-selected', String(b.dataset.k === sub)));
+      if (sub === 'legende') panel.replaceChildren(el('p', { class: 'eyebrow', style: 'margin-bottom:8px' }, 'Légende envoyée avec le post'), el('p', { class: 'legend' }, p.legende),
+        p.accroches.length ? el('div', { style: 'margin-top:16px' }, el('p', { class: 'eyebrow', style: 'margin-bottom:6px' }, 'Variantes d’accroche proposées'), el('ul', { style: 'margin:0;padding-left:18px' }, p.accroches.map(a => el('li', {}, a)))) : null);
+      else if (sub === 'sources') panel.replaceChildren(renderSources(p.sources));
+      else panel.replaceChildren(el('p', { class: 'eyebrow', style: 'margin-bottom:10px' }, `Palettes · ${p.brand}`),
+        el('div', { class: 'pal' }, Object.entries(p.palettes).map(([n, c]) => { const d = el('div', {}, n, el('span', {}, 'Bloc')); d.style.background = c.bg; d.style.color = c.ink; d.lastChild.style.background = c.boxBg; d.lastChild.style.color = c.boxInk; d.style.border = '1px solid rgba(127,127,127,.25)'; return d; })));
+    };
+    [['legende', 'Légende'], ['sources', 'Sources'], ['couleurs', 'Couleurs']].forEach(([key, label]) => tabs.append(el('button', { role: 'tab', 'data-k': key, onclick: () => { sub = key; drawSub(); } }, label)));
+    const zones = el('input', { type: 'checkbox', id: 'demo-zones', onchange: e => stage.classList.toggle('zones-on', e.target.checked) });
+    app.replaceChildren(
+      el('button', { class: 'back', onclick: renderPosts }, '← Tous les posts'),
+      el('div', { class: 'view-head' }, el('div', {}, el('p', { class: 'eyebrow' }, `${p.date} · ${p.rubrique} · ${p.secteur}`), el('h3', {}, p.sujet)), el('span', { class: 'badge' }, p.statut)),
+      el('p', { class: 'check' }, 'Contrôles OK : chaque chiffre est sourcé, les longueurs et les contrastes sont bons.'),
+      el('div', { class: 'viewer' },
+        el('div', {}, stage, strip, el('label', { class: 'toggle', for: 'demo-zones' }, zones, 'Afficher les zones recouvertes par TikTok')),
+        el('div', { style: 'min-width:0' }, tabs, panel)));
+    show(1);
+    drawSub();
+  }
+
+  renderVeille();
+})();
+</script>
+
+</body>
+</html>
