@@ -2,6 +2,12 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
   "installCommand": "echo \"Démo statique : rien à installer\"",
-  "buildCommand": "echo \"Démo statique : rien à construire\"",
-  "outputDirectory": "demo"
+  "buildCommand": "echo \"Démo déjà construite (npm run demo:build)\"",
+  "outputDirectory": "demo",
+  "rewrites": [
+    {
+      "source": "/telecharger/:slug",
+      "destination": "/telecharger/:slug.zip"
+    }
+  ]
 }

@@ -5,7 +5,7 @@
 
 ![Aperçu d'un carrousel généré : Visit Norway](posts/2026-11-03_visit-norway-toilettes/apercu.png)
 
-**▶ Démo en ligne :** _(lien Vercel à ajouter après le déploiement)_ · le dossier [`demo/`](demo/) contient la page de démo statique.
+**▶ Démo en ligne :** _(lien Vercel à ajouter après le déploiement)_. C'est le vrai studio en mode démo : mêmes écrans et données réelles, mais les actions qui appellent Claude, Metricool ou le moteur de rendu sont désactivées. Il est construit par `npm run demo:build` dans [`demo/`](demo/).
 
 *Exemple réel : comment Visit Norway a retourné une insulte de Donald Trump en campagne (octobre 2026). 7 slides, chiffres Skift, photos officielles de la campagne.*
 
@@ -116,6 +116,7 @@ Un post peut aussi être créé **à la main** : la structure est prête, il n'y
 |---|---|
 | `npm run studio` | Interface visuelle locale (veille, rédaction, retouche, envoi) |
 | `npm run studio:installer` | Lance le studio automatiquement à l'ouverture de session (`studio:desinstaller` pour annuler) |
+| `npm run demo:build` | Reconstruit la démo statique du studio dans `demo/` |
 | `npm run veille` | Veille du jour en ligne de commande |
 | `/rediger <sujet>` *(Claude Code)* | Recherche, sources, visuels, thème de la marque, textes, rendu |
 | `/lot <n>` *(Claude Code)* | Propose des sujets d'actualité variés, puis prépare les posts choisis |
@@ -147,7 +148,7 @@ Types de slides : `hook`, `text`, `quote`, `list`, `stats`, `outro`.
 ## Structure
 
 ```
-demo/               page de démo statique (déployée sur Vercel)
+demo/               le studio en mode démo, statique (généré par npm run demo:build, déployé sur Vercel)
 .claude/commands/   veille.md, rediger.md, lot.md : les méthodes de veille, de recherche et de rédaction
 veille/             une veille par jour (JSON)
 assets/             polices (Anton, Inter, licence OFL), thème par défaut
