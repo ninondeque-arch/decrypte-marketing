@@ -165,6 +165,19 @@ const routes = [
   ['GET', /^\/api\/metricool$/, () => metricoolState],
   ['POST', /^\/api\/metricool\/verifier$/, () => startJob({ kind: 'metricool', label: 'Vérification de Metricool', agent: true },
     async log => { const r = await checkMetricool({ onLog: log }); metricoolState = { ...r, verifie: new Date().toISOString() }; writeFileSync(METRICOOL_FILE, JSON.stringify(metricoolState)); return r; })],
+  ['POST', /^\/api\/demo$/, () => {
+    if (isRunning(j => j.kind === 'demo')) throw httpError(409, 'La démo est déjà en cours de mise à jour');
+    return startJob({ kind: 'demo', label: 'Mise à jour de la démo en ligne' }, log => new Promise((resolve, reject) => {
+      log('Reconstruction du dossier demo/ avec tous les posts…');
+      execFile(process.execPath, [join(ROOT, 'src/demo/build.js')], { cwd: ROOT, maxBuffer: 10 * 1024 * 1024 }, (err, stdout, stderr) => {
+        if (err) return reject(new Error((stderr || err.message).trim().split('\n').at(-1)));
+        const msg = stdout.trim().split('\n').at(-1);
+        log(msg);
+        log('Il reste à faire Commit puis Push dans GitHub Desktop : Vercel se met à jour tout seul.');
+        resolve({ message: msg });
+      });
+    }));
+  }],
   ['POST', /^\/api\/posts\/([^/]+)\/publie$/, m => { const dir = postDir(m[1]); markPublished(dir); return detail(dir); }],
 
   ['GET', /^\/api\/veille$/, (m, req, url) => {

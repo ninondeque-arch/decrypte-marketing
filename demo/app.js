@@ -186,6 +186,23 @@ async function startRediger(payload) {
 }
 
 // ================= POSTS =================
+async function updateDemo(e) {
+  const btn = e.currentTarget;
+  btn.disabled = true;
+  try {
+    const job = await api('/api/demo', { method: 'POST' });
+    await pollJobs();
+    toast('Mise à jour de la démo en cours…');
+    const wait = setInterval(async () => {
+      const j = await api(`/api/jobs/${job.id}`);
+      if (!j.endedAt) return;
+      clearInterval(wait);
+      btn.disabled = false;
+      toast(j.error ? `Démo : ${j.error}` : 'Démo à jour. Fais Commit puis Push dans GitHub Desktop pour la publier sur Vercel.');
+    }, 2000);
+  } catch (err) { btn.disabled = false; toast(err.message); }
+}
+
 async function renderPosts(r) {
   await refreshGlobal();
   const filter = r.params.get('statut') ?? 'tous';
@@ -196,7 +213,9 @@ async function renderPosts(r) {
   show(
     el('div', { class: 'page-head' },
       el('div', {}, el('p', { class: 'eyebrow' }, 'Tous tes carrousels'), el('h1', { class: 'page-title' }, 'Posts')),
-      el('div', { class: 'page-actions' }, el('button', { class: 'btn btn-accent', type: 'button', onclick: newPostFlow }, '+ Nouveau post'))),
+      el('div', { class: 'page-actions' },
+        window.DEMO_DATA ? null : el('button', { class: 'btn', type: 'button', title: 'Recopie tous les posts dans la démo publiée sur Vercel', onclick: updateDemo }, 'Mettre à jour la démo'),
+        el('button', { class: 'btn btn-accent', type: 'button', onclick: newPostFlow }, '+ Nouveau post'))),
     state.alerts.length ? el('div', { class: 'banner' }, el('p', { class: 'eyebrow' }, 'Variété du fil'), state.alerts.map(a => el('div', { class: 'check warn' }, a))) : null,
     el('nav', { class: 'filters', 'aria-label': 'Filtrer par statut' },
       [['tous', 'Tous', state.posts.length], ...STATUTS.map(s => [s, s[0].toUpperCase() + s.slice(1), count(s)])].map(([key, label, n]) =>
