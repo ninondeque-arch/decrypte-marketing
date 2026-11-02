@@ -3,11 +3,13 @@
 > *Comment ce produit, cette pub ou cette marque a fait sensation ?*
 > Un outil qui transforme un cas marketing d'actualité en carrousel TikTok **sourcé**, **à la charte de la marque** et **prêt à publier**, en trois commandes.
 
-![Aperçu d'un carrousel généré : Visit Norway](posts/2026-11-03_visit-norway-toilettes/apercu.png)
+![Aperçu d'un carrousel généré : Notion](posts/2026-11-05_notion-panneau-ia/apercu.png)
 
-**▶ Démo en ligne :** _(lien Vercel à ajouter après le déploiement)_. C'est le vrai studio en mode démo : mêmes écrans et données réelles, mais les actions qui appellent Claude, Metricool ou le moteur de rendu sont désactivées. Il est construit par `npm run demo:build` dans [`demo/`](demo/).
+**▶ Démo en ligne : [decrypte-marketing.vercel.app](https://decrypte-marketing.vercel.app)**. C'est le vrai studio en mode démo : mêmes écrans et données réelles, mais les actions qui appellent Claude, Metricool ou le moteur de rendu sont désactivées. Il est construit par `npm run demo:build` dans [`demo/`](demo/).
 
-*Exemple réel : comment Visit Norway a retourné une insulte de Donald Trump en campagne (octobre 2026). 7 slides, chiffres Skift, photos officielles de la campagne.*
+*Exemple réel : pourquoi Notion s'affiche avec ses concurrents de l'IA sur un panneau sans un mot (octobre 2026). 8 slides, sources citées, photos de la campagne.*
+
+**Le compte :** [Derrière la Hype sur TikTok](https://www.tiktok.com/@derrierelahype)
 
 ---
 
@@ -77,8 +79,8 @@ Pour préparer la semaine, `/lot 3` propose des sujets d'actualité qui respecte
 ```bash
 npm install
 npm test
-npm run verifier -- visit-norway   # contrôles éditoriaux de l'exemple
-npm run images -- visit-norway     # régénère l'exemple (visuels bruts non versionnés : à récupérer via /rediger)
+npm run verifier -- notion   # contrôles éditoriaux de l'exemple
+npm run images -- notion     # régénère l'exemple (visuels bruts non versionnés : à récupérer via /rediger)
 ```
 
 Pour l'envoi sur TikTok (appli développeur, sandbox, OAuth, GitHub Pages) : **[guides/tiktok.md](guides/tiktok.md)**.

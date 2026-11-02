@@ -6,3 +6,6 @@ node_modules/
 # Visuels bruts téléchargés (droits des marques) : seules les slides finales sont publiées
 posts/*/images/
 .studio/
+
+# Fichiers de travail temporaires
+.tmp-frames/
