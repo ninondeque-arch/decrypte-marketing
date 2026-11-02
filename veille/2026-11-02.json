@@ -1,0 +1,251 @@
+{
+  "date": "2026-11-02",
+  "sujets": [
+    {
+      "id": "pop-mart-labubu-chute",
+      "type": "actu",
+      "sujet": "Pop Mart voit ses revenus chuter jusqu'à 50 % : la fièvre Labubu retombe",
+      "angle": "Un an après +250 %, la marque de jouets découvre l'envers d'une hype bâtie sur la rareté et les réseaux sociaux",
+      "accroche": "Labubu, c'est déjà fini ?",
+      "rubrique": "Le flop",
+      "secteur": "Jouets",
+      "startup": false,
+      "actu": "Données préliminaires du troisième trimestre publiées fin octobre 2026 (Bloomberg, 27 octobre)",
+      "pourquoi_maintenant": "Chiffres publiés cette semaine. Pop Mart qualifie 2026 d'« année d'ajustement » et HSBC abaisse ses prévisions",
+      "chiffres_cles": [
+        "Revenus du T3 en baisse de 45 à 50 % sur un an",
+        "Chine : -25 à -30 %",
+        "Amériques : -70 à -75 %",
+        "Croissance d'environ 250 % sur la même période l'an dernier",
+        "HSBC abaisse son estimation de ventes 2026 à 33,2 milliards de yuans (contre 34,6)"
+      ],
+      "sources": [
+        {
+          "titre": "Bloomberg Línea : Pop Mart registra caída de hasta 50% en ingresos",
+          "url": "https://www.bloomberglinea.com/negocios/pop-mart-registra-caida-de-hasta-50-en-ingresos-por-enfriamiento-de-la-fiebre-de-labubu/?outputType=amp",
+          "date": "2026-10-27"
+        },
+        {
+          "titre": "Digg : Pop Mart's third-quarter revenue reportedly fell 45% to 50%",
+          "url": "https://digg.com/world-business/bmppi5av",
+          "date": "2026-10-27"
+        }
+      ],
+      "potentiel": 5
+    },
+    {
+      "id": "unicorn-frappuccino",
+      "type": "culte",
+      "sujet": "Le Unicorn Frappuccino, la boisson inventée pour Instagram",
+      "angle": "Une boisson rose et bleue disponible cinq jours, pensée pour être photographiée avant d'être bue, et qui a fait son retour en 2026",
+      "accroche": "Pourquoi tout le monde a acheté une boisson à 59 g de sucre ?",
+      "rubrique": "Pourquoi tu l'as acheté",
+      "secteur": "Boissons",
+      "startup": false,
+      "actu": "Lancé le 19 avril 2017 aux États-Unis, retiré le 23 avril 2017",
+      "pourquoi_maintenant": "Écho direct : le retour de la boisson en août 2026 a donné à Starbucks son « plus gros samedi de ventes » en Amérique du Nord. Le Red Cup Day revient le 17 novembre",
+      "chiffres_cles": [
+        "Disponible cinq jours en avril 2017",
+        "59 g de sucre par boisson",
+        "Plus de 2 millions vendus en un week-end lors du retour d'août 2026",
+        "Fréquentation +28,5 % par rapport à un samedi typique (Placer.ai, 2026)"
+      ],
+      "sources": [
+        {
+          "titre": "Fortune : Starbucks' Unicorn Frappuccino boost",
+          "url": "https://fortune.com/2017/04/28/unicorn-frappuccino-starbucks-boost",
+          "date": "2017-04-28"
+        },
+        {
+          "titre": "Restaurant Dive : Starbucks Unicorn Frappuccino drives biggest sales weekend ever",
+          "url": "https://www.restaurantdive.com/news/starbucks-unicorn-frappucino-return-sales-figures/828574/",
+          "date": "2026-08-24"
+        },
+        {
+          "titre": "Wikipedia : Unicorn Frappuccino",
+          "url": "https://en.wikipedia.org/wiki/Unicorn_Frappuccino",
+          "date": "2026-09-21"
+        }
+      ],
+      "potentiel": 5
+    },
+    {
+      "id": "dollar-shave-club-video",
+      "type": "culte",
+      "sujet": "Dollar Shave Club : une vidéo YouTube devenue une vente à 1 milliard",
+      "angle": "Le fondateur joue lui-même dans une pub décalée, et la startup de rasoirs croule sous les commandes en 48 heures",
+      "accroche": "Comment une vidéo YouTube a valu 1 milliard ?",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Hygiène et beauté",
+      "startup": true,
+      "actu": "Vidéo « Our Blades Are F***ing Great » publiée le 6 mars 2012, rachat par Unilever le 19 juillet 2016",
+      "pourquoi_maintenant": "Le cas d'école du fondateur-acteur et de la pub humoristique à petit budget, format que reprennent aujourd'hui les startups sur TikTok",
+      "chiffres_cles": [
+        "12 000 commandes dans les 48 heures suivant la vidéo",
+        "Plus de 27 millions de vues (novembre 2020)",
+        "Rachetée par Unilever pour environ 1 milliard de dollars en 2016"
+      ],
+      "sources": [
+        {
+          "titre": "Wikipedia : Dollar Shave Club",
+          "url": "https://en.wikipedia.org/wiki/Dollar_Shave_Club",
+          "date": "2026-11-01"
+        },
+        {
+          "titre": "Fortune : Unilever Buys Dollar Shave Club for $1 Billion",
+          "url": "http://fortune.com/2016/07/19/unilever-buys-dollar-shave-club-for-1-billion/",
+          "date": "2016-07-19"
+        }
+      ],
+      "potentiel": 5
+    },
+    {
+      "id": "old-spice-response",
+      "type": "culte",
+      "sujet": "Old Spice répond à Internet en 186 vidéos",
+      "angle": "Après « The Man Your Man Could Smell Like », la marque filme des réponses personnalisées aux internautes en temps réel, bien avant les réponses vidéo de TikTok",
+      "accroche": "Comment un déodorant de grand-père est devenu cool ?",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Hygiène et beauté",
+      "startup": false,
+      "actu": "Pub diffusée en ligne le 4 février 2010, campagne « Response » à l'été 2010",
+      "pourquoi_maintenant": "L'ancêtre du « reply with video » de TikTok, que les marques utilisent aujourd'hui en permanence",
+      "chiffres_cles": [
+        "186 vidéos tournées en deux jours et demi",
+        "Plus de 11 millions de vues en ligne fin juin 2010",
+        "Plus de 60 millions de vues en février 2022",
+        "Grand Prix film aux Cannes Lions 2010 et Emmy Award"
+      ],
+      "sources": [
+        {
+          "titre": "Wikipedia : Old Spice",
+          "url": "https://en.wikipedia.org/wiki/Old_Spice",
+          "date": "2026-11-02"
+        },
+        {
+          "titre": "Wikipedia : The Man Your Man Could Smell Like",
+          "url": "https://en.wikipedia.org/wiki/The_Man_Your_Man_Could_Smell_Like",
+          "date": "2026-06-10"
+        }
+      ],
+      "potentiel": 4
+    },
+    {
+      "id": "notion-billboard-ia",
+      "type": "actu",
+      "sujet": "Notion affiche ses concurrents de l'IA sur son propre panneau",
+      "angle": "Un panneau sans aucun mot, juste des logos d'IA (ChatGPT, Claude, Perplexity, Grok) avec Notion au centre : génie ou erreur ?",
+      "accroche": "Pourquoi Notion fait de la pub à ChatGPT ?",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Tech et IA",
+      "startup": true,
+      "actu": "Panneau viral sur X le 26 octobre 2026, analysé par Creative Bloq le 27 octobre",
+      "pourquoi_maintenant": "Débat en cours sur les réseaux sociaux, dans un contexte de guerre publicitaire des IA sur les panneaux de San Francisco",
+      "chiffres_cles": [
+        "Emplacements d'affichage les plus visibles à San Francisco estimés entre 200 000 et 250 000 $ par mois (SF Standard, août 2026)"
+      ],
+      "sources": [
+        {
+          "titre": "Creative Bloq via Yahoo : I can't decide if this AI billboard is stupid or genius",
+          "url": "https://www.yahoo.com/lifestyle/articles/t-decide-ai-billboard-stupid-140000878.html",
+          "date": "2026-10-27"
+        },
+        {
+          "titre": "Creative Bloq : This AI billboard might be too ballsy for its own good",
+          "url": "https://www.creativebloq.com/news/this-ai-billboard-might-be-too-ballsy-for-its-own-good",
+          "date": "2026-10-27"
+        },
+        {
+          "titre": "San Francisco Standard : One billboard, $3M a year",
+          "url": "https://sfstandard.com/2026/08/03/billboard-advertising-ai-arms-race/",
+          "date": "2026-08-03"
+        }
+      ],
+      "potentiel": 4,
+      "post": "2026-11-05_notion-panneau-ia"
+    },
+    {
+      "id": "7-eleven-kdrama",
+      "type": "actu",
+      "sujet": "7-Eleven lance un K-drama vertical pour vendre ses raviolis coréens",
+      "angle": "Une romance en 7 épisodes d'une minute, tournée dans un vrai 7-Eleven, où chaque épisode met en avant un plat en promo",
+      "accroche": "Pourquoi 7-Eleven tourne un K-drama ?",
+      "rubrique": "Pourquoi tu l'as acheté",
+      "secteur": "Retail et food",
+      "startup": false,
+      "actu": "Annoncé le 28 octobre 2026, premier épisode le 2 novembre 2026",
+      "pourquoi_maintenant": "Le premier épisode sort aujourd'hui. Les microdramas sont la tendance de fond sur TikTok et Instagram",
+      "chiffres_cles": [
+        "7 épisodes verticaux d'environ 60 secondes",
+        "Diffusion du 2 au 23 novembre, les lundis et jeudis",
+        "Raviolis bibigo : 10 pièces pour 5 $",
+        "8 ailes Gochujang pour 5 $"
+      ],
+      "sources": [
+        {
+          "titre": "Adweek : 7-Eleven Bets on Korean Food and Drama with a Spicy New Social Miniseries",
+          "url": "https://www.adweek.com/brand-marketing/7-eleven-bets-on-korean-food-and-drama-with-a-spicy-new-social-miniseries/",
+          "date": "2026-10-28"
+        },
+        {
+          "titre": "ContentGrip : 7-Eleven makes its Korean menu a 7-episode Instagram K-drama",
+          "url": "https://www.contentgrip.com/seven-eleven-korean-menu-kdrama/",
+          "date": "2026-10-30"
+        }
+      ],
+      "potentiel": 4
+    },
+    {
+      "id": "phantom-blade-zero-steam",
+      "type": "actu",
+      "sujet": "Phantom Blade Zero, le jeu chinois qui bat les records de Steam",
+      "angle": "Un studio indépendant chinois dépasse Cyberpunk 2077 et Call of Duty en joueurs simultanés grâce à des années de bandes-annonces virales",
+      "accroche": "Comment un studio inconnu a battu Call of Duty ?",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Jeux vidéo",
+      "startup": false,
+      "actu": "Record de joueurs simultanés sur Steam rapporté le 1er novembre 2026",
+      "pourquoi_maintenant": "Lancement de la semaine, dans la foulée du succès de Black Myth: Wukong pour les studios chinois",
+      "chiffres_cles": [
+        "775 647 joueurs simultanés au pic sur Steam",
+        "Call of Duty: Modern Warfare 4 : 186 417",
+        "Metacritic : 88",
+        "89 % d'avis positifs sur Steam",
+        "Dans le top 10 des ventes de 98 % des PlayStation Store régionaux"
+      ],
+      "sources": [
+        {
+          "titre": "iXBT.games : Phantom Blade Zero broke the Steam record for single-player games in 2026",
+          "url": "https://ixbt.games/en/news/2026/11/01/phantom-blade-zero-pobila-rekord-steam-sredi-odinocnyx-igr-2026-goda.html",
+          "date": "2026-11-01"
+        }
+      ],
+      "potentiel": 3
+    },
+    {
+      "id": "fashionphile-rylee-arnold",
+      "type": "actu",
+      "sujet": "Fashionphile choisit une danseuse créatrice de contenu pour vendre du luxe d'occasion",
+      "angle": "Après Cardi B et Martha Stewart, la plateforme de seconde main mise sur une créatrice virale pour toucher la génération TikTok",
+      "accroche": "Pourquoi le luxe d'occasion recrute des danseuses ?",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Mode et seconde main",
+      "startup": false,
+      "actu": "Campagne de Noël annoncée le 27 octobre 2026",
+      "pourquoi_maintenant": "Lancement cette semaine, au début de la saison des cadeaux, sur un marché de la revente en plein essor",
+      "chiffres_cles": [
+        "Cinquième ambassadrice après Emma Roberts, Nicole Richie, Martha Stewart et Cardi B",
+        "Articles jusqu'à 80 % moins chers que le prix neuf",
+        "Entreprise fondée en 1999"
+      ],
+      "sources": [
+        {
+          "titre": "PR Newswire : FASHIONPHILE Announces Rylee Arnold as its 2026 Holiday Brand Ambassador",
+          "url": "https://www.prnewswire.co.uk/news-releases/fashionphile-announces-rylee-arnold-as-its-2026-holiday-brand-ambassador-302920040.html",
+          "date": "2026-10-27"
+        }
+      ],
+      "potentiel": 3
+    }
+  ]
+}

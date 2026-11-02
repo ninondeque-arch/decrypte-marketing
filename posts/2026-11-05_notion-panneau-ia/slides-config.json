@@ -1,0 +1,160 @@
+{
+  "sujet": "Notion affiche ses concurrents de l'IA sur son propre panneau",
+  "rubrique": "Le marketing derrière la culture pop",
+  "secteur": "Tech (logiciel, IA)",
+  "startup": true,
+  "statut": "prêt",
+  "accroches": [
+    "Zéro mot, cinq logos : génie ou erreur ?",
+    "Une pub qui affiche ses concurrents ?",
+    "Pourquoi Notion pose avec ChatGPT et Claude ?"
+  ],
+  "theme": {
+    "brand": "Notion",
+    "source": "Couleurs relevées sur notion.com (getComputedStyle) : texte ≈ #191919, fond gris chaud #F9F9F8, bleu des boutons #0075DE, bleu foncé des liens #005BAB",
+    "palettes": {
+      "white": {
+        "bg": "#FFFFFF",
+        "ink": "#191919",
+        "boxBg": "#005BAB",
+        "boxInk": "#FFFFFF"
+      },
+      "black": {
+        "bg": "#191919",
+        "ink": "#FFFFFF",
+        "boxBg": "#0075DE",
+        "boxInk": "#FFFFFF"
+      },
+      "warm": {
+        "bg": "#F9F9F8",
+        "ink": "#191919",
+        "boxBg": "#191919",
+        "boxInk": "#FFFFFF"
+      },
+      "blue": {
+        "bg": "#005BAB",
+        "ink": "#FFFFFF",
+        "boxBg": "#191919",
+        "boxInk": "#FFFFFF"
+      }
+    },
+    "sequence": [
+      "black",
+      "white",
+      "warm",
+      "blue",
+      "white",
+      "black",
+      "warm",
+      "blue"
+    ]
+  },
+  "slides": [
+    {
+      "type": "hook",
+      "title": "Pourquoi Notion pose avec ChatGPT et Claude ?",
+      "highlight": [
+        "ChatGPT et Claude ?"
+      ],
+      "cta": "On décrypte →",
+      "photo": {
+        "src": "images/panneau-notion-logos-ia.jpg",
+        "credit": "@olisnoddy via X",
+        "focusY": 0.5
+      }
+    },
+    {
+      "type": "text",
+      "label": "Le contexte",
+      "body": "À San Francisco, presque tous les grands panneaux de l'autoroute 101 sont loués par l'IA, la tech et la finance.",
+      "highlight": [
+        "presque tous"
+      ],
+      "photo": {
+        "src": "images/panneaux-ia-101-together.png",
+        "caption": "Panneaux le long de la 101",
+        "credit": "Jungho Kim / The SF Standard",
+        "focusY": 0.6
+      }
+    },
+    {
+      "type": "text",
+      "label": "Le panneau",
+      "body": "Fin octobre, une photo circule sur X : 5 icônes d'appli. Claude, Perplexity, Grok, ChatGPT… et Notion au centre. Pas un seul mot.",
+      "highlight": [
+        "Notion au centre"
+      ],
+      "photo": {
+        "src": "images/panneau-notion-logos-ia.jpg",
+        "caption": "Le panneau attribué à Notion",
+        "credit": "@olisnoddy via X",
+        "focusY": 0.45
+      }
+    },
+    {
+      "type": "quote",
+      "label": "La réaction",
+      "quote": "i can't even tell who the billboard is for",
+      "attribution": "@gautham_city_ sur X, 26 octobre 2026",
+      "body": "Sur X, certains se demandent même qui a payé. Creative Bloq, lui, l'attribue à Notion.",
+      "highlight": [
+        "qui a payé"
+      ]
+    },
+    {
+      "type": "text",
+      "label": "L'indice",
+      "body": "En juillet, Notion avait déjà fait le coup : « AI dread? », un panneau sans logo, juste un numéro de téléphone.",
+      "highlight": [
+        "sans logo"
+      ],
+      "photo": {
+        "src": "images/ai-dread-8th-bryant.png",
+        "caption": "« AI dread? », 8th & Bryant, San Francisco",
+        "credit": "Sean Fan / The SF Standard",
+        "focusY": 0.3
+      }
+    },
+    {
+      "type": "list",
+      "label": "La mécanique",
+      "items": [
+        "Zéro texte : c'est ton cerveau qui complète",
+        "Se poser au milieu des stars de l'IA",
+        "Un message possible : Notion ne les combat pas, il les intègre"
+      ],
+      "highlight": [
+        "il les intègre"
+      ]
+    },
+    {
+      "type": "stats",
+      "label": "Les chiffres",
+      "items": [
+        {
+          "value": "250 000 $",
+          "text": "par mois : le haut de fourchette d'un grand panneau à San Francisco"
+        },
+        {
+          "value": "200",
+          "text": "messages vocaux laissés sur la ligne « AI dread? » de Notion"
+        },
+        {
+          "value": "+85 %",
+          "text": "d'effectifs chez Notion en deux ans"
+        }
+      ],
+      "source": "Sources : The SF Standard, 24 juillet et 3 août 2026"
+    },
+    {
+      "type": "outro",
+      "title": "Résultat ?",
+      "lesson": "Quand tous les panneaux crient, celui qui se tait se fait remarquer.",
+      "highlight": [
+        "celui qui se tait"
+      ],
+      "conclusion": "Génie ou erreur ? Sans un mot, il fait parler de Notion.",
+      "cta": "Abonne-toi pour le prochain décryptage. Et toi : génie ou erreur ?"
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "sujet": "Doctolib parle aux aidants avec Guillaume de Tonquédec",
+  "rubrique": "Le marketing derrière la culture pop",
+  "secteur": "Santé (healthtech)",
+  "startup": true,
+  "statut": "prêt",
+  "accroches": [
+    "Pourquoi Doctolib te demande de penser à toi ?",
+    "Une appli de rendez-vous qui te dit de souffler ?",
+    "56 % de ses utilisateurs gèrent la santé d'un proche."
+  ],
+  "theme": {
+    "brand": "Doctolib",
+    "source": "Couleurs relevées sur landing.doctolib.fr/sante-mentale-aidants (getComputedStyle) : texte et titres #00264C, boutons #107ACA ; fond crème #FFF6DB inspiré du halo jaune des illustrations",
+    "palettes": {
+      "blue": {
+        "bg": "#107ACA",
+        "ink": "#FFFFFF",
+        "boxBg": "#00264C",
+        "boxInk": "#FFFFFF"
+      },
+      "white": {
+        "bg": "#FFFFFF",
+        "ink": "#00264C",
+        "boxBg": "#107ACA",
+        "boxInk": "#FFFFFF"
+      },
+      "navy": {
+        "bg": "#00264C",
+        "ink": "#FFFFFF",
+        "boxBg": "#FFE7A3",
+        "boxInk": "#00264C"
+      },
+      "cream": {
+        "bg": "#FFF6DB",
+        "ink": "#00264C",
+        "boxBg": "#00264C",
+        "boxInk": "#FFFFFF"
+      }
+    },
+    "sequence": [
+      "navy",
+      "cream",
+      "white",
+      "navy",
+      "white",
+      "cream",
+      "navy",
+      "blue"
+    ]
+  },
+  "slides": [
+    {
+      "type": "hook",
+      "title": "Pourquoi Doctolib te demande de penser à toi ?",
+      "highlight": [
+        "penser à toi"
+      ],
+      "cta": "On décrypte →",
+      "photo": {
+        "src": "images/fin-160s.jpg",
+        "credit": "Doctolib / Grinta",
+        "fit": "cover",
+        "focusY": 0.3
+      }
+    },
+    {
+      "type": "text",
+      "label": "Le contexte",
+      "body": "En France, 8 à 11 millions de personnes prennent soin d'un proche. Le 27 octobre, Doctolib leur adresse une lettre ouverte.",
+      "highlight": [
+        "8 à 11 millions"
+      ],
+      "photo": {
+        "src": "images/hero-proche-aidance.png",
+        "caption": "Illustration de la campagne",
+        "credit": "Doctolib, illustration Loren Sarda"
+      }
+    },
+    {
+      "type": "quote",
+      "label": "L'idée",
+      "quote": "Vous avez pensé à tout, sauf à vous.",
+      "attribution": "Lettre ouverte de Doctolib, lue par Guillaume de Tonquédec, lui-même aidant",
+      "body": "Un texte volontairement long : toutes les tâches d'un aidant, du pilulier à la mutuelle.",
+      "highlight": [
+        "volontairement long"
+      ],
+      "photo": {
+        "src": "images/visuel-fixe-aidants.png",
+        "caption": "La lettre ouverte, version écrite",
+        "credit": "Doctolib / Grinta",
+        "fit": "cover",
+        "focusY": 0.4
+      }
+    },
+    {
+      "type": "text",
+      "label": "Le point de départ",
+      "body": "Ses propres utilisateurs. Doctolib sait combien d'entre eux gèrent la santé d'un proche, et a interrogé 1 136 aidants qui utilisent l'appli.",
+      "highlight": [
+        "Ses propres utilisateurs."
+      ],
+      "photo": {
+        "src": "images/prise-de-rdv-doctolib.png",
+        "caption": "Illustration de la page de campagne",
+        "credit": "Doctolib, illustration Loren Sarda"
+      }
+    },
+    {
+      "type": "list",
+      "label": "La mécanique",
+      "items": [
+        "Une voix connue qui vit la situation : Guillaume de Tonquédec",
+        "4 créateurs de contenus qui racontent l'aidance au quotidien",
+        "Une page de ressources… avec les fonctions Doctolib pour gérer un proche"
+      ],
+      "highlight": [
+        "4 créateurs de contenus"
+      ],
+      "photo": {
+        "src": "images/aide-aux-aidants.webp",
+        "caption": "Recherche « aide aux aidants » dans l'appli",
+        "credit": "Doctolib",
+        "focusY": 0.1
+      }
+    },
+    {
+      "type": "text",
+      "label": "Le pari",
+      "body": "Ne rien vendre. Doctolib se dit « compagnon de santé pour tous ». Pour Stratégies, l'initiative « soulève des questions » sur sa com.",
+      "highlight": [
+        "compagnon de santé pour tous"
+      ],
+      "photo": {
+        "src": "images/fin-154s.jpg",
+        "caption": "Guillaume de Tonquédec dans le film de la campagne",
+        "credit": "Doctolib / Grinta",
+        "fit": "cover",
+        "focusY": 0.1
+      }
+    },
+    {
+      "type": "stats",
+      "label": "Les chiffres",
+      "items": [
+        {
+          "value": "56 %",
+          "text": "de ses utilisateurs en France gèrent aussi la santé d'un proche"
+        },
+        {
+          "value": "47,3 %",
+          "text": "des aidants interrogés ont du mal à prendre du temps pour eux (un tiers chez les non-aidants)"
+        },
+        {
+          "value": "7 773",
+          "text": "j'aime pour le reel avec l'acteur, contre 56 pour la lettre seule en carrousel"
+        }
+      ],
+      "source": "Sources : rapport d'impact et étude Doctolib 2026 (via JUPDLC, 27/10/2026) ; Instagram, relevé le 02/11/2026"
+    },
+    {
+      "type": "outro",
+      "title": "Résultat ?",
+      "lesson": "Une appli devient une marque quand elle parle de la vie de ses utilisateurs.",
+      "highlight": [
+        "la vie de ses utilisateurs."
+      ],
+      "conclusion": "Les fonctions de l'appli ne viennent qu'après.",
+      "cta": "Abonne-toi pour le prochain décryptage. Et toi, tu prends soin d'un proche ?"
+    }
+  ]
+}
