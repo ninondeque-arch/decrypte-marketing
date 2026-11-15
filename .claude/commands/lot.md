@@ -13,4 +13,4 @@ Prépare un lot de posts : **$ARGUMENTS** (par défaut 3, à partir du prochain 
    - rubriques proches de 60 / 25 / 15 %.
 4. **Attends que l'utilisatrice choisisse** les sujets et leur ordre.
 5. Pour chaque sujet retenu, applique toute la méthode de `.claude/commands/rediger.md`, avec une date par post (un post par jour, sauf indication contraire).
-6. Termine par `npm run calendrier` et un récapitulatif : un lien vers l'`apercu.png` de chaque post et les points à vérifier.
+6. Termine par `npm run calendrier` et un récapitulatif : un lien vers l'`apercu.png` de chaque post, le verdict du juge (notes et nombre de passages) et les points à vérifier.

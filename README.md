@@ -32,7 +32,9 @@ flowchart LR
   A["/rediger sujet<br/>(Claude Code)"] -->|recherche web<br/>sources, visuels, charte| B[slides-config.json<br/>legende.txt<br/>sources.md]
   B --> C["npm run images"]
   C -->|contrôles éditoriaux<br/>rendu canvas 1080×1920<br/>compression| D[slide-1…7.png<br/>apercu.png]
-  D --> E["npm run brouillon"]
+  D --> J{"npm run juger<br/>(agent juge,<br/>session séparée)"}
+  J -->|à corriger<br/>3 passages max| A
+  J -->|validé, ou<br/>« Valider quand même »| E["npm run brouillon<br/>ou Metricool"]
   E -->|JPEG sur GitHub Pages<br/>API Content Posting| F[Boîte de réception TikTok]
   F -->|son tendance<br/>publication manuelle| G((Post publié))
 ```
@@ -43,7 +45,8 @@ flowchart LR
    - relève les couleurs de la marque ;
    - rédige 6 à 8 slides, 3 variantes d'accroche, la légende et `sources.md`.
 2. **Génération** (`npm run images`). Contrôle des règles éditoriales, rendu des PNG sans navigateur, compression, aperçu avec les zones masquées par TikTok.
-3. **Envoi en brouillon** (`npm run brouillon`). Les slides passent par l'API officielle TikTok : elles arrivent dans la boîte de réception, jamais publiées automatiquement.
+3. **Relecture par l'agent juge** (`npm run juger`). Une IA indépendante note le carrousel et le renvoie en correction s'il n'est pas au niveau ; `/rediger` corrige et refait relire, 3 passages au maximum.
+4. **Envoi en brouillon** (`npm run brouillon`). Les slides passent par l'API officielle TikTok : elles arrivent dans la boîte de réception, jamais publiées automatiquement.
 
 Pour préparer la semaine, `/lot 3` propose des sujets d'actualité qui respectent la variété du fil, puis rédige ceux que tu choisis.
 
@@ -65,6 +68,13 @@ Pour préparer la semaine, `/lot 3` propose des sujets d'actualité qui respecte
 - Accroche de moins de 10 mots, moins de 25 mots par slide.
 - Les mots-clés sont surlignés en blocs inversés.
 - Typographie française (espaces insécables avant `? ! : %`).
+
+**Un agent juge relit chaque carrousel.**
+- Après la rédaction, une seconde IA relit le post dans une **session séparée** : elle ne voit jamais le raisonnement de l'agent rédacteur, seulement le résultat (`slides-config.json`, `legende.txt`, `sources.md`, `apercu.png`).
+- Elle est **en lecture seule** (outils Read, Glob, Grep et WebFetch, aucun MCP) et ouvre les sources citées pour vérifier chaque chiffre.
+- Six critères notés de 1 à 5 avec une justification : fidélité aux sources, accroche, clarté et rythme, leçon marketing, ton, légende. Chaque problème vient avec une correction proposée, bloquante ou non.
+- **Validé** seulement si toutes les notes sont à 4 ou plus et qu'aucune correction n'est bloquante. Une erreur de fidélité aux sources est toujours bloquante. La règle est appliquée par le code, pas par l'IA.
+- Le résultat et l'historique des passages sont dans `posts/<post>/juge.json`. Tant qu'il n'y a pas de « validé », l'envoi en brouillon et la programmation Metricool sont **refusés**, sauf si tu cliques sur « Valider quand même » dans le studio : l'humain garde le dernier mot.
 
 **Un humain dans la boucle.** Tu choisis l'accroche, tu valides l'aperçu, tu ajoutes le son et tu publies toi-même.
 
@@ -101,6 +111,7 @@ Le studio est le point d'entrée quotidien, sans terminal. Trois pages :
   - **Slides** : aperçu avec les zones TikTok, et un éditeur par slide (textes avec compteur de mots, variantes d'accroche, mots mis en valeur, visuels importés par glisser-déposer, cadrage, couleurs). Les slides s'ajoutent, se dupliquent, se déplacent et se suppriment. **Enregistrer et générer** (⌘S).
   - **Légende** : modifiable librement, ou **✨ Proposer 3 légendes** écrites par Claude à partir des slides.
   - **Sources** : rendu lisible ou modification à la main.
+  - **Relecture du juge** : verdict, note et justification par critère, corrections proposées, nombre de passages. **Faire relire par le juge** lance la relecture (suivie dans le journal d'activité) ; **Valider quand même** enregistre ta validation si tu n'es pas d'accord avec le juge.
   - **Infos et couleurs** : rubrique, secteur, statut, et palettes de la marque avec sélecteurs de couleur et contrôle de lisibilité.
   - **Envoyer en brouillon** et **Marquer publié**.
 - **Réglages.** La connexion TikTok en 3 étapes (clés, site GitHub Pages, bouton « Se connecter à TikTok »), l'heure de la veille et le démarrage automatique du studio.
@@ -123,6 +134,7 @@ Un post peut aussi être créé **à la main** : la structure est prête, il n'y
 | `/rediger <sujet>` *(Claude Code)* | Recherche, sources, visuels, thème de la marque, textes, rendu |
 | `/lot <n>` *(Claude Code)* | Propose des sujets d'actualité variés, puis prépare les posts choisis |
 | `npm run verifier -- <post>` | Contrôles éditoriaux seuls |
+| `npm run juger -- <post>` | Relecture par l'agent juge (notes, corrections, `juge.json`) |
 | `npm run images -- <post>` | Contrôles + PNG 1080×1920 + compression + aperçus |
 | `npm run brouillon -- <post>` | Envoi du carrousel et de la légende dans la boîte de réception TikTok |
 | `npm run publie -- <post>` | Marque le post comme publié |
@@ -157,7 +169,7 @@ assets/             polices (Anton, Inter, licence OFL), thème par défaut
 docs/               site GitHub Pages : médias pour TikTok, page de retour OAuth, CGU
 guides/             guide TikTok pas à pas
 posts/AAAA-MM-JJ_sujet/
-  slides-config.json  legende.txt  sources.md  images/  slide-N.png  apercu*.png
+  slides-config.json  legende.txt  sources.md  juge.json  images/  slide-N.png  apercu*.png
 src/
   cli.js            une commande par étape
   actions.js        actions communes au terminal et au studio
@@ -165,10 +177,10 @@ src/
   render/           moteur de rendu : gabarits, texte surligné, typographie, contraste
   images/           compression PNG, export JPEG, détourage
   planning/         calendrier et règles de variété
-  agent/            pilotage de Claude Code en mode non interactif
+  agent/            pilotage de Claude Code en mode non interactif, légendes, agent juge
   studio/           serveur local, file de tâches, interface web (HTML/CSS/JS sans framework)
   tiktok/           OAuth, hébergement GitHub Pages, envoi en brouillon
-tests/              règles éditoriales, typographie, contraste, variété
+tests/              règles éditoriales, typographie, contraste, variété, agent juge
 ```
 
 ## Stack

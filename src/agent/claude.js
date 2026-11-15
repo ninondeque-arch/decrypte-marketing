@@ -13,6 +13,10 @@ const ALLOWED_TOOLS = [
   'mcp__claude-in-chrome__*',
 ];
 
+/** Variables posées par une session Claude Code parente : retirées pour démarrer une session indépendante. */
+const SESSION_VARS = new Set(['CLAUDECODE', 'CLAUDE_PID', 'CLAUDE_CODE_ENTRYPOINT', 'CLAUDE_CODE_SESSION_ID', 'CLAUDE_CODE_CHILD_SESSION',
+  'CLAUDE_CODE_SESSION_ATTENDED', 'CLAUDE_CODE_SSE_PORT', 'CLAUDE_CODE_MESSAGING_SOCKET', 'CLAUDE_CODE_MESSAGING_TOKEN', 'CLAUDE_CODE_EXECPATH']);
+
 /** Chemin du CLI `claude` (le PATH est minimal quand le studio tourne en tâche de fond). */
 export function claudeBin() {
   const candidates = [
@@ -44,18 +48,23 @@ function describeTool({ name, input = {} }) {
 /**
  * Exécute une consigne avec Claude Code et suit sa progression.
  * @param {string} prompt
- * @param {{onLog?: (line: string) => void, chrome?: boolean}} opts
+ * @param {{onLog?: (line: string) => void, chrome?: boolean, tools?: string[], readOnly?: boolean}} opts
+ *   readOnly : seuls `tools` existent (aucun MCP, aucune écriture) et la session n'est pas conservée.
  * @returns {Promise<{text: string, isError: boolean}>}
  */
-export function runClaude(prompt, { onLog = () => {}, chrome = false, tools = ALLOWED_TOOLS } = {}) {
+export function runClaude(prompt, { onLog = () => {}, chrome = false, tools = ALLOWED_TOOLS, readOnly = false } = {}) {
   const bin = claudeBin();
-  const args = ['-p', prompt, '--output-format', 'stream-json', '--verbose', '--permission-mode', 'acceptEdits', '--allowedTools', ...tools];
+  const args = ['-p', prompt, '--output-format', 'stream-json', '--verbose'];
+  if (readOnly) args.push('--tools', tools.join(','), '--allowedTools', ...tools, '--strict-mcp-config', '--no-session-persistence');
+  else args.push('--permission-mode', 'acceptEdits', '--allowedTools', ...tools);
   if (chrome) args.push('--chrome');
   // Node et claude doivent être trouvables même sous launchd
   const PATH = [dirname(process.execPath), dirname(bin), process.env.PATH ?? '', '/usr/bin', '/bin'].join(delimiter);
+  // Nouvelle session indépendante, même lancée depuis une session Claude Code (ex. le juge appelé par /rediger)
+  const env = Object.fromEntries(Object.entries(process.env).filter(([k]) => !SESSION_VARS.has(k)));
 
   return new Promise((resolve, reject) => {
-    const child = spawn(bin, args, { cwd: ROOT, env: { ...process.env, PATH }, stdio: ['ignore', 'pipe', 'pipe'] });
+    const child = spawn(bin, args, { cwd: ROOT, env: { ...env, PATH }, stdio: ['ignore', 'pipe', 'pipe'] });
     let buffer = '', final = null, stderr = '';
     child.stdout.on('data', chunk => {
       buffer += chunk;

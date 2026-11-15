@@ -23,6 +23,7 @@
     }],
     ['POST', /^\/api\/posts\/([^/]+)\/generer$/, () => off('la génération des images')],
     ['POST', /^\/api\/posts\/([^/]+)\/legendes$/, () => off('l’écriture de légendes par Claude')],
+    ['POST', /^\/api\/posts\/([^/]+)\/(juger|valider)$/, () => off('la relecture par l’agent juge')],
     ['POST', /^\/api\/posts\/([^/]+)\/(programmer|brouillon)$/, () => off('la programmation sur TikTok')],
     ['POST', /^\/api\/posts\/([^/]+)\/publie$/, () => off('le changement de statut')],
     ['POST', /^\/api\/posts\/([^/]+)\/images$/, () => off('l’import d’images')],

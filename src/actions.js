@@ -1,6 +1,7 @@
 // Actions du pipeline, partagées par la ligne de commande et le studio local.
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { assertJudged } from './agent/juge.js';
 import { loadConfig, saveConfig } from './editorial/post.js';
 import { validatePost } from './editorial/validate.js';
 import { compressPng } from './images/compress.js';
@@ -38,6 +39,7 @@ export async function generate(dir, { force = false } = {}) {
  * @returns {Promise<string>} statut TikTok final
  */
 export async function draft(dir, { push = true, log = console.log } = {}) {
+  assertJudged(dir); // garde-fou : relu et validé par le juge, ou validé par l'humaine
   const cfg = loadConfig(dir);
   const { errors } = validatePost(dir, cfg);
   if (errors.length) throw new Error(`Contrôles éditoriaux en échec :\n- ${errors.join('\n- ')}`);

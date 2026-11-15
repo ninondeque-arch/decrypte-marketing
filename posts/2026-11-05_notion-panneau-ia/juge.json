@@ -1,0 +1,76 @@
+{
+  "verdict": "à corriger",
+  "scores": {
+    "fidelite": {
+      "note": 3,
+      "justification": "J'ai vérifié les chiffres et les citations dans Yahoo/Creative Bloq, FreeYork et The SF Standard : 250 000 $, 200 messages vocaux, +85 %, la 101 « nearly all », le tweet de @gautham_city_ et « AI dread? » sans logo. En revanche, le lien direct vers Creative Bloq a renvoyé une page tronquée (seule la reprise Yahoo était lisible), aucune source ne situe le panneau aux logos sur la 101 alors que la slide 2 le laisse penser, et « il les intègre » va au-delà de la note de version Notion, qui ne cite qu'OpenAI, Anthropic et Google."
+    },
+    "accroche": {
+      "note": 4,
+      "justification": "8 mots, une question qui intrigue avec deux marques connues, mais elle présente comme un fait que la pub est de Notion, alors que la slide 4 et FreeYork disent que ce n'est pas confirmé."
+    },
+    "clarte": {
+      "note": 4,
+      "justification": "La progression contexte → panneau → réaction → indice → mécanique → chiffres est claire, mais la slide chiffres mélange trois données sans lien direct avec ce panneau, et « Génie ou erreur ? » revient deux fois sur la dernière slide."
+    },
+    "lecon": {
+      "note": 4,
+      "justification": "« Quand tous les panneaux crient, celui qui se tait se fait remarquer » est clair et réutilisable, mais la leçon passe sous silence le risque soulevé par le post lui-même : personne ne sait qui a payé."
+    },
+    "ton": {
+      "note": 4,
+      "justification": "Le ton est direct et tutoie (« ton cerveau », « Abonne-toi », « Et toi »), sans moquerie, et l'attribution à Notion est bien nuancée en slide 4."
+    },
+    "legende": {
+      "note": 4,
+      "justification": "Il y a une accroche, une question pour les commentaires et 5 hashtags pertinents ; #décryptage est un peu faible, et la question part du principe que c'est une pub Notion."
+    }
+  },
+  "corrections": [
+    {
+      "slide": 2,
+      "critere": "fidelite",
+      "probleme": "Avec la photo et la légende « Panneaux le long de la 101 », le lecteur comprend que le panneau Notion est sur la 101. Aucune source ne le situe (FreeYork dit seulement « an urban setting »), et le numéro Outfront 6361, le même que sur « AI dread? » au croisement 8th & Bryant, laisse penser qu'il est en ville, pas sur l'autoroute.",
+      "correction_proposee": "Présenter la slide comme un contexte général : « À San Francisco, presque tous les grands panneaux de l'autoroute 101 sont loués par l'IA, la tech et la finance. Bref : la guerre de l'IA se joue aussi sur les panneaux. » Changer la légende de la photo en « La 101, vitrine de l'IA (pas le panneau Notion) » ou utiliser une photo sans lien de lieu.",
+      "bloquant": true
+    },
+    {
+      "slide": 6,
+      "critere": "fidelite",
+      "probleme": "« Notion ne les combat pas, il les intègre » désigne les quatre IA du panneau. La note de version Notion du 19/11/2025 ne cite que les modèles d'OpenAI, d'Anthropic et de Google ; rien sur Perplexity ni sur Grok.",
+      "correction_proposee": "« Un message possible : Notion ne combat pas ChatGPT et Claude, il les intègre déjà » (garder le surlignage sur « il les intègre »).",
+      "bloquant": true
+    },
+    {
+      "slide": 1,
+      "critere": "accroche",
+      "probleme": "L'accroche présente comme un fait que Notion a payé le panneau, alors que l'attribution vient des médias (Creative Bloq) et que Notion n'a rien déclaré officiellement.",
+      "correction_proposee": "Prendre l'accroche alternative déjà prévue : « Une pub qui affiche ses concurrents ? » (6 mots, paradoxe), ou « Pourquoi Notion poserait avec ChatGPT et Claude ? »",
+      "bloquant": false
+    },
+    {
+      "slide": 7,
+      "critere": "clarte",
+      "probleme": "Le 250 000 $ correspond au haut de gamme du « skyway » de la 101 (Eric Perko), pas à « un grand panneau à San Francisco » en général, ni à ce panneau-là. Le +85 % d'effectifs n'a rien à voir avec la campagne et dilue le propos.",
+      "correction_proposee": "Item 1 : « par mois : le prix des panneaux les plus visibles de la 101 ». Remplacer l'item +85 % par « des milliers d'appels sur la ligne « AI dread? » » (même source, SF Standard du 24/07/2026), ou le supprimer et mettre la source à jour.",
+      "bloquant": false
+    },
+    {
+      "slide": 8,
+      "critere": "clarte",
+      "probleme": "« Génie ou erreur ? » apparaît deux fois (conclusion et CTA), ce qui casse le rythme.",
+      "correction_proposee": "Conclusion : « Sans un mot, il fait parler de Notion… à condition qu'on le reconnaisse. » CTA inchangé : « Abonne-toi pour le prochain décryptage. Et toi : génie ou erreur ? »",
+      "bloquant": false
+    },
+    {
+      "slide": "légende",
+      "critere": "legende",
+      "probleme": "#décryptage est générique, et la question part du principe que c'est une pub Notion.",
+      "correction_proposee": "« Et toi, tu aurais deviné qui se cache derrière ce panneau ? 👇 » — hashtags : #marketing #notion #ia #publicité #startup",
+      "bloquant": false
+    }
+  ],
+  "date": "2026-11-15T11:28:40.932Z",
+  "passage": 1,
+  "historique": []
+}

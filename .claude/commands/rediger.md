@@ -48,5 +48,14 @@ Champs du post : `sujet`, `rubrique`, `secteur`, `startup` (booléen), `statut: 
 - Lance `npm run images -- <dossier>`. Corrige le JSON tant qu'il reste des erreurs.
 - Regarde `apercu.png` et `apercu-zones.png` : texte lisible, rien dans les zones vertes, photos bien cadrées (ajuste `focusY` entre 0 et 1 si besoin). Régénère jusqu'à ce que ce soit propre.
 
+## 5 bis. Relecture par l'agent juge
+Une IA indépendante relit le carrousel fini dans une session séparée : elle ne voit que les fichiers du post (jamais ton raisonnement), ouvre les sources et note 6 critères de 1 à 5 (fidélité aux sources, accroche, clarté, leçon, ton, légende).
+- Lance `npm run juger -- <dossier>` (plusieurs minutes : utilise un délai d'au moins 10 minutes, 600000 ms). Le résultat est dans `posts/<dossier>/juge.json`.
+- Verdict « à corriger » : applique les corrections proposées (en priorité les bloquantes ; une erreur de fidélité se corrige en revenant à la source, jamais en inventant), relance `npm run images -- <dossier>`, puis `npm run juger -- <dossier>`.
+- **3 passages maximum.** Si ce n'est toujours pas « validé » après le 3e, arrête-toi : ne contourne pas le juge et ne modifie jamais `juge.json` toi-même. Liste les points restants dans le rendu.
+- Si une correction te semble fausse (le juge a mal lu une source), ne l'applique pas et explique pourquoi dans le rendu.
+
 ## 6. Rendu à l'utilisatrice
-Présente : les 3 accroches (celle utilisée en premier), le texte de chaque slide, la légende, les sources principales, le chemin de `apercu.png`, et les points à vérifier. Ne lance pas `npm run brouillon` : elle valide d'abord.
+Présente : les 3 accroches (celle utilisée en premier), le texte de chaque slide, la légende, les sources principales, le chemin de `apercu.png`, et les points à vérifier.
+Ajoute la relecture du juge : verdict, note de chaque critère (avec sa justification) et nombre de passages ; si le post n'est pas validé, les corrections restantes. Elle peut alors corriger, ou cliquer sur « Valider quand même » dans le studio.
+Ne lance pas `npm run brouillon` : elle valide d'abord (et l'envoi est bloqué tant que le juge ou elle n'a pas validé).

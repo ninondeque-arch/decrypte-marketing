@@ -17,6 +17,7 @@
     "veille": "node src/cli.js veille",
     "images": "node src/cli.js images",
     "verifier": "node src/cli.js verifier",
+    "juger": "node src/cli.js juger",
     "brouillon": "node src/cli.js brouillon",
     "publie": "node src/cli.js publie",
     "calendrier": "node src/cli.js calendrier",

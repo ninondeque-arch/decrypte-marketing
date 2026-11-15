@@ -31,6 +31,16 @@ const commands = {
     console.log(`   Aperçu : ${join(dir, 'apercu.png')}`);
   },
 
+  /** Fait relire le post par l'agent juge (IA indépendante, lecture seule) et enregistre juge.json. */
+  async juger([query]) {
+    const { CRITERES, judgePost } = await import('./agent/juge.js');
+    const j = await judgePost(resolvePost(query), { onLog: console.log });
+    console.log(`\n⚖️  Verdict : ${j.verdict.toUpperCase()} (passage ${j.passage})`);
+    for (const [k, label] of Object.entries(CRITERES)) console.log(`   ${j.scores[k].note}/5  ${label} : ${j.scores[k].justification}`);
+    if (j.corrections.length) console.log('\nCorrections :');
+    for (const c of j.corrections) console.log(`   ${c.bloquant ? '⛔' : '•'} ${typeof c.slide === 'number' ? `Slide ${c.slide}` : c.slide ?? 'Général'} : ${c.probleme}\n     → ${c.correction_proposee}`);
+  },
+
   /** Envoie le carrousel et sa légende dans la boîte de réception TikTok (brouillon). */
   async brouillon([query, flag]) {
     const status = await draft(resolvePost(query), { push: flag !== '--sans-push' });

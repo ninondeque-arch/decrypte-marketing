@@ -295,8 +295,8 @@ async function renderPost(r) {
   const tab = r.parts[2] || 'slides';
   if (state.post?.slug !== slug) { state.slide = 0; loadDetail(await api(`/api/posts/${encodeURIComponent(slug)}`)); }
   const p = state.post, c = state.config;
-  const tabs = [['slides', 'Slides'], ['legende', 'Légende'], ['sources', 'Sources'], ['infos', 'Infos et couleurs']];
-  const panel = { slides: slidesPanel, legende: legendPanel, sources: sourcesPanel, infos: infosPanel }[tab] ?? slidesPanel;
+  const tabs = [['slides', 'Slides'], ['legende', 'Légende'], ['sources', 'Sources'], ['juge', 'Relecture du juge'], ['infos', 'Infos et couleurs']];
+  const panel = { slides: slidesPanel, legende: legendPanel, sources: sourcesPanel, juge: judgePanel, infos: infosPanel }[tab] ?? slidesPanel;
 
   show(
     el('a', { class: 'back', href: '#/posts' }, '← Tous les posts'),
@@ -329,6 +329,7 @@ function renderChecks() {
   for (const e of validation.errors) items.push(el('div', { class: 'check err' }, e));
   for (const w of validation.warnings) items.push(el('div', { class: 'check warn' }, w));
   if (!validation.errors.length && !generation) items.push(el('div', { class: 'check ok' }, 'Contrôles OK : chaque chiffre est sourcé, les longueurs et les contrastes sont bons.'));
+  items.push(judgeBanner());
   $('#checks')?.replaceChildren(...items);
 }
 
@@ -535,6 +536,85 @@ function legendPanel() {
     el('section', { class: 'panel-card' }, el('h2', { class: 'panel-title' }, 'Propositions', btn), suggestions));
 }
 
+// ----- Onglet Relecture du juge -----
+const CRITERES = { fidelite: 'Fidélité aux sources', accroche: 'Accroche', clarte: 'Clarté et rythme TikTok', lecon: 'Leçon marketing', ton: 'Ton', legende: 'Légende' };
+const DEMO = !!window.DEMO_DATA; // démo en ligne : résultat du juge en lecture seule
+const judgeApproved = j => !!j && (j.verdict === 'validé' || j.override_humain === true);
+const frDate = iso => new Date(iso).toLocaleString('fr-FR', { dateStyle: 'medium', timeStyle: 'short' });
+
+function judgeBanner() {
+  const j = state.post.juge, link = el('a', { href: postHash(state.post.slug, 'juge') }, 'voir la relecture');
+  if (!j) return el('div', { class: 'check warn' }, 'Pas encore relu par l’agent juge : la programmation reste bloquée jusqu’à sa validation · ', link);
+  if (j.override_humain) return el('div', { class: 'check ok' }, `Validé par toi le ${frDate(j.override_date)}${j.verdict ? ` (juge : ${j.verdict})` : ''} · `, link);
+  const avg = Object.values(j.scores).reduce((a, s) => a + s.note, 0) / Object.keys(j.scores).length;
+  return el('div', { class: `check ${j.verdict === 'validé' ? 'ok' : 'err'}` },
+    `Juge : ${j.verdict} · ${avg.toFixed(1).replace('.', ',')}/5 en moyenne · ${j.passage} passage${j.passage > 1 ? 's' : ''} · `, link);
+}
+
+/** Garde-fou avant l'envoi (le serveur le vérifie aussi). */
+function judgeGate() {
+  if (judgeApproved(state.post.juge)) return true;
+  modal('Relecture du juge requise', el('p', {}, state.post.juge
+    ? 'Le juge a demandé des corrections. Corrige puis fais relire, ou valide quand même : tu gardes le dernier mot.'
+    : 'Ce post n’a pas encore été relu par l’agent juge. Fais-le relire, ou valide quand même : tu gardes le dernier mot.'),
+  [{ label: 'Annuler' }, { label: 'Voir la relecture', primary: true, run: () => { closeModal(); go(postHash(state.post.slug, 'juge')); } }]);
+  return false;
+}
+
+async function launchJudge() {
+  if (state.dirty) await save();
+  if (!state.post.rendered) { toast('Génère d’abord les slides : le juge regarde aussi l’aperçu'); return; }
+  const job = await api(`/api/posts/${encodeURIComponent(state.post.slug)}/juger`, { method: 'POST' });
+  await pollJobs(); showJob(job.id);
+}
+
+function overrideFlow() {
+  modal('Valider quand même ?', [
+    el('p', {}, 'Le post pourra être programmé ou envoyé en brouillon malgré l’avis du juge.'),
+    el('p', { class: 'hint' }, 'Ta validation est enregistrée dans juge.json avec la date. Une nouvelle relecture du juge la remplace.'),
+  ], [{ label: 'Annuler' }, { label: 'Valider quand même', primary: true, run: async () => {
+    try { closeModal(); loadDetail(await api(`/api/posts/${encodeURIComponent(state.post.slug)}/valider`, { method: 'POST' })); toast('Validé : tu as le dernier mot'); route(); }
+    catch (e) { toast(e.message); }
+  } }]);
+}
+
+function judgePanel() {
+  const j = state.post.juge;
+  const running = state.jobs.some(x => x.kind === 'juger' && x.meta?.slug === state.post.slug && !x.endedAt);
+  const actions = !DEMO && el('div', { class: 'page-actions' },
+    el('button', { class: 'btn btn-primary', type: 'button', disabled: running, onclick: () => launchJudge().catch(e => toast(e.message)) },
+      running ? 'Relecture en cours…' : j ? 'Refaire relire par le juge' : 'Faire relire par le juge'),
+    !judgeApproved(j) && el('button', { class: 'btn', type: 'button', onclick: overrideFlow }, 'Valider quand même'));
+  const intro = el('p', { class: 'hint' }, 'Une IA indépendante relit le carrousel fini (slides, légende, sources, aperçu), ouvre les sources citées et note six critères. Elle ne voit jamais le raisonnement de l’agent rédacteur et ne modifie rien. Validé = toutes les notes à 4 ou plus, aucune correction bloquante.');
+  if (!j?.scores) return el('section', { class: 'panel-card' }, el('h2', { class: 'panel-title' }, 'Relecture du juge'), intro,
+    j?.override_humain && el('div', { class: 'check ok' }, `Validé par toi le ${frDate(j.override_date)}, sans relecture du juge.`),
+    !j && el('p', {}, 'Pas encore de relecture.'), actions);
+
+  const scores = el('div', { class: 'judge-scores' }, Object.entries(CRITERES).map(([k, label]) => {
+    const s = j.scores[k];
+    return el('div', { class: `judge-score ${s.note >= 4 ? 'ok' : 'low'}` },
+      el('span', { class: 'judge-note' }, `${s.note}/5`), el('strong', {}, label), el('p', { class: 'hint' }, s.justification));
+  }));
+  const corrections = j.corrections.length
+    ? el('ol', { class: 'judge-corrections' }, j.corrections.map(c => el('li', { class: c.bloquant ? 'blocking' : '' },
+        el('p', {}, el('strong', {}, `${typeof c.slide === 'number' ? `Slide ${c.slide}` : c.slide ?? 'Général'}${c.bloquant ? ' · bloquant' : ''}`), ` ${c.probleme}`),
+        el('p', { class: 'judge-fix' }, `→ ${c.correction_proposee}`))))
+    : el('p', { class: 'hint' }, 'Aucune correction proposée.');
+  const history = j.historique?.length && el('details', {}, el('summary', {}, `Passages précédents (${j.historique.length})`),
+    el('ul', {}, j.historique.map(h => el('li', { class: 'hint' }, h.scores
+      ? `Passage ${h.passage} · ${frDate(h.date)} · ${h.verdict} · ${Object.entries(CRITERES).map(([k, l]) => `${l} ${h.scores[k]?.note}`).join(', ')}`
+      : `Validation humaine du ${frDate(h.override_date)}`))));
+
+  return el('section', { class: 'panel-card' },
+    el('h2', { class: 'panel-title' }, 'Relecture du juge',
+      el('span', { class: 'status', 'data-s': j.verdict === 'validé' ? 'prêt' : 'à rédiger' }, j.verdict)),
+    el('p', {}, `Passage ${j.passage} · ${frDate(j.date)}`),
+    j.override_humain && el('div', { class: 'check ok' }, `Validé quand même par toi le ${frDate(j.override_date)} : tu as le dernier mot.`),
+    intro, scores,
+    el('h3', { class: 'judge-subtitle' }, `Corrections proposées (${j.corrections.length})`), corrections,
+    history, actions);
+}
+
 // ----- Onglet Sources -----
 function sourcesPanel() {
   let editing = false;
@@ -693,6 +773,7 @@ function downloadFlow() {
 function scheduleFlow() {
   if (state.dirty) { toast('Enregistre et génère d’abord tes modifications (⌘S)'); return; }
   if (!state.post.rendered) { toast('Génère d’abord les slides'); return; }
+  if (!judgeGate()) return;
   const pad = n => String(n).padStart(2, '0');
   const fmt = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
   let d = new Date(`${state.post.date}T18:00`);
@@ -722,6 +803,7 @@ function draftFlow() {
     return;
   }
   if (state.dirty) { toast('Enregistre et génère d’abord tes modifications (⌘S)'); return; }
+  if (!judgeGate()) return;
   modal('Envoyer en brouillon ?', [
     el('p', {}, 'Ce qui va se passer :'),
     el('ol', {},
@@ -865,6 +947,7 @@ async function pollJobs() {
     changed = true;
     if (j.kind === 'rediger' && j.status === 'terminé') toast(`Post prêt : ${j.meta.sujet}`);
     else if (j.kind === 'veille' && j.status === 'terminé') toast('Nouvelle veille disponible');
+    else if (j.kind === 'juger' && j.status === 'terminé') toast(`Juge : ${j.result.verdict} (${j.label.replace('Relecture par le juge : ', '')})`);
     else if (j.status === 'échec') toast(`Échec : ${j.label}`);
   }
   jobsLoaded = true;
@@ -909,6 +992,11 @@ async function showJob(id) {
       log.textContent += `\n\n✅ Programmé dans Metricool (compte TikTok ${j.result.tiktok ?? ''}).`;
       $('#modal-actions').prepend(el('a', { class: 'btn btn-primary', id: 'open-metricool', href: j.result.plannerUrl, target: '_blank', rel: 'noopener' }, 'Voir dans Metricool'));
       if (state.post?.slug === j.meta?.slug) { loadDetail(await api(`/api/posts/${encodeURIComponent(j.meta.slug)}`)); route(); }
+    }
+    if (j.kind === 'juger' && j.status === 'terminé' && !document.getElementById('open-judge')) {
+      log.textContent += `\n\n⚖️  Verdict : ${j.result.verdict} (passage ${j.result.passage}).`;
+      $('#modal-actions').prepend(el('button', { class: 'btn btn-primary', id: 'open-judge', type: 'button', onclick: () => { dlg.close(); go(postHash(j.meta.slug, 'juge')); } }, 'Voir la relecture'));
+      if (state.post?.slug === j.meta?.slug && !state.dirty) { loadDetail(await api(`/api/posts/${encodeURIComponent(j.meta.slug)}`)); route(); }
     }
     if (j.kind === 'rediger' && j.status === 'terminé' && !document.getElementById('open-new-post')) {
       $('#modal-actions').prepend(el('button', { class: 'btn btn-primary', id: 'open-new-post', type: 'button', onclick: () => { dlg.close(); go(postHash(j.result)); } }, 'Ouvrir le post'));

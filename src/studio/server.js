@@ -11,6 +11,7 @@ import { ASSETS_DIR, ROOT, TOKENS_FILE } from '../config.js';
 import { listPosts, loadConfig, postDate, saveConfig } from '../editorial/post.js';
 import { createPost } from '../editorial/create.js';
 import { suggestCaptions } from '../agent/caption.js';
+import { assertJudged, judgePost, overrideJudgement, readJudgement } from '../agent/juge.js';
 import { authorization, connectedUser, exchangeCode, logout } from '../tiktok/oauth.js';
 import { readSettings, writeSettings } from './settings.js';
 import { install, isInstalled, uninstall } from './service.js';
@@ -54,7 +55,7 @@ function detail(dir) {
   const imgDir = join(dir, 'images');
   const images = existsSync(imgDir) ? readdirSync(imgDir).filter(f => IMAGE_EXT.has(extname(f).toLowerCase())).sort().map(f => `images/${f}`) : [];
   const rendered = existsSync(join(dir, 'slide-1.png')) ? statSync(join(dir, 'slide-1.png')).mtimeMs : 0;
-  return { ...summary(dir), config: loadConfig(dir), legende: read('legende.txt'), sources: read('sources.md'), images, rendered, validation: verify(dir) };
+  return { ...summary(dir), config: loadConfig(dir), legende: read('legende.txt'), sources: read('sources.md'), images, rendered, validation: verify(dir), juge: readJudgement(dir) };
 }
 
 // ---------- tâches Claude Code ----------
@@ -66,6 +67,12 @@ function launchRediger({ sujet, angle, sources, veille }) {
   if (!sujet?.trim()) throw httpError(400, 'Sujet manquant');
   return startJob({ kind: 'rediger', label: `Rédaction : ${sujet}`, agent: true, meta: { veille, sujet } },
     log => runRediger({ sujet: sujet.trim(), angle, sources, veille, onLog: log }));
+}
+
+/** Garde-fou du juge, vérifié avant de lancer la tâche pour répondre tout de suite. */
+function judged(dir) {
+  try { assertJudged(dir); } catch (e) { throw httpError(409, e.message); }
+  return dir;
 }
 
 /** Veille automatique : une fois par jour, à partir de VEILLE_HOUR (rattrapée au réveil de l'ordinateur). */
@@ -152,12 +159,19 @@ const routes = [
     const res = await generate(dir, { force });
     return { ...detail(dir), generation: { rendered: res.rendered, gain: res.gain, errors: res.errors, warnings: res.warnings } };
   }],
+  ['POST', /^\/api\/posts\/([^/]+)\/juger$/, m => {
+    const dir = postDir(m[1]), slug = basename(dir);
+    if (isRunning(j => j.kind === 'juger' && j.meta.slug === slug)) throw httpError(409, 'Le juge relit déjà ce post');
+    return startJob({ kind: 'juger', label: `Relecture par le juge : ${loadConfig(dir).sujet}`, agent: true, meta: { slug } },
+      log => judgePost(dir, { onLog: log }));
+  }],
+  ['POST', /^\/api\/posts\/([^/]+)\/valider$/, m => { const dir = postDir(m[1]); overrideJudgement(dir); return detail(dir); }],
   ['POST', /^\/api\/posts\/([^/]+)\/brouillon$/, m => {
-    const dir = postDir(m[1]);
+    const dir = judged(postDir(m[1]));
     return startJob({ kind: 'brouillon', label: `Envoi TikTok : ${basename(dir)}`, meta: { slug: basename(dir) } }, log => draft(dir, { log }));
   }],
   ['POST', /^\/api\/posts\/([^/]+)\/programmer$/, async (m, req) => {
-    const dir = postDir(m[1]);
+    const dir = judged(postDir(m[1]));
     const { date, auto } = await body(req);
     return startJob({ kind: 'programmer', label: `Programmation TikTok : ${loadConfig(dir).sujet}`, agent: true, meta: { slug: basename(dir) } },
       log => scheduleOnTikTok(dir, { date, auto: !!auto, onLog: log }));

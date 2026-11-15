@@ -3,6 +3,7 @@
 import { existsSync, mkdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { runClaude } from '../agent/claude.js';
+import { assertJudged } from '../agent/juge.js';
 import { ROOT } from '../config.js';
 import { loadConfig, saveConfig } from '../editorial/post.js';
 import { validatePost } from '../editorial/validate.js';
@@ -45,6 +46,7 @@ Réponds uniquement avec ce JSON : {"blogId": "<id de la marque qui a un compte 
  * @returns {Promise<{plannerUrl: string, id: string}>}
  */
 export async function scheduleOnTikTok(dir, { date, auto = false, onLog = () => {} }) {
+  assertJudged(dir); // garde-fou : relu et validé par le juge, ou validé par l'humaine
   const cfg = loadConfig(dir);
   const { errors } = validatePost(dir, cfg);
   if (errors.length) throw new Error(`Contrôles éditoriaux en échec :\n- ${errors.join('\n- ')}`);

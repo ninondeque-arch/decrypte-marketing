@@ -5,6 +5,7 @@ import { execFileSync } from 'node:child_process';
 import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { basename, join } from 'node:path';
 import { ASSETS_DIR, ROOT } from '../config.js';
+import { readJudgement } from '../agent/juge.js';
 import { listPosts, loadConfig, postDate } from '../editorial/post.js';
 import { validatePost } from '../editorial/validate.js';
 import { toJpeg } from '../images/compress.js';
@@ -57,6 +58,7 @@ for (const dir of listPosts()) {
     legende: existsSync(join(dir, 'legende.txt')) ? readFileSync(join(dir, 'legende.txt'), 'utf8') : '',
     sources: existsSync(join(dir, 'sources.md')) ? readFileSync(join(dir, 'sources.md'), 'utf8') : '',
     rendered: Math.round(statSync(slides[0]).mtimeMs), validation: validatePost(dir, cfg),
+    juge: readJudgement(dir), // résultat du juge, affiché en lecture seule
   };
 }
 const veilleDates = listVeilles();

@@ -198,6 +198,16 @@ code, kbd { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: .
 .suggestion { border: 1.5px solid var(--line); border-radius: 10px; padding: 14px; display: grid; gap: 10px; white-space: pre-wrap; font-size: 14px; }
 .suggestion .btn { justify-self: start; }
 .sources { overflow-x: auto; }
+.judge-scores { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); gap: 10px; }
+.judge-score { border: 1.5px solid var(--line); border-left: 4px solid var(--ok); border-radius: 10px; padding: 12px 14px; display: grid; gap: 4px; }
+.judge-score.low { border-left-color: var(--err); }
+.judge-score .hint { margin: 0; }
+.judge-note { font: 26px/1 var(--display); }
+.judge-subtitle { margin: 4px 0 0; font-size: 16px; }
+.judge-corrections { margin: 0; padding-left: 20px; display: grid; gap: 10px; }
+.judge-corrections p { margin: 0; }
+.judge-corrections li.blocking::marker { color: var(--err); font-weight: 800; }
+.judge-fix { color: var(--muted); }
 .sources h1, .sources h2 { font-family: var(--display); text-transform: uppercase; font-weight: 400; margin: 0 0 8px; }
 .sources table { border-collapse: collapse; width: 100%; font-size: 14px; margin: 8px 0 20px; }
 .sources th, .sources td { border-bottom: 1px solid var(--line); padding: 8px; text-align: left; vertical-align: top; }
