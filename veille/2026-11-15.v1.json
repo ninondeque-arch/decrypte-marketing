@@ -1,0 +1,183 @@
+{
+  "date": "2026-11-15",
+  "sujets": [
+    {
+      "id": "gta-6-precommandes-record",
+      "type": "actu",
+      "sujet": "GTA VI devient le jeu le plus précommandé de l'histoire du PlayStation Store et du Microsoft Store",
+      "angle": "Comment Rockstar a fait des millions de précommandes en parlant très peu : rareté des trailers, silence et attente comme stratégie",
+      "accroche": "Comment vendre un jeu avant même qu'il existe ?",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Jeux vidéo",
+      "startup": false,
+      "actu": "Le 10 novembre 2026, Sony et Microsoft annoncent le record de précommandes, à neuf jours de la sortie du 19 novembre",
+      "pourquoi_maintenant": "Sortie le 19 novembre, records annoncés cette semaine, estimations Sensor Tower publiées le 13 novembre",
+      "chiffres_cles": [
+        "jeu le plus précommandé de l'histoire du PlayStation Store et du Microsoft Store (annonces du 10 novembre 2026)",
+        "environ 12,13 millions de précommandes numériques et 1,18 milliard de dollars au 13 novembre, selon une estimation Sensor Tower",
+        "précommandes ouvertes depuis le 25 juin 2026",
+        "93 millions de vues YouTube en 24 h pour le premier trailer (décembre 2023)",
+        "Cyberpunk 2077 : 8 millions de précommandes en 2020"
+      ],
+      "sources": [
+        { "titre": "PC Guide", "url": "https://www.pcguide.com/news/gta-6-confirmed-as-the-most-pre-ordered-game-in-the-history-of-xboxs-and-playstations-stores/", "date": "2026-11-10" },
+        { "titre": "GTA 6 France (estimations Sensor Tower, site de fans)", "url": "https://gta-6-france.fr/blog/gta-6-chiffre-affaires-5-milliards-records", "date": "2026-11-13" }
+      ],
+      "potentiel": 5
+    },
+    {
+      "id": "skims-calendrier-avent",
+      "type": "actu",
+      "sujet": "Skims rembourse son calendrier de l'Avent à 148 $ rempli d'élastiques et de porte-clés",
+      "angle": "Quand le prestige d'une marque ne suffit plus à faire accepter un produit d'appel : le calendrier de l'Avent, piège à déception",
+      "accroche": "148 $ pour des élastiques à cheveux ?",
+      "rubrique": "Le flop",
+      "secteur": "Mode",
+      "startup": false,
+      "actu": "Moqueries en ligne puis offre de remboursement, relayées le 9 novembre 2026",
+      "pourquoi_maintenant": "Bad buzz de la semaine, en pleine saison des calendriers de l'Avent de marque",
+      "chiffres_cles": [
+        "calendrier vendu 148 $",
+        "chaque acheteur s'est vu proposer un remboursement complet ou un avoir Skims"
+      ],
+      "sources": [
+        { "titre": "The Daily Beast", "url": "https://www.thedailybeast.com/kim-kardashians-skims-offers-refunds-after-advent-calendar-backlash", "date": "2026-11-09" },
+        { "titre": "Ad Age", "url": "https://adage.com/brand-marketing/aa-skims-advent-calendar-best-practices/", "date": "2026-11" }
+      ],
+      "potentiel": 5
+    },
+    {
+      "id": "starbucks-bearista-surprise-box",
+      "type": "actu",
+      "sujet": "Starbucks transforme son gobelet ours viral en boîte mystère avec un ours doré rarissime",
+      "angle": "Après la cohue de 2025, Starbucks reprend la mécanique des blind boxes à la Labubu : on n'achète plus un gobelet, on achète une chance",
+      "accroche": "Pourquoi tu paies 40 $ sans savoir ce qu'il y a dedans ?",
+      "rubrique": "Pourquoi tu l'as acheté",
+      "secteur": "Restauration (café)",
+      "startup": false,
+      "actu": "Boîtes mystère en vente dans les cafés américains le 10 novembre 2026",
+      "pourquoi_maintenant": "Lancement cette semaine, un an après la ruée sur le premier Bearista, et retour du gobelet original le 1er décembre",
+      "chiffres_cles": [
+        "39,95 $ la boîte aux États-Unis",
+        "5 ours différents, dont Goldie, le plus rare, sans probabilité publiée",
+        "limite de 2 boîtes par client"
+      ],
+      "sources": [
+        { "titre": "International Business Times UK", "url": "https://www.ibtimes.co.uk/starbucks-bearista-mystery-boxes-rare-goldie-cup-1831203", "date": "2026-11-09" },
+        { "titre": "Fortune (excuses de Starbucks en 2025)", "url": "https://fortune.com/2025/11/07/starbucks-apologizes-bearista-cup-resale-market/", "date": "2025-11-07" }
+      ],
+      "potentiel": 5
+    },
+    {
+      "id": "stanley-incendie-voiture",
+      "type": "culte",
+      "sujet": "La gourde Stanley qui a survécu à l'incendie d'une voiture",
+      "angle": "Une vidéo TikTok d'une cliente, une réponse du président en 48 h et une voiture offerte : la meilleure pub de Stanley n'a pas été faite par Stanley",
+      "accroche": "Sa voiture brûle, sa gourde garde ses glaçons",
+      "rubrique": "Pourquoi tu l'as acheté",
+      "secteur": "Maison et accessoires",
+      "startup": false,
+      "actu": "Novembre 2023",
+      "pourquoi_maintenant": "Un exemple souvent cité d'UGC transformé en campagne. L'histoire a 3 ans ce mois-ci, et les gobelets à collectionner (Bearista) relancent le sujet",
+      "chiffres_cles": [
+        "près de 60 millions de vues en trois jours",
+        "Stanley propose de remplacer la voiture de la cliente",
+        "chiffre d'affaires passé de 70 millions à 750 millions de dollars selon le président de Stanley"
+      ],
+      "sources": [
+        { "titre": "WCPO", "url": "https://www.wcpo.com/stanley-offers-woman-a-new-car-after-viral-video-of-cup-surviving-fire", "date": "2023-11" },
+        { "titre": "CreatorIQ, podcast Earned avec Terence Reilly", "url": "https://creatoriq.com/blog/earned-podcast-ep-111-terence-reilly-stanley-cup-quencher-viral-car-fire-tiktok-influencer-marketing-crocs", "date": "2024" }
+      ],
+      "potentiel": 5
+    },
+    {
+      "id": "duolingo-tiktok-hibou",
+      "type": "culte",
+      "sujet": "Duolingo a percé sur TikTok grâce à un hibou menaçant",
+      "angle": "Abandonner les tutos et faire de la mascotte un créateur : 38 vidéos ratées avant le premier carton",
+      "accroche": "Pourquoi un hibou te harcèle pour faire ton espagnol ?",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Éducation (appli)",
+      "startup": false,
+      "actu": "2021, explosion du compte TikTok de Duolingo",
+      "pourquoi_maintenant": "Le cas d'école du community management de marque sur TikTok, toujours copié par les marques",
+      "chiffres_cles": [
+        "de 100 000 à 1,7 million d'abonnés en quelques mois (2021)",
+        "premier carton à la 39e vidéo : plus de 3,3 millions de vues",
+        "taux d'engagement de 19 %"
+      ],
+      "sources": [
+        { "titre": "Sprout Social", "url": "https://sproutsocial.com/insights/duolingo-tiktok-success/", "date": "2021-12-13" },
+        { "titre": "Adweek", "url": "https://www.adweek.com/brand-marketing/duolingo-duo-owl-marketing-strategy/", "date": "" }
+      ],
+      "potentiel": 4
+    },
+    {
+      "id": "jetty-fondateurs-poppi",
+      "type": "actu",
+      "sujet": "Après avoir vendu Poppi 1,95 milliard, ses fondateurs lancent Jetty, une boisson d'hydratation",
+      "angle": "Peut-on rejouer deux fois le même hold-up marketing ? Compte Instagram mystère, carte noire « J-Card » et une fondatrice déjà star de TikTok",
+      "accroche": "Ils ont vendu un soda 1,95 milliard. Et maintenant ?",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Boissons",
+      "startup": true,
+      "actu": "Lancement de Jetty le 9 novembre 2026 chez Whole Foods, Target et Amazon",
+      "pourquoi_maintenant": "Lancement cette semaine, décrypté par Ad Age le 12 novembre",
+      "chiffres_cles": [
+        "Poppi vendu à PepsiCo pour 1,95 milliard de dollars en 2025",
+        "plus de 3 milliards de vues sur TikTok pour Poppi",
+        "l'hydratation, une catégorie de 13 milliards de dollars selon Stephen Ellsworth"
+      ],
+      "sources": [
+        { "titre": "Beverage Industry", "url": "https://www.bevindustry.com/articles/98812-poppi-founders-launch-jetty-hydration-drinks", "date": "2026-11-09" },
+        { "titre": "Ad Age", "url": "https://adage.com/brand-marketing/food-beverage/aa-jetty-allison-ellsworth-strategy-viral-launch-after-poppi/", "date": "2026-11-12" }
+      ],
+      "potentiel": 4
+    },
+    {
+      "id": "brandmylaptop-stickers",
+      "type": "actu",
+      "sujet": "Il vend de la pub sur son ordinateur portable, puis en fait une startup",
+      "angle": "Un tweet à 10 millions de vues devient une place de marché : le corps et les objets des créateurs comme nouvel espace publicitaire",
+      "accroche": "Il a gagné 9 000 $ avec des stickers sur son ordi",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Médias et créateurs",
+      "startup": true,
+      "actu": "Article de Marketing Brew du 11 novembre 2026",
+      "pourquoi_maintenant": "Mis en avant cette semaine par la presse marketing, un exemple de marketing porté par le fondateur",
+      "chiffres_cles": [
+        "plus de 10 millions de vues pour le post X d'origine",
+        "plus de 9 000 $ générés par les stickers publicitaires",
+        "300 inscrits, dont 130 avec une vente ouverte",
+        "plus de 13 000 $ de revenus en deux mois, 10 % de commission",
+        "plateforme construite en environ 4 jours, 1 000 personnes en liste d'attente"
+      ],
+      "sources": [
+        { "titre": "Marketing Brew", "url": "https://www.marketingbrew.com/stories/brand-my-laptop-vincent-seube-ad-sales-business-strategy", "date": "2026-11-11" }
+      ],
+      "potentiel": 4
+    },
+    {
+      "id": "ice-bucket-challenge",
+      "type": "culte",
+      "sujet": "Le Ice Bucket Challenge, le défi qui a rapporté 115 millions en huit semaines",
+      "angle": "Nomination, preuve en vidéo et célébrités : la mécanique virale parfaite, et ce qu'elle a vraiment financé",
+      "accroche": "Un seau d'eau glacée a-t-il vraiment fait avancer la science ?",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Santé et associatif",
+      "startup": false,
+      "actu": "Été 2014",
+      "pourquoi_maintenant": "Le modèle de tous les challenges TikTok, avec un résultat concret : la découverte d'un gène lié à la SLA",
+      "chiffres_cles": [
+        "17 millions de personnes ont posté une vidéo",
+        "115 millions de dollars donnés à l'ALS Association en huit semaines",
+        "67 % consacrés à la recherche",
+        "1 million de dollars pour le Project MinE, qui a identifié le gène NEK1"
+      ],
+      "sources": [
+        { "titre": "CBS58 (CNN)", "url": "https://www.cbs58.com/news/the-ice-bucket-challenge-did-more-than-you-might-think", "date": "2016-07-27" }
+      ],
+      "potentiel": 3
+    }
+  ]
+}

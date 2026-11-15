@@ -1,0 +1,185 @@
+{
+  "verdict": "validé",
+  "scores": {
+    "fidelite": {
+      "note": 4,
+      "justification": "Tous les chiffres et faits clés sont confirmés par les sources : 1991/35 ans (communiqué, B&T, Adweek), she's → we're et « a statement about every woman » (communiqué, Marketing Dive), les mues de Miley Cyrus (Marketing Dive), plus de la moitié / 26 % / 79 % (communiqué, Marketing-Interactive), réseaux sociaux en canal principal (B&T) ; seule nuance, le texte parle d'« un point » alors que la nouvelle version en ajoute deux, un après chaque « Maybe »."
+    },
+    "accroche": {
+      "note": 4,
+      "justification": "Une question de 9 mots qui joue sur le paradoxe (un simple point face à 35 ans de slogan), mais elle ne nomme ni le slogan ni la marque ; seule la photo de Miley Cyrus aide à reconnaître le sujet."
+    },
+    "clarte": {
+      "note": 4,
+      "justification": "La progression est logique (ancien slogan, nouveau slogan, pari, voix, mécanique, contexte, leçon), mais la slide 6 répète les slides 3 et 4 (« slogan connu », « un seul mot »)."
+    },
+    "lecon": {
+      "note": 5,
+      "justification": "« Change le sens, garde le son » est une leçon courte, mémorable et facile à appliquer à toute marque qui veut moderniser un slogan."
+    },
+    "ton": {
+      "note": 5,
+      "justification": "Le ton est direct et complice, avec le tutoiement (« tu reconnais », « Et toi, tu préfères… ») et sans jugement sur la marque."
+    },
+    "legende": {
+      "note": 5,
+      "justification": "La légende a une accroche forte (« c'est fini »), une question claire pour les commentaires et 5 hashtags pertinents."
+    }
+  },
+  "corrections": [
+    {
+      "slide": 3,
+      "critere": "clarte",
+      "probleme": "« Un point. » au singulier, alors que la nouvelle version ajoute un point après chacun des deux « Maybe » (« Maybe. We're… Maybe. It's… ») ; la formule « un point » est reprise en slide 1 et en slide 8.",
+      "correction_proposee": "Remplacer « Un point. » par « Un point après chaque “Maybe”. » ; en slide 8 : « 35 ans de mémoire gardés : deux points, un mot, et tout change. » La slide 1 peut garder « Un point » comme accroche si la slide 3 précise les deux points.",
+      "bloquant": false
+    },
+    {
+      "slide": 6,
+      "critere": "clarte",
+      "probleme": "Les items 1 et 2 répètent ce que disent déjà les slides 3 et 4 (slogan reconnu, un seul mot changé) : la slide n'apporte vraiment du neuf qu'à l'item 3.",
+      "correction_proposee": "Resserrer : « 1. Garder le son : le jingle reste reconnaissable / 2. Changer un mot : “she” → “we” / 3. En faire une plateforme : réseaux sociaux d'abord en 2026, d'autres voix de femmes à venir ».",
+      "bloquant": false
+    },
+    {
+      "slide": 1,
+      "critere": "accroche",
+      "probleme": "L'accroche ne nomme pas le slogan : si on ne reconnaît pas Miley Cyrus sur la photo, on ne sait pas de quoi on parle.",
+      "correction_proposee": "Garder la question et ajouter un sous-titre en petit : « Maybe she's born with it… » ; ou bien : « Maybelline a changé son slogan culte. Tu as vu ? »",
+      "bloquant": false
+    }
+  ],
+  "date": "2026-11-15T12:14:24.284Z",
+  "passage": 3,
+  "historique": [
+    {
+      "verdict": "à corriger",
+      "scores": {
+        "fidelite": {
+          "note": 3,
+          "justification": "La plupart des faits sont confirmés par les sources : le slogan date de 1991, soit 35 ans, l'ancienne et la nouvelle formulation sont exactes, on passe d'une femme à toutes, Miley Cyrus a prêté sa voix au jingle en 2025, et les chiffres + de 50 %, 26 % et 79 % sont justes ; en revanche, « d'autres artistes en 2027 » ne figure que dans l'encadré généré par IA d'Adweek, que sources.md dit pourtant écarter, et « une lettre » décrit mal le passage de « she's » à « we're », qui change tout le mot."
+        },
+        "accroche": {
+          "note": 5,
+          "justification": "9 mots, une vraie question au paradoxe intrigant (un simple point face à 35 ans d'histoire), qui donne envie de swiper."
+        },
+        "clarte": {
+          "note": 4,
+          "justification": "La progression est logique (ancien slogan, nouveau, pari, voix, mécanique, contexte, leçon), mais la slide 3 est dense et la slide 6 répète en partie les slides 3 et 4."
+        },
+        "lecon": {
+          "note": 5,
+          "justification": "« Change le sens, garde le son » est une leçon courte, facile à retenir et réutilisable pour toute refonte de slogan."
+        },
+        "ton": {
+          "note": 5,
+          "justification": "Le ton est direct et complice, avec du tutoiement (« tu reconnais », « Et toi, tu préfères »), sans excès."
+        },
+        "legende": {
+          "note": 4,
+          "justification": "Il y a bien une accroche, une question pour les commentaires et 5 hashtags pertinents, mais la légende reprend l'inexactitude « une lettre »."
+        }
+      },
+      "corrections": [
+        {
+          "slide": 6,
+          "critere": "fidelite",
+          "probleme": "« d'autres artistes en 2027 » : seul l'encadré Key Takeaways d'Adweek, généré par IA et explicitement écarté dans sources.md, dit cela. Le corps de l'article d'Adweek n'en parle pas. B&T dit seulement « Further activity is planned for 2027 », sans préciser, et Marketing Dive parle d'autres femmes, de la musique et d'autres domaines, « in the months ahead ».",
+          "correction_proposee": "Une plateforme qui dure : réseaux sociaux d'abord, d'autres voix de femmes à venir",
+          "bloquant": true
+        },
+        {
+          "slide": 6,
+          "critere": "fidelite",
+          "probleme": "« Changer une lettre » est faux : on passe de « she's » à « we're », c'est-à-dire un pronom et un verbe entiers, pas une lettre. Le highlight « une lettre » met en avant l'erreur.",
+          "correction_proposee": "Changer un mot et la ponctuation pour changer le sens (highlight : « un mot »)",
+          "bloquant": true
+        },
+        {
+          "slide": "légende",
+          "critere": "fidelite",
+          "probleme": "« Un point, une lettre » reprend la même inexactitude : c'est un mot qui change (« she's » devient « we're »).",
+          "correction_proposee": "Un point, un mot, et la question devient une affirmation. Avec Miley Cyrus en porte-voix.",
+          "bloquant": true
+        },
+        {
+          "slide": 8,
+          "critere": "fidelite",
+          "probleme": "« elle a ajouté un point » simplifie trop : Maybelline a aussi remplacé « she's » par « we're », ce qui porte une bonne partie du changement de sens selon Marketing Dive.",
+          "correction_proposee": "Maybelline n'a pas jeté 35 ans de mémoire : un point, un mot, et tout change.",
+          "bloquant": true
+        },
+        {
+          "slide": 7,
+          "critere": "fidelite",
+          "probleme": "La mention « McKinsey (2026) » est imprécise : les chiffres viennent du McKinsey Global Beauty Consumer Survey 2025, repris dans un rapport de 2026.",
+          "correction_proposee": "Sources : McKinsey Global Beauty Consumer Survey (2025) et Cosmetics Europe (2026), cités par Maybelline (10 nov. 2026)",
+          "bloquant": true
+        },
+        {
+          "slide": 3,
+          "critere": "clarte",
+          "probleme": "La slide est dense : la citation complète et l'explication en deux points tiennent sur un seul bloc de texte.",
+          "correction_proposee": "« Maybe. We're born with it. Maybe. It's Maybelline. » Un point, « we're » au lieu de « she's » : la question devient une affirmation.",
+          "bloquant": false
+        }
+      ],
+      "date": "2026-11-15T12:11:00.721Z",
+      "passage": 1
+    },
+    {
+      "verdict": "à corriger",
+      "scores": {
+        "fidelite": {
+          "note": 5,
+          "justification": "J'ai ouvert les six sources. Le communiqué (technode), Marketing Dive, Adweek, B&T et Marketing-Interactive confirment tout : le slogan de 1991 et ses 35 ans, « she's » devenu « we're », la ponctuation qui fait de la question une affirmation, le parcours de Miley Cyrus (enfant star, musique club, racines country), l'enregistrement en studio en 2025, les réseaux sociaux en canal principal, les autres voix de femmes à venir, « just over half », environ 26 % et 79 % (Cosmetics Europe, 2026). Aucune causalité n'est inventée."
+        },
+        "accroche": {
+          "note": 4,
+          "justification": "La slide 1 tient en 9 mots, pose une question intrigante et donne envie de swiper. Elle simplifie un peu, puisque c'est un point et un mot qui changent, mais la slide 3 le précise aussitôt."
+        },
+        "clarte": {
+          "note": 4,
+          "justification": "La progression est logique (l'ancien slogan, le nouveau, le pari, la voix, la mécanique, le contexte, la leçon), mais l'idée « un point, un mot » revient sur les slides 3, 4, 6 et 8, et la slide 3 est un peu chargée."
+        },
+        "lecon": {
+          "note": 5,
+          "justification": "« Pour moderniser un slogan culte, change le sens, garde le son » est une leçon courte, mémorable et réutilisable par d'autres marques."
+        },
+        "ton": {
+          "note": 5,
+          "justification": "Le tutoiement est naturel (« tu reconnais », « change », « Et toi »), le ton est direct et complice, sans excès et sans jugement."
+        },
+        "legende": {
+          "note": 5,
+          "justification": "La légende a une accroche forte, une question claire pour les commentaires et 5 hashtags pertinents."
+        }
+      },
+      "corrections": [
+        {
+          "slide": 6,
+          "critere": "clarte",
+          "probleme": "Les deux premiers points répètent ce que disent déjà les slides 3 et 4 (mots conservés, un mot et la ponctuation changés), ce qui ralentit le rythme.",
+          "correction_proposee": "Garder la liste, mais avec des formules plus courtes et plus génériques : « 1. Garder le son que tout le monde connaît » / « 2. Changer un seul mot pour changer le sens » / « 3. En faire une plateforme : réseaux sociaux d'abord, d'autres voix de femmes à venir ».",
+          "bloquant": false
+        },
+        {
+          "slide": 3,
+          "critere": "clarte",
+          "probleme": "Le corps du texte est dense : la citation complète, puis deux changements, puis la conclusion, le tout en un seul paragraphe.",
+          "correction_proposee": "« Maybe. We're born with it. Maybe. It's Maybelline. » Un point. « She's » devient « we're ». La question devient une affirmation.",
+          "bloquant": false
+        },
+        {
+          "slide": 7,
+          "critere": "fidelite",
+          "probleme": "« des consommateurs » ne précise pas le périmètre mondial de l'enquête McKinsey, alors que le 79 % précise bien « européens ».",
+          "correction_proposee": "« des consommateurs dans le monde associent la beauté au fait de se sentir confiant »",
+          "bloquant": true
+        }
+      ],
+      "date": "2026-11-15T12:12:22.662Z",
+      "passage": 2
+    }
+  ]
+}

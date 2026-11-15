@@ -3,7 +3,7 @@
   "rubrique": "Le marketing derrière la culture pop",
   "secteur": "Santé (healthtech)",
   "startup": true,
-  "statut": "prêt",
+  "statut": "publié",
   "accroches": [
     "Pourquoi Doctolib te demande de penser à toi ?",
     "Une appli de rendez-vous qui te dit de souffler ?",
@@ -169,5 +169,6 @@
       "conclusion": "Les fonctions de l'appli ne viennent qu'après.",
       "cta": "Abonne-toi pour le prochain décryptage. Et toi, tu prends soin d'un proche ?"
     }
-  ]
+  ],
+  "publie": "2026-11-15"
 }

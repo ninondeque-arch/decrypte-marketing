@@ -3,7 +3,7 @@
   "rubrique": "Le marketing derrière la culture pop",
   "secteur": "Tourisme",
   "startup": false,
-  "statut": "programmé",
+  "statut": "publié",
   "accroches": [
     "Trump les insulte. La Norvège en fait une pub.",
     "Comment des toilettes ont répondu à Trump ?",
@@ -161,5 +161,6 @@
     "id": "413018946",
     "compte": "ninarth92",
     "musiqueAuto": true
-  }
+  },
+  "publie": "2026-11-15"
 }

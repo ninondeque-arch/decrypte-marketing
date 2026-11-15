@@ -1,0 +1,173 @@
+{
+  "sujet": "Maybelline réécrit son slogan culte « Maybe she's born with it » avec Miley Cyrus",
+  "rubrique": "Le marketing derrière la culture pop",
+  "secteur": "Beauté",
+  "startup": false,
+  "statut": "publié",
+  "accroches": [
+    "Un point peut-il réécrire un slogan de 35 ans ?",
+    "Maybelline change un mot à son slogan culte.",
+    "« Maybe she's born with it », c'est fini."
+  ],
+  "theme": {
+    "brand": "Maybelline New York",
+    "source": "Couleurs relevées sur maybelline.com (getComputedStyle : texte #000000, fond #FFFFFF ; feuilles de style : gris #E8E8E8, texte #231F20, rose #ED228B)",
+    "palettes": {
+      "noir": {
+        "bg": "#000000",
+        "ink": "#FFFFFF",
+        "boxBg": "#ED228B",
+        "boxInk": "#000000"
+      },
+      "blanc": {
+        "bg": "#FFFFFF",
+        "ink": "#000000",
+        "boxBg": "#000000",
+        "boxInk": "#FFFFFF"
+      },
+      "gris": {
+        "bg": "#E8E8E8",
+        "ink": "#231F20",
+        "boxBg": "#231F20",
+        "boxInk": "#FFFFFF"
+      },
+      "rose": {
+        "bg": "#ED228B",
+        "ink": "#000000",
+        "boxBg": "#000000",
+        "boxInk": "#FFFFFF"
+      }
+    },
+    "sequence": [
+      "noir",
+      "blanc",
+      "noir",
+      "gris",
+      "noir",
+      "blanc",
+      "noir",
+      "rose"
+    ]
+  },
+  "slides": [
+    {
+      "type": "hook",
+      "title": "Maybelline change un mot à son slogan culte.",
+      "highlight": [
+        "Maybelline"
+      ],
+      "cta": "On décrypte →",
+      "photo": {
+        "src": "images/hero-maybe.jpg",
+        "credit": "Maybelline New York",
+        "focusY": 0.3
+      }
+    },
+    {
+      "type": "quote",
+      "label": "Le slogan culte",
+      "quote": "Maybe she's born with it. Maybe it's Maybelline.",
+      "attribution": "Maybelline, depuis 1991",
+      "body": " Le slogan parle d'elle, une seule femme : est-elle née belle… ou c'est le maquillage ?",
+      "highlight": [
+        "une seule femme"
+      ],
+      "photo": {
+        "src": "images/miley-maybe.jpg",
+        "caption": "Miley Cyrus dans le film de lancement",
+        "credit": "Maybelline New York",
+        "focusY": 0.4
+      }
+    },
+    {
+      "type": "text",
+      "label": "La nouvelle version",
+      "body": "« Maybe. We're born with it. Maybe. It's Maybelline. » Un point. « She's » devient « we're ». La question devient une affirmation.",
+      "highlight": [
+        "une affirmation"
+      ],
+      "photo": {
+        "src": "images/born-with-it.jpg",
+        "caption": "La plateforme « The Beauty of Infinite Possibility »",
+        "credit": "Maybelline New York",
+        "focusY": 0.4
+      }
+    },
+    {
+      "type": "text",
+      "label": "Le pari",
+      "body": "Les mots du jingle restent presque intacts : tu reconnais le slogan tout de suite. Mais il ne parle plus d'une femme : de toutes.",
+      "highlight": [
+        "presque intacts"
+      ],
+      "photo": {
+        "src": "images/self-expression.jpg",
+        "caption": "Extrait de la campagne « Maybe. »",
+        "credit": "Maybelline New York",
+        "focusY": 0.45
+      }
+    },
+    {
+      "type": "text",
+      "label": "La voix",
+      "body": "Miley Cyrus avait déjà réenregistré le jingle en 2025. Maybelline mise sur son évolution : enfant star, icône pop et artiste aux influences country.",
+      "highlight": [
+        "évolution"
+      ],
+      "photo": {
+        "src": "images/miley-jingle-2025.jpg",
+        "caption": "Campagne 2025, tournée en studio",
+        "credit": "Maybelline New York / Jacob Bixenman",
+        "focusY": 0.25
+      }
+    },
+    {
+      "type": "list",
+      "label": "La mécanique",
+      "items": [
+        "Garder le slogan que tout le monde connaît",
+        "Changer un seul mot pour changer le sens",
+        "sur les réseaux sociaux d'abord, puis élargir la campagne en donnant la parole à d’autres femmes."
+      ],
+      "highlight": [
+        "un seul mot"
+      ],
+      "photo": {
+        "src": "images/reinvention.jpg",
+        "caption": "Miley Cyrus et le mascara Sky High",
+        "credit": "Maybelline New York",
+        "focusY": 0.4
+      }
+    },
+    {
+      "type": "stats",
+      "label": "Pourquoi maintenant",
+      "items": [
+        {
+          "value": "+ de 50 %",
+          "text": "des consommateurs dans le monde associent la beauté à la confiance en soi"
+        },
+        {
+          "value": "26 %",
+          "text": "l'associent au fait de plaire ou de paraître jeune"
+        },
+        {
+          "value": "79 %",
+          "text": "des sondés européens : le maquillage va au-delà de l'apparence"
+        }
+      ],
+      "source": "Sources : McKinsey Global Beauty Consumer Survey (2025) et Cosmetics Europe (2026), cités par Maybelline (10 nov. 2026)"
+    },
+    {
+      "type": "outro",
+      "title": "Résultat ?",
+      "lesson": "Pour moderniser un slogan culte, change le sens, garde le son.",
+      "highlight": [
+        "garde le son."
+      ],
+      "conclusion": "35 ans de mémoire gardés : un point, un mot, et tout change.",
+      "cta": "Abonne-toi pour le prochain décryptage. Et toi, tu préfères l'ancienne ou la nouvelle version ?"
+    }
+  ],
+  "publie": "2026-11-15"
+}

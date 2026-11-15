@@ -1,0 +1,138 @@
+{
+  "verdict": "validé",
+  "scores": {
+    "fidelite": {
+      "note": 5,
+      "justification": "Tous les chiffres et faits concordent avec les sources : le communiqué PR Newswire (60 s, « Even the dog », 69,90 $, 50 $ en 2019, « déjà client » lors du « first conversation », YouTube + Instagram + TV connectée, 32 M+ clients), Digital Commerce 360 (500 M$, 10,1 Md$, plus de 1 Md$ de CA, 16 mars 2026) et Adweek (saison 8, pull rouge qui révèle que Ross est le père, « loyal Quince customer ») ; le post n'avance aucune causalité non prouvée ; StreetInsider renvoie une erreur 403 et la page de The Drum est vide, mais les mêmes faits sont confirmés ailleurs."
+    },
+    "accroche": {
+      "note": 4,
+      "justification": "C'est une question intrigante de 9 mots, avec un clin d'œil (« encore ») qui donne envie de swiper, mais en France le nom « Schwimmer » parle moins que « Ross »."
+    },
+    "clarte": {
+      "note": 4,
+      "justification": "Une idée par slide et la progression est logique (clin d'œil, idée, produit, casting, mécanique, chiffres) ; seule la slide 4 juxtapose deux prix (69,90 $ et 50 $) sans dire ce qu'on doit en retenir."
+    },
+    "lecon": {
+      "note": 4,
+      "justification": "La leçon est claire et réutilisable (nostalgie + ambassadeur déjà client = crédibilité), mais « La nostalgie attire » reste générique et n'est pas étayée par des résultats de la campagne."
+    },
+    "ton": {
+      "note": 4,
+      "justification": "Le ton est direct et sans moquerie, mais le tutoiement n'apparaît que dans le CTA final ; les slides restent assez descriptives et peu complices."
+    },
+    "legende": {
+      "note": 5,
+      "justification": "Elle a une accroche nostalgique, une révélation (« déjà client »), une question pour les commentaires et 5 hashtags pertinents."
+    }
+  },
+  "corrections": [
+    {
+      "slide": 1,
+      "critere": "accroche",
+      "probleme": "Pour un public français, « Schwimmer » est moins reconnaissable que « Ross ».",
+      "correction_proposee": "Pourquoi Ross court encore après un pull rouge ?",
+      "bloquant": false
+    },
+    {
+      "slide": 4,
+      "critere": "clarte",
+      "probleme": "Les deux prix sont posés côte à côte sans lien explicite : le lecteur ne sait pas s'il faut retenir la hausse de prix ou le retour au produit fondateur.",
+      "correction_proposee": "Le produit star : le pull en cachemire, en rouge Coulis. Celui avec lequel Quince a démarré en 2019 (50 $ à l'époque, 69,90 $ aujourd'hui).",
+      "bloquant": false
+    },
+    {
+      "slide": 8,
+      "critere": "lecon",
+      "probleme": "« La nostalgie attire » est une généralité qui n'est appuyée par aucun résultat de la campagne ; la force du cas, c'est l'alliance des deux leviers.",
+      "correction_proposee": "La nostalgie capte l'attention. Un ambassadeur déjà client la rend crédible.",
+      "bloquant": false
+    },
+    {
+      "slide": 3,
+      "critere": "ton",
+      "probleme": "Le texte est descriptif et ne s'adresse pas au lecteur, alors que le reste du compte tutoie.",
+      "correction_proposee": "Un film de 60 secondes : Schwimmer joue son propre rôle et cherche un pull rouge dans New York. Problème : tout le monde l'a déjà. Même le chien.",
+      "bloquant": false
+    }
+  ],
+  "date": "2026-11-15T11:56:39.543Z",
+  "passage": 2,
+  "historique": [
+    {
+      "verdict": "à corriger",
+      "scores": {
+        "fidelite": {
+          "note": 4,
+          "justification": "J'ai vérifié tous les chiffres et affirmations clés : le communiqué PR Newswire (film de 60 s, Schwimmer dans son propre rôle, « Even the dog », 69,90 $, lancement en 2019 avec un pull à 50 $, « longtime customer », YouTube/Instagram/TV connectée, 32 M+ de clients actifs), FashionUnited (citation exacte), Adweek (le pull rouge révèle que Ross est le père, client fidèle) et Digital Commerce 360 (plus de 1 Md$ de CA, 500 M$ levés, valorisation de 10,1 Md$, 16 mars 2026) ; StreetInsider renvoie une 403 et la page The Drum est vide, et aucune source lue ne mentionne explicitement la « saison 8 », ce qui reste juste (épisode de 2001) ; il reste deux légères imprécisions (le prix ne vaut que pour le modèle homme, et « premier rendez-vous » au lieu de « premier échange avec l'équipe »)."
+        },
+        "accroche": {
+          "note": 4,
+          "justification": "C'est une question de 7 mots, intrigante et bien illustrée, mais elle confond Ross (le personnage) et Schwimmer, qui joue son propre rôle dans le film."
+        },
+        "clarte": {
+          "note": 4,
+          "justification": "La progression est logique (clin d'œil → idée → produit → casting → mécanique → chiffres → leçon) et le rythme est bon, mais la citation de la slide 2 n'est pas traduite et la slide 4 mélange deux idées (le produit actuel et l'origine de la marque)."
+        },
+        "lecon": {
+          "note": 4,
+          "justification": "La leçon « la nostalgie attire, un ambassadeur déjà client la rend crédible » est claire et réutilisable et s'appuie sur le communiqué, même si le post ne montre aucun résultat mesuré de la campagne."
+        },
+        "ton": {
+          "note": 5,
+          "justification": "Le ton est direct et complice, avec un clin d'œil pop, le tutoiement dans le CTA et aucune moquerie ni affirmation non établie."
+        },
+        "legende": {
+          "note": 4,
+          "justification": "Il y a une accroche, une question pour les commentaires et 5 hashtags, mais il manque un hashtag de la marque (#quince) et la légende reprend la confusion entre Ross et Schwimmer."
+        }
+      },
+      "corrections": [
+        {
+          "slide": 1,
+          "critere": "accroche",
+          "probleme": "Dans le film, c'est David Schwimmer qui joue son propre rôle, pas Ross : la question mélange l'acteur et le personnage, et la slide 3 dit l'inverse.",
+          "correction_proposee": "Pourquoi David Schwimmer court après le pull de Ross ?",
+          "bloquant": false
+        },
+        {
+          "slide": 2,
+          "critere": "clarte",
+          "probleme": "La citation est en anglais, sans traduction, alors que le public est francophone.",
+          "correction_proposee": "Garder la citation et ajouter en body : « (« Un pull rouge et moi, ça remonte à loin. ») Friends, saison 8 : un pull rouge révèle que Ross est le père. »",
+          "bloquant": false
+        },
+        {
+          "slide": 4,
+          "critere": "clarte",
+          "probleme": "Le prix de 69,90 $ ne concerne que le pull homme (le modèle femme oversize est à 129,90 $) : la formulation laisse croire à un prix unique.",
+          "correction_proposee": "Le pull Coulis Red : du cachemire de Mongolie dès 69,90 $ (modèle homme). Quince est né en 2019 avec un pull en cachemire à 50 $.",
+          "bloquant": false
+        },
+        {
+          "slide": 5,
+          "critere": "fidelite",
+          "probleme": "La source dit « during his first conversation with the team » ; « premier rendez-vous » est une approximation (le sens reste juste).",
+          "correction_proposee": "Schwimmer était déjà client : il portait un pull Quince lors de son premier échange avec l'équipe.",
+          "bloquant": true
+        },
+        {
+          "slide": 7,
+          "critere": "fidelite",
+          "probleme": "Le chiffre de plus de 1 Md$ date de mars 2026 ; Adweek (novembre 2026) parle de plus de 2 Md$ cette année, un chiffre écarté à juste titre faute de source primaire, mais la date du 1 Md$+ mérite d'être affichée.",
+          "correction_proposee": "1 Md$+ — de chiffre d'affaires annuel, selon l'entreprise (mars 2026)",
+          "bloquant": true
+        },
+        {
+          "slide": "légende",
+          "critere": "legende",
+          "probleme": "« courir après son propre pull » reprend la confusion entre Ross et Schwimmer, et le hashtag de la marque manque.",
+          "correction_proposee": "Le pull rouge de Ross est de retour… et il est en vente.\nQuince a envoyé David Schwimmer courir après le pull de Ross. Et il était déjà client.\nEt toi, tu craquerais pour le pull de Ross ? 👇\n\n#marketing #friends #quince #nostalgie #davidschwimmer",
+          "bloquant": false
+        }
+      ],
+      "date": "2026-11-15T11:55:07.082Z",
+      "passage": 1
+    }
+  ]
+}

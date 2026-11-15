@@ -1,0 +1,173 @@
+{
+  "sujet": "Quince ressort le pull rouge de Ross (Friends) avec David Schwimmer",
+  "rubrique": "Le marketing derrière la culture pop",
+  "secteur": "Mode (e-commerce)",
+  "startup": true,
+  "statut": "publié",
+  "accroches": [
+    "Pourquoi Schwimmer court encore après un pull rouge ?",
+    "Le pull rouge de Ross est en vente.",
+    "Friends, un pull rouge et du cachemire."
+  ],
+  "theme": {
+    "brand": "Quince",
+    "source": "Couleurs relevées sur quince.com (texte #21201F, gris #EEEEEC, crème #E7E1D5, bouton de recherche #FFA273) + rouge du pull Coulis Red de la campagne",
+    "palettes": {
+      "rouge": {
+        "bg": "#A3141E",
+        "ink": "#FFFFFF",
+        "boxBg": "#21201F",
+        "boxInk": "#FFFFFF"
+      },
+      "creme": {
+        "bg": "#E7E1D5",
+        "ink": "#21201F",
+        "boxBg": "#A3141E",
+        "boxInk": "#FFFFFF"
+      },
+      "noir": {
+        "bg": "#21201F",
+        "ink": "#FFFFFF",
+        "boxBg": "#FFA273",
+        "boxInk": "#21201F"
+      },
+      "blanc": {
+        "bg": "#FFFFFF",
+        "ink": "#21201F",
+        "boxBg": "#21201F",
+        "boxInk": "#FFFFFF"
+      }
+    },
+    "sequence": [
+      "rouge",
+      "creme",
+      "noir",
+      "blanc",
+      "noir",
+      "creme",
+      "noir",
+      "rouge"
+    ]
+  },
+  "slides": [
+    {
+      "type": "hook",
+      "title": "Le pull rouge de Ross est en vente !!",
+      "highlight": [
+        "en vente"
+      ],
+      "cta": "On décrypte →",
+      "photo": {
+        "src": "images/campagne-quince.jpg",
+        "credit": "Quince",
+        "focusY": 0.2
+      }
+    },
+    {
+      "type": "quote",
+      "label": "Le clin d'œil",
+      "quote": "Un pull rouge et moi, ça remonte à loin.",
+      "attribution": "David Schwimmer (traduit)",
+      "body": "Friends, saison 8 : un pull rouge révèle que Ross est le père.",
+      "highlight": [
+        "un pull rouge"
+      ],
+      "photo": {
+        "src": "images/schwimmer-coulis-red.jpg",
+        "caption": "David Schwimmer en pull Coulis Red",
+        "credit": "Quince",
+        "focusY": 0.4
+      }
+    },
+    {
+      "type": "text",
+      "label": "L'idée",
+      "body": "Un film de 60 secondes : Schwimmer joue son propre rôle, cherche un pull rouge dans New York. Tout le monde l'a. Même le chien.",
+      "highlight": [
+        "Même le chien."
+      ],
+      "photo": {
+        "src": "images/film-taxi.jpg",
+        "caption": "Extrait du film « The Red Sweater »",
+        "credit": "Quince (YouTube)",
+        "focusY": 0.4
+      }
+    },
+    {
+      "type": "text",
+      "label": "Le produit",
+      "body": "Le pull homme Coulis Red, en cachemire : 69,90 $. Quince est né en 2019 avec un pull en cachemire à 50 $.",
+      "highlight": [
+        "69,90 $"
+      ],
+      "photo": {
+        "src": "images/pull-coulis-red-01.jpg",
+        "caption": "Le pull homme en Coulis Red",
+        "credit": "Quince",
+        "focusY": 0.35
+      }
+    },
+    {
+      "type": "text",
+      "label": "Le casting",
+      "body": "Le but n'était pas qu'une star valide la qualité. Schwimmer était déjà client : il portait un pull Quince à son premier échange avec l'équipe.",
+      "highlight": [
+        "déjà client"
+      ],
+      "photo": {
+        "src": "images/schwimmer-escaliers.jpg",
+        "caption": "Schwimmer a suivi le film du script au montage",
+        "credit": "Quince via The Drum",
+        "focusY": 0.3
+      }
+    },
+    {
+      "type": "list",
+      "label": "La mécanique",
+      "items": [
+        "Une scène culte que les fans reconnaissent tout de suite",
+        "Le produit des débuts remis en avant",
+        "Un film sur YouTube, un post Instagram commun, puis la TV connectée"
+      ],
+      "highlight": [
+        "Le produit des débuts"
+      ],
+      "photo": {
+        "src": "images/campagne-quince.jpg",
+        "caption": "La plus grosse campagne de Quince à ce jour",
+        "credit": "Quince",
+        "focusY": 0.35
+      }
+    },
+    {
+      "type": "stats",
+      "label": "Les chiffres",
+      "items": [
+        {
+          "value": "32 M+",
+          "text": "de clients actifs (États-Unis, Royaume-Uni, Canada)"
+        },
+        {
+          "value": "1 Md$+",
+          "text": "de chiffre d'affaires annuel, selon l'entreprise (mars 2026)"
+        },
+        {
+          "value": "10,1 Md$",
+          "text": "de valorisation après une levée de 500 M$ en mars 2026"
+        }
+      ],
+      "source": "Sources : communiqué Quince (9 nov. 2026), Digital Commerce 360 (16 mars 2026)"
+    },
+    {
+      "type": "outro",
+      "title": "Résultat ?",
+      "lesson": "La nostalgie attire. Un ambassadeur déjà client la rend crédible.",
+      "highlight": [
+        "déjà client"
+      ],
+      "conclusion": "Quince n'a pas cherché une caution, mais un vrai client.",
+      "cta": "Abonne-toi pour le prochain décryptage. Et toi, tu l'achèterais, ce pull ?"
+    }
+  ],
+  "publie": "2026-11-15"
+}

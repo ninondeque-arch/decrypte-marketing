@@ -1,0 +1,241 @@
+{
+  "date": "2026-11-15",
+  "sujets": [
+    {
+      "id": "quince-schwimmer-pull-rouge",
+      "type": "actu",
+      "sujet": "Quince ressort le pull rouge de Ross (Friends) avec David Schwimmer",
+      "angle": "Une marque de luxe abordable rejoue une scène culte de Friends : la nostalgie pour vendre du cachemire à 69,90 $, et un ambassadeur qui était déjà client",
+      "accroche": "Pourquoi tout le monde veut le pull de Ross ?",
+      "rubrique": "Pourquoi tu l'as acheté",
+      "secteur": "Mode",
+      "startup": true,
+      "actu": "Film « The Red Sweater » lancé le 9 novembre 2026 aux États-Unis, au Canada et au Royaume-Uni",
+      "pourquoi_maintenant": "Lancé cette semaine. C'est la plus grande campagne de Quince et sa première pub télé avec une célébrité, juste avant la saison des cadeaux",
+      "chiffres_cles": [
+        "film de 60 secondes",
+        "pull en cachemire de Mongolie à 69,90 $ (homme) et 129,90 $ (femme, oversize)",
+        "plus de 32 millions de clients actifs revendiqués aux États-Unis, au Royaume-Uni et au Canada",
+        "marque fondée en 2019, plus grande campagne de ses sept ans d'existence"
+      ],
+      "sources": [
+        {
+          "titre": "FashionUnited",
+          "url": "https://fashionunited.com/news/fashion/quince-launches-its-first-360-degree-campaign-david-schwimmer-fronts-holiday-film/2026110975645",
+          "date": "2026-11-09"
+        },
+        {
+          "titre": "Adweek",
+          "url": "https://www.adweek.com/creativity/david-schwimmer-chases-the-perfect-red-sweater-in-quinces-biggest-ever-campaign/",
+          "date": "2026-11-09"
+        }
+      ],
+      "potentiel": 5,
+      "post": "2026-11-06_quince-pull-rouge"
+    },
+    {
+      "id": "friend-pubs-metro-vandalisees",
+      "type": "culte",
+      "sujet": "Friend, la startup IA qui voulait que ses pubs soient vandalisées",
+      "angle": "Plus d'un million de dollars d'affiches dans le métro de New York, une ville qui « déteste l'IA » : les tags des passants ont fait la campagne",
+      "accroche": "Il a payé 1 million pour qu'on tague ses pubs",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Tech (IA, objets connectés)",
+      "startup": true,
+      "actu": "Septembre 2025, campagne dans le métro de New York",
+      "pourquoi_maintenant": "Le cas de référence de la « provocation assumée ». Les startups IA envahissent toujours le métro new-yorkais et leurs pubs sont détournées à leur tour",
+      "chiffres_cles": [
+        "plus d'un million de dollars dépensés en publicité dans le métro",
+        "plus de 11 000 affichettes dans les rames, plus de 1 000 affiches sur les quais et 130 panneaux urbains",
+        "pendentif vendu 129 $",
+        "1,8 million de dollars dépensés en 2024 pour le nom de domaine friend.com"
+      ],
+      "sources": [
+        {
+          "titre": "TechBuzz",
+          "url": "https://www.techbuzz.ai/articles/friend-ai-startup-bets-1m-on-nyc-subway-ads-despite-backlash",
+          "date": "2025-09-27"
+        },
+        {
+          "titre": "Wikipedia, Friend (product)",
+          "url": "https://en.wikipedia.org/wiki/Friend_(product)",
+          "date": "2026-11-10"
+        }
+      ],
+      "potentiel": 5
+    },
+    {
+      "id": "maybelline-maybe-miley",
+      "type": "actu",
+      "sujet": "Maybelline réécrit son slogan culte « Maybe she's born with it » avec Miley Cyrus",
+      "angle": "Toucher à un slogan de 35 ans sans perdre le jingle que tout le monde connaît : passer d'une question sur l'apparence à une affirmation de confiance",
+      "accroche": "Maybelline a changé son slogan de 1991",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Beauté",
+      "startup": false,
+      "actu": "Nouvelle plateforme « The Beauty of Infinite Possibility » annoncée le 10 novembre 2026",
+      "pourquoi_maintenant": "Changement définitif annoncé cette semaine, alors que la division grand public de L'Oréal ralentit",
+      "chiffres_cles": [
+        "slogan d'origine lancé en 1991",
+        "nouveau slogan : « Maybe. We're born with it. Maybe. It's Maybelline. »",
+        "selon McKinsey, plus de la moitié des sondés voient la beauté comme un moyen de prendre confiance, contre 26 % pour plaire ou paraître plus jeune",
+        "+4,3 % en données comparables pour la division produits grand public de L'Oréal au 3e trimestre"
+      ],
+      "sources": [
+        {
+          "titre": "Marketing Dive",
+          "url": "https://www.marketingdive.com/news/maybelline-updates-maybe-tagline-as-beauty-perceptions-evolve/874376/",
+          "date": "2026-11-11"
+        },
+        {
+          "titre": "Adweek",
+          "url": "https://www.adweek.com/creativity/maybelline-rewrites-its-35-year-old-tagline-for-gen-z/",
+          "date": "2026-11-10"
+        }
+      ],
+      "potentiel": 4,
+      "post": "2026-11-07_maybelline-maybe"
+    },
+    {
+      "id": "tropicana-emballage-2009",
+      "type": "culte",
+      "sujet": "Tropicana change son emballage et perd 20 % de ses ventes en deux mois",
+      "angle": "Retirer l'orange et la paille, c'est retirer le repère que les clients cherchaient en rayon : le packaging est un raccourci mental, pas une décoration",
+      "accroche": "Ils ont retiré une paille et perdu 30 millions",
+      "rubrique": "Le flop",
+      "secteur": "Boissons",
+      "startup": false,
+      "actu": "Janvier-février 2009, nouveau carton conçu par Arnell pour Tropicana Pure Premium (PepsiCo)",
+      "pourquoi_maintenant": "Le contre-exemple qu'on cite à chaque rebranding raté. Les marques qui changent de logo cette année rejouent la même erreur",
+      "chiffres_cles": [
+        "nouvel emballage lancé le 8 janvier 2009",
+        "ventes en baisse de 20 %, soit environ 30 millions de dollars",
+        "retour à l'ancien emballage annoncé le 23 février 2009",
+        "35 millions de dollars investis dans la campagne de pub du nouvel emballage"
+      ],
+      "sources": [
+        {
+          "titre": "The Branding Journal",
+          "url": "https://www.thebrandingjournal.com/2015/05/what-to-learn-from-tropicanas-packaging-redesign-failure/",
+          "date": "2015-05-01"
+        },
+        {
+          "titre": "Bloomberg",
+          "url": "https://www.bloomberg.com/news/articles/2009-04-02/tropicana-fiasco-from-arnell-is-gift-that-keeps-giving",
+          "date": "2009-04-02"
+        }
+      ],
+      "potentiel": 4
+    },
+    {
+      "id": "oreo-dunk-in-the-dark",
+      "type": "culte",
+      "sujet": "Oreo gagne le Super Bowl 2013 avec un tweet posté pendant la panne de courant",
+      "angle": "Pas une pub à 4 millions, mais une équipe prête à valider en quelques minutes : la naissance du marketing en temps réel",
+      "accroche": "Comment un tweet a battu les pubs du Super Bowl ?",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Food (biscuits)",
+      "startup": false,
+      "actu": "3 février 2013, coupure de courant au Superdome pendant le Super Bowl XLVII",
+      "pourquoi_maintenant": "Toujours le cas d'école du marketing en temps réel, que toutes les marques tentent de reproduire sur TikTok",
+      "chiffres_cles": [
+        "coupure de près d'une demi-heure au 3e quart-temps",
+        "plus de 15 000 retweets",
+        "plus de 19 000 likes et 6 500 partages sur Facebook",
+        "Instagram d'Oreo passé d'environ 2 200 à plus de 35 000 abonnés pendant le match",
+        "une dizaine de personnes dans la « war room » de l'agence 360i"
+      ],
+      "sources": [
+        {
+          "titre": "Digiday",
+          "url": "https://digiday.com/marketing/how-oreo-won-the-super-bowl-blackout/",
+          "date": "2013-02-03"
+        },
+        {
+          "titre": "Digiday (récit complet)",
+          "url": "https://digiday.com/marketing/oral-history-oreo-tweet/",
+          "date": "2017-02-03"
+        }
+      ],
+      "potentiel": 4
+    },
+    {
+      "id": "nuggs-for-carter",
+      "type": "culte",
+      "sujet": "#NuggsForCarter : un ado demande des nuggets à Wendy's et bat le record de retweets",
+      "angle": "Une marque qui répond avec humour à un inconnu et le laisse faire sa pub : le tweet le plus retweeté de l'époque, devant le selfie des Oscars",
+      "accroche": "Combien de retweets pour un an de nuggets ?",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Restauration rapide",
+      "startup": false,
+      "actu": "Avril-mai 2017",
+      "pourquoi_maintenant": "Le modèle du community management qui joue avec ses fans, repris par toutes les marques sur TikTok",
+      "chiffres_cles": [
+        "tweet de Carter Wilkerson, 16 ans, le 6 avril 2017",
+        "Wendy's fixe l'objectif à 18 millions de retweets",
+        "3,5 millions de retweets, record battu face au selfie d'Ellen DeGeneres aux Oscars 2014",
+        "100 000 $ donnés en son nom à la Dave Thomas Foundation for Adoption"
+      ],
+      "sources": [
+        {
+          "titre": "Marketing Dive",
+          "url": "https://www.marketingdive.com/news/wendys-fan-shatters-twitter-record-in-quest-for-chicken-nuggets/442373",
+          "date": "2017-05-10"
+        }
+      ],
+      "potentiel": 4
+    },
+    {
+      "id": "system1-pubs-noel-supermarches",
+      "type": "actu",
+      "sujet": "Pubs de Noël britanniques : les supermarchés raflent les meilleures notes, la pub IA de Coca-Cola reste dans le top 10",
+      "angle": "Pourquoi un film de supermarché donne plus envie d'acheter qu'une pub de luxe, et pourquoi une pub faite à l'IA, détestée en ligne, marche quand même",
+      "accroche": "La meilleure pub de Noël vient d'un supermarché",
+      "rubrique": "Pourquoi tu l'as acheté",
+      "secteur": "Grande distribution",
+      "startup": false,
+      "actu": "Classement System1 publié le 12 novembre 2026",
+      "pourquoi_maintenant": "Le « Super Bowl » publicitaire britannique bat son plein. Premier classement de la saison, avec le débat sur l'IA en toile de fond",
+      "chiffres_cles": [
+        "Morrisons et Sainsbury's en tête, à égalité avec 5,9 étoiles (le maximum)",
+        "les supermarchés occupent les 4 premières places et 7 des 12 du top",
+        "8 pubs sur 12 obtiennent la note maximale",
+        "« Holidays Are Coming (AI) » de Coca-Cola 9e avec 5,7 étoiles",
+        "première pub de Noël de Thatchers, avec Aardman, à 5,9 étoiles"
+      ],
+      "sources": [
+        {
+          "titre": "Advanced Television",
+          "url": "https://www.advanced-television.com/2026/11/12/analysis-morrisons-sainsburys-lead-in-most-effective-xmas-advert/",
+          "date": "2026-11-12"
+        }
+      ],
+      "potentiel": 3
+    },
+    {
+      "id": "audi-mouton-pikes-peak",
+      "type": "actu",
+      "sujet": "Audi refait monter Michèle Mouton à Pikes Peak pour vendre un SUV familial",
+      "angle": "Vendre un 7 places avec une légende du rallye : quand l'héritage sportif sert à rendre désirable une voiture de famille",
+      "accroche": "En 1985, elle a battu tous les hommes à Pikes Peak",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Auto",
+      "startup": false,
+      "actu": "Campagne « Performance Runs in the Family » pour le nouvel Audi Q7, présentée le 10 novembre 2026",
+      "pourquoi_maintenant": "Lancement cette semaine, avec un personnage français et une histoire de record méconnue",
+      "chiffres_cles": [
+        "spot télé de 30 secondes et court métrage de 4 minutes",
+        "Audi Quattro S1 de 493 chevaux",
+        "1985 : première femme à gagner Pikes Peak, en 11 min 25 s 390, 13 secondes de moins que le record d'Al Unser Jr."
+      ],
+      "sources": [
+        {
+          "titre": "Jalopnik",
+          "url": "https://www.jalopnik.com/2311606/michele-mouton-quattro-s1-pikes-peak-audi-new-q7-ad-campaign/",
+          "date": "2026-11-10"
+        }
+      ],
+      "potentiel": 3
+    }
+  ]
+}

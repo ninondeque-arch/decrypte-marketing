@@ -3,7 +3,7 @@
   "rubrique": "Le marketing derrière la culture pop",
   "secteur": "Beauté",
   "startup": false,
-  "statut": "prêt",
+  "statut": "publié",
   "accroches": [
     "Ton enfance Disney Channel coûte 50 $.",
     "Comment vendre un blush avec un téléfilm de 2009 ?",
@@ -168,5 +168,6 @@
       "conclusion": "Rare Beauty n'a rien inventé, sauf une raison de racheter son best-seller.",
       "cta": "Abonne-toi pour le prochain décryptage. Et toi, tu l'achètes pour le blush ou pour Delena ?"
     }
-  ]
+  ],
+  "publie": "2026-11-15"
 }
