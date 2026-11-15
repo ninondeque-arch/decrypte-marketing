@@ -9,3 +9,4 @@ posts/*/images/
 
 # Fichiers de travail temporaires
 .tmp-frames/
+.tmp-sources/
