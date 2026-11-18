@@ -55,6 +55,8 @@ const commands = {
     const dir = resolvePost(query);
     markPublished(dir);
     console.log(`✅ ${basename(dir)} marqué comme publié`);
+    const { pushPublishedPost } = await import('./publish/github.js');
+    pushPublishedPost(dir, { log: console.log }); // mise en ligne dans la démo
   },
 
   /** Relève les stats TikTok des posts publiés (Metricool) et régénère performances.md. */

@@ -5,7 +5,7 @@
 
 ![Aperçu d'un carrousel généré : Notion](posts/2026-11-05_notion-panneau-ia/apercu.png)
 
-**▶ Démo en ligne : [decrypte-marketing.vercel.app](https://decrypte-marketing.vercel.app)**. C'est le vrai studio en mode démo : mêmes écrans et données réelles, mais les actions qui appellent Claude, Metricool ou le moteur de rendu sont désactivées. Il est construit par `npm run demo:build` dans [`demo/`](demo/).
+**▶ Démo en ligne : [decrypte-marketing.vercel.app](https://decrypte-marketing.vercel.app)**. C'est le vrai studio en mode démo : mêmes écrans et données réelles, mais les actions qui appellent Claude, Metricool ou le moteur de rendu sont désactivées. Elle se met à jour toute seule : quand tu cliques sur **Marquer publié** dans le studio, le post part sur GitHub et Vercel reconstruit la démo (`npm run demo:build`) en une à deux minutes. Seuls les posts publiés y apparaissent, jamais un brouillon. De même, chaque veille que tu lances est envoyée sur GitHub une fois terminée, et ses sujets apparaissent dans la démo.
 
 *Exemple réel : pourquoi Notion s'affiche avec ses concurrents de l'IA sur un panneau sans un mot (octobre 2026). 8 slides, sources citées, photos de la campagne.*
 
@@ -153,7 +153,7 @@ Un post peut aussi être créé **à la main** : la structure est prête, il n'y
 |---|---|
 | `npm run studio` | Interface visuelle locale (veille, rédaction, retouche, envoi) |
 | `npm run studio:installer` | Lance le studio automatiquement à l'ouverture de session (`studio:desinstaller` pour annuler) |
-| `npm run demo:build` | Reconstruit la démo statique du studio dans `demo/` |
+| `npm run demo:build` | Construit la démo statique dans `demo/` (fait par Vercel à chaque push) |
 | `npm run veille` | Veille du jour en ligne de commande |
 | `/rediger <sujet>` *(Claude Code)* | Recherche, sources, visuels, thème de la marque, textes, rendu |
 | `/lot <n>` *(Claude Code)* | Propose des sujets d'actualité variés, puis prépare les posts choisis |
@@ -161,7 +161,7 @@ Un post peut aussi être créé **à la main** : la structure est prête, il n'y
 | `npm run juger -- <post>` | Relecture par l'agent juge (notes, corrections, `juge.json`) |
 | `npm run images -- <post>` | Contrôles + PNG 1080×1920 + compression + aperçus |
 | `npm run brouillon -- <post>` | Envoi du carrousel et de la légende dans la boîte de réception TikTok |
-| `npm run publie -- <post>` | Marque le post comme publié |
+| `npm run publie -- <post>` | Marque le post comme publié et le met en ligne dans la démo |
 | `npm run stats` | Stats TikTok des posts publiés (Metricool) → `stats.json` et `performances.md` |
 | `npm run calendrier` | Régénère `calendrier.md` |
 | `npm run tiktok:connexion` | Connexion OAuth (PKCE) |
@@ -188,7 +188,7 @@ Types de slides : `hook`, `text`, `quote`, `list`, `stats`, `outro`.
 ## Structure
 
 ```
-demo/               le studio en mode démo, statique (généré par npm run demo:build, déployé sur Vercel)
+demo/               le studio en mode démo, statique (construit par Vercel à chaque push, non versionné)
 .claude/commands/   veille.md, rediger.md, lot.md : les méthodes de veille, de recherche et de rédaction
 veille/             une veille par jour (JSON)
 assets/             polices (Anton, Inter, licence OFL), thème par défaut

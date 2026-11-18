@@ -13,6 +13,7 @@ import { createPost } from '../editorial/create.js';
 import { suggestCaptions } from '../agent/caption.js';
 import { assertJudged, judgePost, overrideJudgement, readJudgement } from '../agent/juge.js';
 import { scheduleOnTikTok } from '../publish/metricool.js';
+import { pushPublishedPost, pushVeille } from '../publish/github.js';
 import { readStats } from '../publish/stats.js';
 import { varietyAlerts, writeCalendar } from '../planning/calendar.js';
 import { listVeilles, loadVeille, runRediger, runVeille, today } from '../planning/veille.js';
@@ -55,7 +56,12 @@ function detail(dir) {
 
 // ---------- tâches Claude Code ----------
 function launchVeille(date = today()) {
-  return startJob({ kind: 'veille', label: `Veille du ${date}`, agent: true, meta: { date } }, log => runVeille({ date, onLog: log }));
+  return startJob({ kind: 'veille', label: `Veille du ${date}`, agent: true, meta: { date } }, async log => {
+    const result = await runVeille({ date, onLog: log });
+    // Mise en ligne dans la démo ; un échec d'envoi ne gâche pas la veille, déjà enregistrée
+    try { pushVeille(date, { log }); } catch (e) { log(`⚠️  Veille enregistrée, mais pas envoyée sur GitHub : ${e.message.split('\n')[0]}`); }
+    return result;
+  });
 }
 
 function launchRediger({ sujet, angle, sources, veille }) {
@@ -151,20 +157,13 @@ const routes = [
     return startJob({ kind: 'programmer', label: `Programmation TikTok : ${loadConfig(dir).sujet}`, agent: true, meta: { slug: basename(dir) } },
       log => scheduleOnTikTok(dir, { date, auto: !!auto, onLog: log }));
   }],
-  ['POST', /^\/api\/demo$/, () => {
-    if (isRunning(j => j.kind === 'demo')) throw httpError(409, 'La démo est déjà en cours de mise à jour');
-    return startJob({ kind: 'demo', label: 'Mise à jour de la démo en ligne' }, log => new Promise((resolve, reject) => {
-      log('Reconstruction du dossier demo/ avec tous les posts…');
-      execFile(process.execPath, [join(ROOT, 'src/demo/build.js')], { cwd: ROOT, maxBuffer: 10 * 1024 * 1024 }, (err, stdout, stderr) => {
-        if (err) return reject(new Error((stderr || err.message).trim().split('\n').at(-1)));
-        const msg = stdout.trim().split('\n').at(-1);
-        log(msg);
-        log('Il reste à faire Commit puis Push dans GitHub Desktop : Vercel se met à jour tout seul.');
-        resolve({ message: msg });
-      });
-    }));
+  ['POST', /^\/api\/posts\/([^/]+)\/publie$/, m => {
+    const dir = postDir(m[1]);
+    markPublished(dir);
+    // Mise en ligne dans la démo : le post part sur GitHub, Vercel reconstruit la démo
+    startJob({ kind: 'github', label: `Mise en ligne dans la démo : ${loadConfig(dir).sujet}`, meta: { slug: basename(dir) } }, async log => pushPublishedPost(dir, { log }));
+    return detail(dir);
   }],
-  ['POST', /^\/api\/posts\/([^/]+)\/publie$/, m => { const dir = postDir(m[1]); markPublished(dir); return detail(dir); }],
 
   ['GET', /^\/api\/veille$/, (m, req, url) => {
     const dates = listVeilles();

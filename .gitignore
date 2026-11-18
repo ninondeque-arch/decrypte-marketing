@@ -10,3 +10,6 @@ posts/*/images/
 # Fichiers de travail temporaires
 .tmp-frames/
 .tmp-sources/
+
+# Démo statique : construite par Vercel à chaque push (npm run demo:build)
+/demo/

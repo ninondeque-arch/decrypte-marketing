@@ -1,7 +1,6 @@
 // Construit demo/ : le vrai studio en version statique, avec les données réelles figées
 // et les actions payantes désactivées (déployé sur Vercel).
 // Usage : npm run demo:build
-import { execFileSync } from 'node:child_process';
 import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { basename, join } from 'node:path';
 import { ASSETS_DIR, ROOT } from '../config.js';
@@ -10,6 +9,7 @@ import { listPosts, loadConfig, postDate } from '../editorial/post.js';
 import { validatePost } from '../editorial/validate.js';
 import { toJpeg } from '../images/compress.js';
 import { varietyAlerts } from '../planning/calendar.js';
+import { writeZip } from './zip.js';
 import { listVeilles, loadVeille } from '../planning/veille.js';
 import { readStats } from '../publish/stats.js';
 
@@ -37,8 +37,10 @@ writeFileSync(join(OUT, 'index.html'), html);
 
 // Données réelles figées
 const posts = {};
+// Seuls les posts marqués « publié » apparaissent dans la démo : jamais de brouillon en ligne
 for (const dir of listPosts()) {
   const slug = basename(dir), cfg = loadConfig(dir);
+  if (cfg.statut !== 'publié') continue;
   const slides = cfg.slides.map((_, i) => join(dir, `slide-${i + 1}.png`));
   if (!slides.every(existsSync)) continue;
   mkdirSync(join(OUT, 'media', slug), { recursive: true });
@@ -49,7 +51,7 @@ for (const dir of listPosts()) {
   const files = [];
   for (const [i, s] of slides.entries()) { const j = join(tmp, `${slug}-${String(i + 1).padStart(2, '0')}.jpg`); await toJpeg(s, j); files.push(j); }
   if (existsSync(join(dir, 'legende.txt'))) { copyFileSync(join(dir, 'legende.txt'), join(tmp, 'legende.txt')); files.push(join(tmp, 'legende.txt')); }
-  execFileSync('zip', ['-j', '-q', join(OUT, 'telecharger', `${slug}.zip`), ...files]);
+  writeZip(join(OUT, 'telecharger', `${slug}.zip`), files);
   rmSync(tmp, { recursive: true });
   // Le lien Metricool est privé : retiré de la démo
   const config = structuredClone(cfg);
@@ -70,7 +72,11 @@ const data = {
   nextDate: null,
   today: veilleDates[0] ?? null,
   veilleDates,
-  veilles: Object.fromEntries(veilleDates.map(d => [d, loadVeille(d)])),
+  veilles: Object.fromEntries(veilleDates.map(d => {
+    const v = loadVeille(d);
+    for (const s of v?.sujets ?? []) if (s.post && !posts[s.post]) delete s.post; // post pas encore publié : pas de lien
+    return [d, v];
+  })),
 };
 writeFileSync(join(OUT, 'demo-data.js'), `window.DEMO_DATA = ${JSON.stringify(data).replace(/</g, '\\u003c')};\n`);
 console.log(`Démo construite dans demo/ : ${Object.keys(posts).length} posts, ${veilleDates.length} veille(s).`);

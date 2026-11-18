@@ -34,7 +34,6 @@
     }],
     ['POST', /^\/api\/veille$/, () => off('la veille (recherche par Claude)')],
     ['POST', /^\/api\/rediger$/, () => off('la rédaction automatique par Claude')],
-    ['POST', /^\/api\/demo$/, () => off('la mise à jour de la démo')],
     ['GET', /^\/api\/jobs$/, () => json([])],
     ['GET', /^\/api\/jobs\/.+$/, () => json({ error: 'Tâche inconnue' }, 404)],
   ];

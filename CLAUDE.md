@@ -27,6 +27,9 @@ Pas de page Réglages dans le studio : l'utilisatrice n'a rien à régler ni auc
 ## Agent juge (`src/agent/juge.js`)
 IA indépendante, session séparée, lecture seule : elle ne voit que les fichiers du post et ouvre les sources. 6 critères notés de 1 à 5, plus une phrase « Comparé aux posts qui ont marché : … » ; « validé » seulement si toutes les notes ≥ 4 et aucune correction bloquante (règle appliquée par le code). **3 passages maximum** : au-delà, on s'arrête et on liste les points restants.
 
+## Démo en ligne (Vercel)
+« Marquer publié » envoie sur GitHub le dossier du post et `calendrier.md` (rien d'autre), et une veille terminée envoie son `veille/<date>.json` ; Vercel reconstruit alors la démo (`npm run demo:build`), qui ne montre que les posts publiés. `demo/` n'est plus versionné.
+
 ## Ne jamais
 - Publier ou envoyer en brouillon sans validation humaine (juge validé ou « Valider quand même » dans le studio).
 - Modifier `juge.json` à la main, ni contourner le juge.
