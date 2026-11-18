@@ -11,7 +11,7 @@
 
   const routes = [
     ['GET', /^\/api\/posts$/, () => json({ posts: Object.values(posts).map(summary).reverse(), alerts: D.alerts, nextDate: D.nextDate })],
-    ['GET', /^\/api\/etat$/, () => json({ tiktokConfigure: false, tiktokConnecte: false, veilleHeure: 8 })],
+    ['GET', /^\/api\/etat$/, () => json({ tiktokConfigure: false, tiktokConnecte: false })],
     ['GET', /^\/api\/posts\/([^/]+)$/, m => (posts[m[1]] ? json(posts[m[1]]) : json({ error: 'Post inconnu' }, 404))],
     ['PUT', /^\/api\/posts\/([^/]+)$/, async (m, init) => {
       const p = posts[m[1]];
@@ -37,11 +37,6 @@
     ['POST', /^\/api\/demo$/, () => off('la mise à jour de la démo')],
     ['GET', /^\/api\/jobs$/, () => json([])],
     ['GET', /^\/api\/jobs\/.+$/, () => json({ error: 'Tâche inconnue' }, 404)],
-    ['GET', /^\/api\/reglages$/, () => json({ TIKTOK_CLIENT_KEY: '', TIKTOK_CLIENT_SECRET: '', TIKTOK_REDIRECT_URI: '', PAGES_BASE_URL: '', VEILLE_HEURE: '8' })],
-    ['GET', /^\/api\/tiktok$/, () => json({ cles: false, redirection: false, pages: false, connecte: false, compte: null, erreur: null })],
-    ['GET', /^\/api\/service$/, () => json({ installe: false })],
-    ['GET', /^\/api\/metricool$/, () => json(null)],
-    ['GET', /^\/api\/guide$/, () => json({ markdown: D.guide })],
   ];
 
   const realFetch = window.fetch.bind(window);
@@ -53,6 +48,6 @@
       const m = url.pathname.match(re);
       if (m && verb === method) return handler(m, init, url);
     }
-    return off('les réglages et connexions');
+    return off('cette action');
   };
 })();
