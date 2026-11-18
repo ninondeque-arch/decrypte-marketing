@@ -1,0 +1,182 @@
+{
+  "date": "2026-11-17",
+  "sujets": [
+    {
+      "id": "pepsi-harrier-jet",
+      "type": "culte",
+      "sujet": "Pepsi promet un avion de chasse dans une pub, un étudiant réunit 700 000 $ pour le réclamer",
+      "angle": "Comment une blague de fin de pub a fini devant un tribunal fédéral, et ce que ça dit des programmes de fidélité",
+      "accroche": "Il a envoyé 700 000 $ à Pepsi pour avoir un avion de chasse.",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Boissons",
+      "startup": false,
+      "actu": "Pub « Pepsi Stuff » de 1996, chèque envoyé le 28 mars 1996, jugement en faveur de PepsiCo en 1999",
+      "pourquoi_maintenant": "Histoire absurde et vraie, devenue un cas d'école en droit et en marketing ; le principe des points de fidélité achetables est toujours utilisé par les marques",
+      "chiffres_cles": [
+        "Harrier affiché à 7 millions de Pepsi Points",
+        "points achetables 10 cents l'unité",
+        "chèque de 700 008,50 $ envoyé avec 15 Pepsi Points",
+        "le prix du jet passé ensuite à 700 millions de points"
+      ],
+      "sources": [
+        { "titre": "Wikipedia – Leonard v. PepsiCo, Inc.", "url": "https://en.wikipedia.org/wiki/Leonard_v._Pepsico,_Inc.", "date": "" },
+        { "titre": "The Hustle – The time Pepsi got sued for a $33m fighter jet", "url": "https://thehustle.co/leonard-v-pepsi-harrier-jet-lawsuit", "date": "" },
+        { "titre": "FindLaw – Leonard v. PepsiCo (2d Cir.)", "url": "https://caselaw.findlaw.com/us-2nd-circuit/1082299.html", "date": "2000" }
+      ],
+      "potentiel": 5
+    },
+    {
+      "id": "dior-noel-soupcon-ia",
+      "type": "actu",
+      "sujet": "Le film de Noël de Dior soupçonné d'avoir été fait par IA",
+      "angle": "Un réalisateur culte, un dessin « fait main »… et une main à six doigts qui fait tout dérailler",
+      "accroche": "Pourquoi une main à six doigts embarrasse Dior ?",
+      "rubrique": "Le flop",
+      "secteur": "Mode et luxe",
+      "startup": false,
+      "actu": "Film « Les Couleurs de la nuit, par Christian Dior » de Sylvain Chomet dévoilé début novembre 2026, polémique relayée autour du 9 novembre",
+      "pourquoi_maintenant": "Le débat continue cette semaine dans la presse mode et marketing, en contraste avec la campagne dessinée à la main de Prada saluée au même moment",
+      "chiffres_cles": [
+        "un personnage montré avec six doigts",
+        "animation classique : 24 dessins par seconde selon une animatrice critique"
+      ],
+      "sources": [
+        { "titre": "FashionUnited – Dior animated film suspected of using AI", "url": "https://fashionunited.com/news/culture/dior-animated-film-suspected-of-using-ai-luxury-urged-to-prove-its-craftsmanship/2026110975639", "date": "2026-11-09" },
+        { "titre": "Fast Company – Dior holiday ad is triggering yet another AI debate", "url": "https://www.fastcompany.com/91636722/dior-holiday-ad-is-triggering-yet-another-ai-debate", "date": "2026-11" },
+        { "titre": "AV Club – Chomet says AI wasn't used for his Dior short", "url": "https://www.avclub.com/christian-diors-night-in-color-animated-short-alleged-ai-use", "date": "2026-11" }
+      ],
+      "potentiel": 5
+    },
+    {
+      "id": "tamagotchi-30-ans",
+      "type": "culte",
+      "sujet": "Le Tamagotchi fête ses 30 ans : 100 millions d'œufs vendus",
+      "angle": "Un animal virtuel qu'on peut laisser mourir : comment Bandai a vendu 10 millions d'unités en 8 mois au Japon",
+      "accroche": "Pourquoi tu pleurais pour un œuf en plastique ?",
+      "rubrique": "Pourquoi tu l'as acheté",
+      "secteur": "Jouets",
+      "startup": false,
+      "actu": "Lancé au Japon le 23 novembre 1996",
+      "pourquoi_maintenant": "30e anniversaire le 23 novembre 2026, avec boutique à Harajuku, collab Uniqlo et Roblox ; les ventes de produits dérivés ont été multipliées par environ 7 depuis 2019",
+      "chiffres_cles": [
+        "10 millions d'unités au Japon en 8 mois",
+        "100 millions d'unités expédiées dans le monde (au 31 juillet 2025)",
+        "ventes de produits dérivés multipliées par environ 7 en cinq ans depuis 2019",
+        "147 dépôts de marque dans 27 pays en 1997 face aux contrefaçons"
+      ],
+      "sources": [
+        { "titre": "Bandai Namco – Newsletter IR n°82, 30 ans de Tamagotchi", "url": "https://www.bandainamco.co.jp/en/ir/library/newsletter82_special.html", "date": "2025" },
+        { "titre": "The Star (AFP) – Nostalgia and new fans as Tamagotchi turns 30", "url": "https://www.thestar.com.my/aseanplus/aseanplus-news/2026/01/07/nostalgia-and-new-fans-as-tamagotchi-turns-30", "date": "2026-01-07" }
+      ],
+      "potentiel": 5
+    },
+    {
+      "id": "latin-mafia-annonce-appartement",
+      "type": "actu",
+      "sujet": "Latin Mafia annonce son single avec une fausse petite annonce d'appartement",
+      "angle": "Un numéro de téléphone qui était en fait la date de sortie : un teasing à zéro budget",
+      "accroche": "Ce numéro de téléphone cachait une date de sortie.",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Musique",
+      "startup": false,
+      "actu": "Single « Departamento » sorti le 12 novembre 2026 après une annonce « Se busca departamento » avec le numéro (+52) 12-11-2026",
+      "pourquoi_maintenant": "Sortie cette semaine, clip n°1 des tendances YouTube au Mexique le lendemain, cas analysé par Forbes le 13 novembre",
+      "chiffres_cles": [
+        "un repost de fan a dépassé 26 000 likes",
+        "seulement 3 posts Instagram avant la sortie",
+        "clip n°1 des tendances YouTube au Mexique le lendemain",
+        "1,2 million d'abonnés TikTok, aucun post TikTok pour le titre"
+      ],
+      "sources": [
+        { "titre": "Forbes via Yahoo – Latin Mafia's fan engagement masterclass", "url": "https://www.yahoo.com/entertainment/music/articles/latin-mafia-fan-engagement-masterclass-194459271.html", "date": "2026-11-13" }
+      ],
+      "potentiel": 4
+    },
+    {
+      "id": "netflix-find-the-thing",
+      "type": "actu",
+      "sujet": "Netflix montre un axolotl accro à Bridgerton dans sa nouvelle campagne",
+      "angle": "Pourquoi Netflix ne vend plus une série mais le plaisir de tomber sur celle qu'on n'attendait pas",
+      "accroche": "Pourquoi Netflix filme un vampire qui regarde Love Is Blind ?",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Streaming",
+      "startup": false,
+      "actu": "Campagne « Find the Thing You Never Knew You Needed » lancée le 10 novembre 2026 aux États-Unis, au Canada, au Brésil et en Espagne",
+      "pourquoi_maintenant": "Lancée il y a une semaine, avec trois films tournés en 35 mm (axolotl, astronaute, vampire) et une série sociale « Typecast »",
+      "chiffres_cles": [
+        "3 films tournés en 35 mm",
+        "4 pays de lancement"
+      ],
+      "sources": [
+        { "titre": "WERSM – Netflix turns unexpected obsessions into brilliant ads", "url": "https://wersm.com/netflix-unexpected-obsessions-creative-campaign/", "date": "2026-11-14" },
+        { "titre": "The Hollywood Reporter – Netflix launches new brand advertising campaign", "url": "https://www.hollywoodreporter.com/business/digital/netflix-launches-new-advertising-campaign-find-thing-1236751618/", "date": "2026-11-10" },
+        { "titre": "Marketing Dive – Netflix embraces 35mm film in international campaign", "url": "https://www.marketingdive.com/news/netflix-embraces-35mm-film-in-international-campaign/874237/", "date": "2026-11" }
+      ],
+      "potentiel": 4
+    },
+    {
+      "id": "hotmail-signature-virale",
+      "type": "culte",
+      "sujet": "Hotmail et la phrase en bas des mails qui a inventé le marketing viral",
+      "angle": "Une seule ligne ajoutée à chaque email a remplacé tout un budget pub",
+      "accroche": "Une phrase en bas d'un mail a rapporté 12 millions d'utilisateurs.",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Tech",
+      "startup": true,
+      "actu": "1996-1997 : signature « Get your free email at Hotmail » suggérée par l'investisseur Tim Draper",
+      "pourquoi_maintenant": "Origine du terme « marketing viral » (Red Herring, 1997) ; la mécanique est encore utilisée aujourd'hui (« Envoyé depuis mon iPhone », liens de parrainage)",
+      "chiffres_cles": [
+        "environ 12 millions d'utilisateurs en 18 mois"
+      ],
+      "sources": [
+        { "titre": "Knowledge at Wharton – Three marketing lessons from the Love Bug", "url": "https://knowledge.wharton.upenn.edu/article/three-marketing-lessons-from-the-love-bug/", "date": "" },
+        { "titre": "TechCrunch – PS: I Love You. Get Your Free Email at Hotmail", "url": "https://techcrunch.com/2009/10/18/ps-i-love-you-get-your-free-email-at-hotmail", "date": "2009-10-18" },
+        { "titre": "CNN Money / Red Herring – email", "url": "https://money.cnn.com/1998/05/18/redherring/redherring_email/index.htm", "date": "1998-05-18" }
+      ],
+      "potentiel": 4
+    },
+    {
+      "id": "stark-future-licorne-moto",
+      "type": "actu",
+      "sujet": "Stark Future, première licorne européenne de la moto électrique",
+      "angle": "Comment une startup de Barcelone est devenue la moto d'enduro la plus vendue au monde devant les thermiques",
+      "accroche": "Cette moto électrique vend plus que les motos à essence.",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Auto et moto",
+      "startup": true,
+      "actu": "Levée de plus de 150 M€ annoncée le 16 novembre 2026",
+      "pourquoi_maintenant": "Annonce d'hier ; la marque se dit rentable alors que d'autres acteurs (CAKE, Energica) ont échoué",
+      "chiffres_cles": [
+        "plus de 150 millions d'euros levés",
+        "valorisation de 1,2 milliard d'euros avant investissement",
+        "près de 50 % du marché allemand de l'enduro dès la première année",
+        "environ 5 % du marché tout-terrain, estimé à 3 milliards d'euros"
+      ],
+      "sources": [
+        { "titre": "PR Newswire – Stark Future boucle une levée de plus de 150 M€", "url": "https://www.prnewswire.com/news-releases/stark-future-boucle-une-levee-de-fonds-de-plus-de-150-millions-deuros-en-valeur-totale-de-transaction-alors-que-ses-motos-electriques-depassent-les-motos-thermiques-sur-la-scene-mondiale-302939743.html", "date": "2026-11-16" },
+        { "titre": "Cleanrider – Stark Future, première licorne de la moto électrique", "url": "https://www.cleanrider.com/actus/stark-future-150-millions-euros-premiere-licorne-moto-electrique/", "date": "2026-11-16" }
+      ],
+      "potentiel": 3
+    },
+    {
+      "id": "buffalo-wild-wings-cornichons",
+      "type": "actu",
+      "sujet": "Buffalo Wild Wings lance un menu entier au cornichon, margarita comprise",
+      "angle": "Pourquoi les chaînes de fast-food surfent toutes sur la folie du cornichon",
+      "accroche": "Tu boirais une margarita au cornichon ?",
+      "rubrique": "Pourquoi tu l'as acheté",
+      "secteur": "Food",
+      "startup": false,
+      "actu": "Menu en édition limitée lancé le 10 novembre 2026, juste avant la journée nationale du cornichon du 14 novembre",
+      "pourquoi_maintenant": "Lancement de la semaine, calé sur une journée mondiale très partagée sur les réseaux",
+      "chiffres_cles": [
+        "Pickle Margarita à 6 $",
+        "menu de 20 ailes à 17,99 $, seulement sur l'appli et le site"
+      ],
+      "sources": [
+        { "titre": "FSR Magazine – Buffalo Wild Wings announces new pickle lineup", "url": "https://www.fsrmagazine.com/industry-news/buffalo-wild-wings-announces-new-pickle-lineup/", "date": "2026-11-10" }
+      ],
+      "potentiel": 3
+    }
+  ]
+}

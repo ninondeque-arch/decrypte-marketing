@@ -158,7 +158,7 @@ async function renderVeille(r) {
 
   show(
     el('div', { class: 'page-head' },
-      el('div', {}, el('p', { class: 'eyebrow' }, 'Actualité et cas cultes du marketing · lancée quand tu veux'), el('h1', { class: 'page-title' }, 'Veille')),
+      el('div', {}, el('p', { class: 'eyebrow' }, 'Actualité et cas cultes du marketing'), el('h1', { class: 'page-title' }, 'Veille')),
       el('div', { class: 'page-actions' }, select,
         el('button', { class: 'btn btn-primary', type: 'button', disabled: !!running, onclick: launchVeille }, running ? 'Veille en cours…' : 'Lancer une veille'))),
     sujets.length ? el('div', { class: 'cards' }, cards)

@@ -1,0 +1,181 @@
+{
+  "date": "2026-11-16",
+  "sujets": [
+    {
+      "id": "spotify-wrapped",
+      "type": "culte",
+      "sujet": "Spotify Wrapped : le bilan annuel qui transforme les utilisateurs en panneaux publicitaires",
+      "angle": "Comment Spotify fait faire sa pub gratuitement chaque décembre à des centaines de millions de personnes avec leurs propres données",
+      "accroche": "Pourquoi tout le monde fait la pub de Spotify gratuitement en décembre ?",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Musique (streaming)",
+      "startup": false,
+      "actu": "Format lancé en 2016, record battu en décembre 2025",
+      "pourquoi_maintenant": "Wrapped 2026 tombe dans deux à trois semaines : le sujet arrive juste avant la vague de partages, et le mécanisme (le client devient le média) reste contre-intuitif",
+      "chiffres_cles": [
+        "plus de 200 millions d'utilisateurs engagés en 24 heures en 2025 (+19 % sur un an)",
+        "plus de 500 millions de partages le premier jour (+41 %)",
+        "en 2024, il avait fallu 62 heures pour atteindre 200 millions d'utilisateurs",
+        "245 millions d'utilisateurs engagés au total en 2024"
+      ],
+      "sources": [
+        { "titre": "Music Business Worldwide", "url": "https://www.musicbusinessworldwide.com/spotify-wrapped-campaign-hit-200m-engaged-users-in-24-hours-a-19-yoy-increase", "date": "2025-12-04" },
+        { "titre": "TechCrunch", "url": "https://techcrunch.com/2025/12/04/spotify-says-wrapped-2025-is-its-biggest-yet-with-200m-users-in-its-first-day", "date": "2025-12-04" }
+      ],
+      "potentiel": 5
+    },
+    {
+      "id": "pubs-ia-incontrolables",
+      "type": "actu",
+      "sujet": "Quand l'IA publicitaire fait des pubs toute seule : PIZZA-LA et Meta",
+      "angle": "Une chaîne de pizzas japonaise diffuse sur TikTok une pub d'anime générée par IA que personne n'a validée, pendant que l'IA de Meta ajoute des promos que les marques n'ont jamais lancées",
+      "accroche": "Cette pub, personne ne l'a faite. Et pourtant elle a été diffusée.",
+      "rubrique": "Le flop",
+      "secteur": "Tech (IA, publicité)",
+      "startup": false,
+      "actu": "Excuses de PIZZA-LA le 6 novembre 2026 (relayées par Dexerto le 8), bug des pubs IA de Meta rapporté le 12 novembre 2026",
+      "pourquoi_maintenant": "Deux incidents en une semaine montrent le revers des outils de pub automatisés que TikTok et Meta poussent à toutes les marques",
+      "chiffres_cles": [
+        "collaboration officielle PIZZA-LA x Dr. STONE du 1er octobre au 1er novembre",
+        "toute la publicité TikTok de PIZZA-LA suspendue",
+        "Meta revendique plus de 8 % de clics et 15,7 % de conversions en plus sur Facebook au T2 2026 grâce à son IA publicitaire"
+      ],
+      "sources": [
+        { "titre": "Dexerto", "url": "https://www.dexerto.com/food/japanese-pizza-chain-apologizes-after-tiktok-ai-tool-creates-unauthorized-dr-stone-ad-3425843/", "date": "2026-11-08" },
+        { "titre": "Marketing Dive", "url": "https://www.marketingdive.com/news/sociable-metas-ai-ads-included-unapproved-discounts/874525/", "date": "2026-11-12" }
+      ],
+      "potentiel": 5
+    },
+    {
+      "id": "gymshark-youtubers",
+      "type": "culte",
+      "sujet": "Gymshark : la marque née dans un garage qui a misé sur les YouTubeurs avant tout le monde",
+      "angle": "Un étudiant de 20 ans envoie ses vêtements de sport à ses idoles YouTube et en fait une entreprise valorisée plus d'un milliard",
+      "accroche": "Il livrait des pizzas. Il a créé une marque à 1 milliard.",
+      "rubrique": "Pourquoi tu l'as acheté",
+      "secteur": "Sport (mode, e-commerce)",
+      "startup": true,
+      "actu": "Fondée en 2012 à Birmingham, entrée de General Atlantic en août 2020",
+      "pourquoi_maintenant": "L'histoire fondatrice du marketing d'influence : une des premières marques à faire des créateurs son canal principal, bien avant que ce soit la norme",
+      "chiffres_cles": [
+        "ventes quotidiennes passées de 450 $ à 45 000 $ après l'envoi de vêtements gratuits aux influenceurs",
+        "125 influenceurs rémunérés en 2020",
+        "21 % du capital racheté par General Atlantic en 2020, valorisation de plus d'1 milliard de livres"
+      ],
+      "sources": [
+        { "titre": "Forbes Australia", "url": "https://www.forbes.com.au/news/billionaires/forbes-rich-list-gymshark-founder-ben-francis-rise-to-success/", "date": "2023" },
+        { "titre": "Wikipedia : Gymshark", "url": "https://en.wikipedia.org/wiki/Gymshark", "date": "2026" }
+      ],
+      "potentiel": 4
+    },
+    {
+      "id": "warby-parker-lancement",
+      "type": "culte",
+      "sujet": "Warby Parker atteint son objectif de ventes de la première année en trois semaines",
+      "angle": "Des lunettes à 95 $ vendues en ligne, un article dans GQ le jour du lancement, et une startup obligée de fermer les commandes",
+      "accroche": "Ils ont dû empêcher leurs clients d'acheter.",
+      "rubrique": "Pourquoi tu l'as acheté",
+      "secteur": "Retail (optique)",
+      "startup": true,
+      "actu": "Lancement le 15 février 2010",
+      "pourquoi_maintenant": "Cas d'école du lancement par la presse et de l'essai à domicile, qui a cassé un marché tenu par quelques géants",
+      "chiffres_cles": [
+        "objectif de ventes de la première année atteint en trois semaines",
+        "liste d'attente d'environ 20 000 clients pour l'essai à domicile",
+        "top 15 des modèles en rupture en quatre semaines"
+      ],
+      "sources": [
+        { "titre": "Total Retail", "url": "https://www.mytotalretail.com/aggregatedcontent/why-warby-parker-invited-20-000-customers-to-their-apartment", "date": "" },
+        { "titre": "NextShark", "url": "https://nextshark.com/warby-parker-co-founders", "date": "" }
+      ],
+      "potentiel": 4
+    },
+    {
+      "id": "oreo-noel-pere-noel-vengeur",
+      "type": "actu",
+      "sujet": "Oreo sort sa première pub de Noël en 5 ans : le Père Noël se venge d'un papa voleur de biscuits",
+      "angle": "Un Père Noël qui croque les cadeaux du père gourmand, écrit par le studio de Colin Jost (SNL) : l'humour plutôt que l'émotion pour Noël",
+      "accroche": "Le Père Noël se venge : ne touchez plus jamais à ses Oreo.",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Food",
+      "startup": false,
+      "actu": "Campagne « Santa's Favorite Cookie » annoncée le 12 novembre 2026",
+      "pourquoi_maintenant": "Face aux pubs de Noël larmoyantes, Oreo prend le contre-pied comique ; diffusée sur TikTok, Meta, Snapchat et la TV connectée",
+      "chiffres_cles": [
+        "première nouvelle création de Noël en 5 ans",
+        "versions de 15 et 30 secondes",
+        "chiffre d'affaires organique de Mondelez +2,1 % au T3, volumes +1,8 %"
+      ],
+      "sources": [
+        { "titre": "Marketing Dive", "url": "https://www.marketingdive.com/news/oreo-refreshes-holiday-creative-with-spin-on-santas-milk-and-cookies/874493/", "date": "2026-11-12" }
+      ],
+      "potentiel": 4
+    },
+    {
+      "id": "carnival-twitch-ijustine",
+      "type": "actu",
+      "sujet": "Carnival transforme une croisière en jeu vidéo en direct sur Twitch",
+      "angle": "Une compagnie de croisières dont le client moyen a 45,8 ans confie son paquebot à la streameuse iJustine et laisse les spectateurs choisir les quêtes",
+      "accroche": "Une croisière pilotée par le chat Twitch ?",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Voyage",
+      "startup": false,
+      "actu": "Livestream « Play Carnival » diffusé le 15 novembre 2026 sur Twitch, Instagram et TikTok",
+      "pourquoi_maintenant": "Diffusé hier, il illustre la course des marques vieillissantes vers le gaming pour rajeunir leur clientèle",
+      "chiffres_cles": [
+        "âge moyen du croisiériste américain : 45,8 ans",
+        "22,4 millions d'Américains attendus en croisière en 2027 (+3,6 %)",
+        "bénéfice net de 1,9 milliard de dollars au T3",
+        "près de 55 000 abonnés Twitch pour iJustine"
+      ],
+      "sources": [
+        { "titre": "Marketing Dive", "url": "https://www.marketingdive.com/news/carnival-gamifies-cruise-experience-via-interactive-twitch-livestream/874033/", "date": "2026-11-11" },
+        { "titre": "Cruise Industry News", "url": "https://cruiseindustrynews.com/cruise-news/2026/11/carnival-launches-interactive-twitch-livestream-on-celebration/", "date": "2026-11" }
+      ],
+      "potentiel": 4
+    },
+    {
+      "id": "johnnie-walker-sabrina-carpenter",
+      "type": "actu",
+      "sujet": "Johnnie Walker fait marcher Sabrina Carpenter devant la caméra de Damien Chazelle",
+      "angle": "Le réalisateur de La La Land réinvente le « Striding Man » avec une pop star qui avouait ne pas aimer le whisky : séduire une génération qui boit moins",
+      "accroche": "Pourquoi une marque de whisky paie le réalisateur de La La Land ?",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Spiritueux",
+      "startup": false,
+      "actu": "Film « Keep Walking » d'une minute dévoilé le 10 novembre 2026",
+      "pourquoi_maintenant": "Sortie cette semaine, avec le cocktail signature « Go Go Highball » et une bouteille Black Label en édition limitée en Europe, Australie et Amérique du Nord",
+      "chiffres_cles": [
+        "film d'une minute",
+        "partenariat pluriannuel commencé en 2025"
+      ],
+      "sources": [
+        { "titre": "Maxim", "url": "https://www.maxim.com/entertainment/sabrina-carpenter-serves-her-best-johnnie-walker-stride-in-new-damien-chazelle-directed-short/", "date": "2026-11-10" },
+        { "titre": "Creative Boom", "url": "https://www.creativeboom.com/news/this-french-new-wave-take-on-sabrina-carpenter-is-genius-in-a-bottle/", "date": "2026-11-11" }
+      ],
+      "potentiel": 3
+    },
+    {
+      "id": "welchs-microdrama-disney-channel",
+      "type": "actu",
+      "sujet": "Welch's réunit des stars de Disney Channel dans un microdrama de Noël sur TikTok",
+      "angle": "La génération qui regardait Disney Channel devient parent : Welch's lui vend du jus pétillant avec une série verticale en 5 épisodes",
+      "accroche": "Les stars de Disney Channel sont de retour… pour vendre du jus de raisin.",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Boissons",
+      "startup": false,
+      "actu": "Campagne annoncée le 9 novembre 2026, épisodes du 17 novembre au 8 décembre",
+      "pourquoi_maintenant": "Le premier épisode sort demain ; le microdrama est le format que les marques s'arrachent en 2026",
+      "chiffres_cles": [
+        "5 épisodes du 17 novembre au 8 décembre",
+        "3 des 4 agences de 2025 remplacées",
+        "plus de 6,5 milliards de vues de microdramas sur YouTube au 1er semestre 2026"
+      ],
+      "sources": [
+        { "titre": "DesignRush", "url": "https://news.designrush.com/welchs-before-the-toast-accenture-song-holiday-campaign", "date": "2026-11-09" },
+        { "titre": "Marketing Dive", "url": "https://www.marketingdive.com/news/welchs-holiday-microdrama-embraces-y2k-nostalgia-as-gen-z-become-parents/874453/", "date": "2026-11-12" }
+      ],
+      "potentiel": 3
+    }
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "date": "2026-11-18",
+  "sujets": [
+    {
+      "id": "kfc-popeyes-gta6-sans-licence",
+      "type": "actu",
+      "sujet": "GTA VI sort demain : KFC organise un faux enterrement, Popeyes crée un sandwich « Spice City »",
+      "angle": "Comment les marques de fast-food surfent sur le plus gros lancement de l'année sans être partenaires (sauf Popeyes), pendant que Rockstar ouvre de vrais Burger Shot et Cluckin' Bell à Miami",
+      "accroche": "Pourquoi KFC organise un enterrement le jour de la sortie de GTA ?",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Food (fast-food)",
+      "startup": false,
+      "actu": "KFC Australie annonce le 15 novembre 2026 les funérailles fictives d'« Ann Alibi » le 19 novembre ; Popeyes lance son Spice City Sandwich du 19 au 22 novembre",
+      "pourquoi_maintenant": "GTA VI sort le 19 novembre 2026, le sujet de la semaine sur les réseaux ; les marques se battent pour l'attention autour d'un jeu à plus de 12 millions de précommandes",
+      "chiffres_cles": [
+        "Funérailles fictives le jeudi 19 novembre à 11 h, en direct sur Instagram depuis le KFC de Robina (Gold Coast)",
+        "Spice City Sandwich disponible 4 jours, du 19 au 22 novembre, dans tous les Popeyes américains",
+        "Plus de 12 millions de précommandes de GTA VI au 13 novembre (estimation Sensor Tower)",
+        "Un menu burger-frites-boisson à plus de 37 $ au Burger Shot du Kaseya Center, selon un fan"
+      ],
+      "sources": [
+        {
+          "titre": "TweakTown - KFC is hosting a fake funeral in Australia so people can take the day off for GTA 6",
+          "url": "https://www.tweaktown.com/news/114693/kfc-is-hosting-a-fake-funeral-in-australia-so-people-can-take-the-day-off-for-gta-6/index.html",
+          "date": "2026-11-15"
+        },
+        {
+          "titre": "Dexerto - Popeyes celebrates GTA 6 launch with Spice City sandwich",
+          "url": "https://www.dexerto.com/food/popeyes-celebrates-gta-6-launch-with-spice-city-sandwich-packed-with-double-chicken-3427539/",
+          "date": "2026-11-12"
+        },
+        {
+          "titre": "Dexerto - GTA's Burger Shot & Cluckin' Bell are now real in Miami",
+          "url": "https://www.dexerto.com/gta/gtas-burger-shot-cluckin-bell-are-now-real-in-miami-ahead-of-gta-6-3420945/",
+          "date": "2026-10-22"
+        },
+        {
+          "titre": "CNBC - How Rockstar's GTA VI release could reshape gaming, streaming and even paid time off",
+          "url": "https://www.cnbc.com/2026/11/14/gta-6-grand-theft-auto-launch.html",
+          "date": "2026-11-14"
+        }
+      ],
+      "potentiel": 5
+    },
+    {
+      "id": "lebron-bron-pub-ia",
+      "type": "actu",
+      "sujet": "LeBron James attaque en justice une startup qui l'a recréé en IA dans sa pub",
+      "angle": "Bron, startup passée par Y Combinator, aurait cherché la polémique et traité la violation du droit à l'image « comme une dépense marketing » ; le buzz se transforme en procès",
+      "accroche": "Cette startup a fait jouer LeBron dans sa pub… sans lui demander",
+      "rubrique": "Le flop",
+      "secteur": "IA / paris sportifs",
+      "startup": true,
+      "actu": "Plainte déposée le 17 novembre 2026 devant le tribunal fédéral de New York contre PlayVision (app Bron) et ses cofondateurs",
+      "pourquoi_maintenant": "Procès annoncé cette semaine, en plein débat sur les pubs générées par IA et l'utilisation de l'image des célébrités",
+      "chiffres_cles": [
+        "Environ 1 million de vues sur X en une journée pour la pub IA",
+        "Mise en demeure envoyée le 5 novembre 2026",
+        "Startup issue de la promotion automne 2025 de Y Combinator"
+      ],
+      "sources": [
+        {
+          "titre": "CNBC - LeBron James sues startup over viral AI ad allegedly exploiting his likeness",
+          "url": "https://www.cnbc.com/2026/11/18/lebron-james-startup-ai-lawsuit.html",
+          "date": "2026-11-17"
+        }
+      ],
+      "potentiel": 5
+    },
+    {
+      "id": "de-beers-diamond-is-forever",
+      "type": "culte",
+      "sujet": "De Beers a inventé la bague de fiançailles en diamant avec quatre mots",
+      "angle": "« A Diamond Is Forever » : comment un slogan de 1947 a transformé une pierre en obligation sociale et fixé la règle des « mois de salaire »",
+      "accroche": "Pourquoi ta bague de fiançailles a un diamant ?",
+      "rubrique": "Pourquoi tu l'as acheté",
+      "secteur": "Joaillerie",
+      "startup": false,
+      "actu": "Slogan écrit en 1947 par Frances Gerety (agence N. W. Ayer) pour De Beers",
+      "pourquoi_maintenant": "Une tradition que tout le monde croit ancestrale alors qu'elle sort d'une agence de pub ; histoire contre-intuitive, idéale avant la saison des demandes en mariage de Noël",
+      "chiffres_cles": [
+        "Classé slogan n°1 du XXe siècle par Advertising Age en 1999",
+        "Environ 10 % des bagues de fiançailles avaient un diamant en 1938, 80 % en 1990",
+        "Règle d'un mois de salaire dans les années 1970-1980, puis deux à trois mois"
+      ],
+      "sources": [
+        {
+          "titre": "Sotheby's - How De Beers Changed the Diamond Market with One Simple Tagline",
+          "url": "https://www.sothebys.com/en/articles/how-de-beers-changed-the-diamond-market-with-one-simple-tagline",
+          "date": "2026-06-01"
+        },
+        {
+          "titre": "Tweak Your Biz - When De Beers hired N.W. Ayer in 1938…",
+          "url": "https://tweakyourbiz.com/posts/tyb-when-de-beers-hired-n-w-ayer-in-1938-only-about-10-percent-of-engagement-rings-contained-a-diamond-the-four-word-slogan-frances-gerety-wrote-in-1947-helped-push-that-number-to-80-percent-by-1990",
+          "date": ""
+        }
+      ],
+      "potentiel": 5
+    },
+    {
+      "id": "zelda-ocarina-remake-nostalgie",
+      "type": "actu",
+      "sujet": "Le remake de Zelda: Ocarina of Time se vend à 5,2 millions d'exemplaires en 4 jours",
+      "angle": "Pourquoi un jeu de 1998 se vend plus vite que n'importe quelle nouveauté Switch 2 : la nostalgie comme argument de vente",
+      "accroche": "Pourquoi tu as racheté un jeu sorti en 1998 ?",
+      "rubrique": "Pourquoi tu l'as acheté",
+      "secteur": "Jeux vidéo",
+      "startup": false,
+      "actu": "Sortie le 5 novembre 2026, chiffres annoncés par Nintendo le 11 novembre 2026",
+      "pourquoi_maintenant": "Record de lancement sur Switch 2 annoncé il y a une semaine, juste avant la sortie de GTA VI",
+      "chiffres_cles": [
+        "Plus de 5,2 millions d'exemplaires vendus dans le monde en 4 jours",
+        "810 000 exemplaires vendus au Japon",
+        "L'original avait atteint 7,6 millions de ventes au total sur Nintendo 64"
+      ],
+      "sources": [
+        {
+          "titre": "Video Games Chronicle - Ocarina of Time remake sold 5.2 million in its first four days, Nintendo says",
+          "url": "https://www.videogameschronicle.com/news/the-legend-of-zelda-ocarina-of-time-remake-sold-5-2-million-in-its-first-four-days-nintendo-says/",
+          "date": "2026-11-11"
+        },
+        {
+          "titre": "Shacknews - Ocarina of Time has sold 5.2 million units in four days",
+          "url": "https://shacknews.com/article/151327/legend-of-zelda-5-2-million-sales-four-days",
+          "date": "2026-11-11"
+        }
+      ],
+      "potentiel": 4
+    },
+    {
+      "id": "logitech-jour-off-gta6",
+      "type": "actu",
+      "sujet": "Logitech offre un jour de congé à ses 7 000 salariés pour jouer à GTA VI",
+      "angle": "Un avantage RH devenu coup de com' mondial : Logitech G s'invite dans la sortie de GTA sans dépenser en pub",
+      "accroche": "Cette entreprise paie ses salariés pour jouer à GTA",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Tech (périphériques gaming)",
+      "startup": false,
+      "actu": "Annonce relayée par Fortune le 10 novembre 2026, pour le jour de sortie de GTA VI le 19 novembre",
+      "pourquoi_maintenant": "Le « Logi Game Day » tombe demain avec la sortie de GTA VI ; l'annonce a été reprise par la presse du monde entier",
+      "chiffres_cles": [
+        "7 000 salariés concernés dans le monde",
+        "18 % des salariés américains prévoient de poser leur journée pour la sortie",
+        "Demandes de congés près de 13 % plus élevées les jours comparables (BambooHR)",
+        "Jusqu'à 1 milliard de dollars de productivité perdue, selon un économiste"
+      ],
+      "sources": [
+        {
+          "titre": "Fortune - Logitech gaming day off ahead of Grand Theft Auto VI release",
+          "url": "https://fortune.com/2026/11/10/logitech-gaming-day-off-ahead-of-grand-theft-auto-six-release-ceo-hanneke-faber-boost-productivity/",
+          "date": "2026-11-10"
+        }
+      ],
+      "potentiel": 4
+    },
+    {
+      "id": "dropbox-parrainage",
+      "type": "culte",
+      "sujet": "Dropbox passe de 100 000 à 4 millions d'utilisateurs en 15 mois grâce au parrainage",
+      "angle": "Pas de pub : de l'espace de stockage gratuit pour le parrain et le filleul, la boucle virale devenue modèle de toutes les startups",
+      "accroche": "Comment Dropbox a multiplié ses utilisateurs par 40 sans pub ?",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Tech (logiciel)",
+      "startup": true,
+      "actu": "Programme de parrainage lancé en 2008-2010",
+      "pourquoi_maintenant": "Le cas d'école du « growth hacking », copié par Uber, Revolut ou Airbnb ; une mécanique simple que tout le monde a déjà utilisée",
+      "chiffres_cles": [
+        "De 100 000 à 4 millions d'utilisateurs en 15 mois (+3 900 %)",
+        "500 Mo offerts au parrain et au filleul",
+        "Jusqu'à 16 Go gagnables par parrainage"
+      ],
+      "sources": [
+        {
+          "titre": "Prefinery - Dropbox Referral Program: 3900% Growth Study",
+          "url": "https://prefinery.com/blog/dropbox-referral-program-3900percent-growth-study/",
+          "date": "2025-01-12"
+        }
+      ],
+      "potentiel": 4
+    },
+    {
+      "id": "elf-dial-0-ceo",
+      "type": "actu",
+      "sujet": "e.l.f. Beauty « fait fuiter » le numéro de téléphone de son PDG",
+      "angle": "Rendre un rapport RSE intéressant : une hotline directe vers le PDG Tarang Amin pour parler des causes qui comptent pour les clientes",
+      "accroche": "Cette marque a donné le numéro de son PDG à tout Internet",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Beauté",
+      "startup": false,
+      "actu": "Campagne « Dial 0 for Zero Distance » lancée le 10 novembre 2026, appels en direct avec le PDG le 13 novembre",
+      "pourquoi_maintenant": "Opération de la semaine, avec un live LinkedIn et Twitch prévu le 19 novembre",
+      "chiffres_cles": [
+        "6 causes au choix pour laisser un message vocal au PDG",
+        "Appels en direct avec Tarang Amin le 13 novembre, pendant 3 heures"
+      ],
+      "sources": [
+        {
+          "titre": "Cosmetics Business - e.l.f. Beauty leaks CEO Tarang Amin's number",
+          "url": "https://cosmeticsbusiness.com/e-l-f-beauty-leaks-ceo-tarang-amin-number",
+          "date": "2026-11-10"
+        },
+        {
+          "titre": "e.l.f. Beauty - communiqué Dial 0 for Zero Distance",
+          "url": "https://investor.elfbeauty.com/stock-and-financial/press-releases/landing-news/2026/11-12-2026-050123361",
+          "date": "2026-11-12"
+        }
+      ],
+      "potentiel": 3
+    },
+    {
+      "id": "blendtec-will-it-blend",
+      "type": "culte",
+      "sujet": "Blendtec mixe un iPhone et multiplie ses ventes par 8 avec 50 $ de budget",
+      "angle": "Un fondateur en blouse blanche qui broie billes, râteaux et iPhone : la série YouTube « Will It Blend? » qui a inventé la vidéo produit virale",
+      "accroche": "Il a mis un iPhone dans un mixeur. Ses ventes ont explosé.",
+      "rubrique": "Le marketing derrière la culture pop",
+      "secteur": "Électroménager",
+      "startup": false,
+      "actu": "Série lancée le 30 octobre 2006, épisodes iPhone et iPad en 2007-2010, arrêtée en 2020",
+      "pourquoi_maintenant": "L'ancêtre des formats TikTok « est-ce que ça résiste ? » ; 20 ans après, la recette (démonstration absurde du produit) marche toujours",
+      "chiffres_cles": [
+        "Budget de départ d'environ 50 $ (blouse, billes, râteau…)",
+        "+700 % de ventes de mixeurs, selon le directeur marketing George Wright",
+        "Série diffusée de 2006 à 2020"
+      ],
+      "sources": [
+        {
+          "titre": "BYU Y Magazine - Will It Blend?",
+          "url": "https://magazine.byu.edu/article/will-it-blend",
+          "date": ""
+        },
+        {
+          "titre": "ClickZ - Mashup: 200 PR Execs, One Blender",
+          "url": "https://clickz.com/mashup-200-pr-execs-one-blender/86409/",
+          "date": ""
+        },
+        {
+          "titre": "Wikipedia - Will It Blend?",
+          "url": "https://en.wikipedia.org/wiki/Will_It_Blend%3F",
+          "date": ""
+        }
+      ],
+      "potentiel": 3
+    }
+  ]
+}
