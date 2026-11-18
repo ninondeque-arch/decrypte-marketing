@@ -1,5 +1,5 @@
 // Démarrage automatique du studio à l'ouverture de session (macOS, launchd).
-// Le studio reste alors disponible sur http://localhost:4321 comme un site, et lance la veille chaque matin.
+// Le studio reste alors disponible sur http://localhost:4321 comme un site.
 import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { homedir, userInfo } from 'node:os';

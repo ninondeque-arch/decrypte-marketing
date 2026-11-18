@@ -83,7 +83,7 @@ const commands = {
   /** Démarre le studio automatiquement à chaque ouverture de session (macOS). */
   async 'studio-installer'() {
     const { install } = await import('./studio/service.js');
-    console.log(`✅ Studio installé (${install()}).\n   Il tourne en permanence sur http://localhost:4321 et fait la veille chaque matin.`);
+    console.log(`✅ Studio installé (${install()}).\n   Il tourne en permanence sur http://localhost:4321.`);
   },
 
   async 'studio-desinstaller'() {
@@ -93,6 +93,13 @@ const commands = {
   },
 
   async 'tiktok-connexion'() { await login(); },
+
+  /** Vérifie que Metricool est relié au compte TikTok (utilisé pour programmer les posts). */
+  async 'metricool-verification'() {
+    const { checkMetricool } = await import('./publish/metricool.js');
+    const r = await checkMetricool({ onLog: console.log });
+    console.log(r.tiktok ? `✅ Metricool relié au compte TikTok ${r.tiktok}` : '⚠️  Aucun compte TikTok relié dans Metricool (app.metricool.com)');
+  },
 
   /** Copie le fichier de vérification TikTok à la racine du site GitHub Pages. */
   async 'tiktok-verification'([file]) {

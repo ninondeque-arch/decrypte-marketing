@@ -96,10 +96,10 @@ export function logout() { if (existsSync(TOKENS_FILE)) rmSync(TOKENS_FILE); }
 
 /** Jeton d'accès valide, renouvelé automatiquement s'il expire dans moins de 5 minutes. */
 export async function accessToken() {
-  if (!existsSync(TOKENS_FILE)) throw new Error('Pas encore connecté à TikTok : va dans Réglages > Se connecter à TikTok');
+  if (!existsSync(TOKENS_FILE)) throw new Error('Pas encore connecté à TikTok : lance « npm run tiktok:connexion » (voir guides/tiktok.md)');
   let tokens = JSON.parse(readFileSync(TOKENS_FILE, 'utf8'));
   if (Date.now() > tokens.expires_at - 5 * 60_000) {
-    if (Date.now() > tokens.refresh_expires_at) throw new Error('Connexion TikTok expirée : reconnecte-toi dans Réglages');
+    if (Date.now() > tokens.refresh_expires_at) throw new Error('Connexion TikTok expirée : relance « npm run tiktok:connexion »');
     tokens = await tokenRequest({ grant_type: 'refresh_token', refresh_token: tokens.refresh_token });
   }
   if (!tokens.scope?.includes('video.upload')) throw new Error('Le droit video.upload n\'a pas été accordé : vérifie la configuration de l\'appli puis reconnecte-toi.');

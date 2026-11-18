@@ -124,9 +124,9 @@ npm run studio              # http://localhost:4321
 npm run studio:installer    # (une fois) démarrage automatique à chaque session macOS
 ```
 
-Le studio est le point d'entrée quotidien, sans terminal. Trois pages :
+Le studio est le point d'entrée quotidien, sans terminal. Deux pages :
 
-- **Veille.** Chaque matin, 8 sujets d'actualité et cas cultes, liés au marketing ou aux réseaux sociaux, avec leur angle, leurs chiffres, leurs sources et leur note « 18-25 ans » justifiée. **Générer le slideshow** lance recherche, rédaction et rendu (5 à 15 min).
+- **Veille.** Quand tu cliques sur « Lancer une veille », 8 sujets d'actualité et cas cultes, liés au marketing ou aux réseaux sociaux, avec leur angle, leurs chiffres, leurs sources et leur note « 18-25 ans » justifiée. **Générer le slideshow** lance recherche, rédaction et rendu (5 à 15 min).
 - **Posts.** La galerie des carrousels avec leur couverture, filtrable par statut, plus les alertes de variété du fil. Chaque post a sa page :
   - **Slides** : aperçu avec les zones TikTok, et un éditeur par slide (textes avec compteur de mots, variantes d'accroche, mots mis en valeur, visuels importés par glisser-déposer, cadrage, couleurs). Les slides s'ajoutent, se dupliquent, se déplacent et se suppriment. **Enregistrer et générer** (⌘S).
   - **Légende** : modifiable librement, ou **✨ Proposer 3 légendes** écrites par Claude à partir des slides.
@@ -135,7 +135,10 @@ Le studio est le point d'entrée quotidien, sans terminal. Trois pages :
   - **Relecture du juge** : verdict, note et justification par critère, comparaison aux posts qui ont marché, corrections proposées, nombre de passages. **Faire relire par le juge** lance la relecture (suivie dans le journal d'activité) ; **Valider quand même** enregistre ta validation si tu n'es pas d'accord avec le juge.
   - **Infos et couleurs** : rubrique, secteur, statut, et palettes de la marque avec sélecteurs de couleur et contrôle de lisibilité.
   - **Envoyer en brouillon** et **Marquer publié**.
-- **Réglages.** La connexion TikTok en 3 étapes (clés, site GitHub Pages, bouton « Se connecter à TikTok »), l'heure de la veille et le démarrage automatique du studio.
+
+**Rien à régler au quotidien.** La programmation et les stats passent par le connecteur Metricool de Claude, déjà relié au compte TikTok, et la veille se lance d'un clic depuis le studio. Pour les développeurs seulement, les options avancées se trouvent dans `.env` (voir `.env.example`) :
+- l'envoi direct dans la boîte de réception TikTok ([guides/tiktok.md](guides/tiktok.md)) ;
+- le démarrage automatique du studio (`npm run studio:installer`).
 
 Un post peut aussi être créé **à la main** : la structure est prête, il n'y a plus qu'à écrire et importer les images. Le panneau **Activité** suit en direct les tâches de Claude.
 
@@ -162,6 +165,7 @@ Un post peut aussi être créé **à la main** : la structure est prête, il n'y
 | `npm run stats` | Stats TikTok des posts publiés (Metricool) → `stats.json` et `performances.md` |
 | `npm run calendrier` | Régénère `calendrier.md` |
 | `npm run tiktok:connexion` | Connexion OAuth (PKCE) |
+| `npm run metricool:verification` | Vérifie que Metricool est relié au compte TikTok |
 
 `<post>` peut être un morceau du nom de dossier : `norway` suffit.
 

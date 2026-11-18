@@ -24,6 +24,7 @@
     "calendrier": "node src/cli.js calendrier",
     "tiktok:connexion": "node src/cli.js tiktok-connexion",
     "tiktok:verification": "node src/cli.js tiktok-verification",
+    "metricool:verification": "node src/cli.js metricool-verification",
     "setup:rembg": "python3 -m venv .venv && .venv/bin/pip install --quiet \"rembg[cli]\"",
     "test": "node --test \"tests/*.test.js\"",
     "demo:build": "node src/demo/build.js"

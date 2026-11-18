@@ -13,16 +13,12 @@
 </head>
 <body>
 <h1>Connexion TikTok reçue</h1>
-<p>Retour au studio en cours… Si rien ne se passe, ouvre le studio (http://localhost:4321) et recommence, ou copie cette adresse dans le terminal qui l'attend.</p>
+<p>Copie cette adresse et colle-la dans le terminal où tourne <b>npm run tiktok:connexion</b>.</p>
 <code id="url"></code>
 <button id="copy" type="button">Copier</button>
 <script>
-  // Renvoie la réponse de TikTok vers le studio local (sur l'ordinateur de l'utilisatrice).
-  // Si le studio n'est pas ouvert, l'adresse reste affichée pour la recopier dans le terminal.
+  // Affiche la réponse de TikTok, à recopier dans le terminal qui attend (npm run tiktok:connexion).
   document.getElementById('url').textContent = location.href;
-  if (location.search.includes('code=') || location.search.includes('error=')) {
-    location.replace('http://localhost:4321/tiktok/callback' + location.search);
-  }
   document.getElementById('copy').onclick = () => navigator.clipboard.writeText(location.href);
 </script>
 </body>

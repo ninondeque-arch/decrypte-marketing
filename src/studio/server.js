@@ -12,19 +12,13 @@ import { listPosts, loadConfig, postDate, saveConfig } from '../editorial/post.j
 import { createPost } from '../editorial/create.js';
 import { suggestCaptions } from '../agent/caption.js';
 import { assertJudged, judgePost, overrideJudgement, readJudgement } from '../agent/juge.js';
-import { authorization, connectedUser, exchangeCode, logout } from '../tiktok/oauth.js';
-import { readSettings, writeSettings } from './settings.js';
-import { install, isInstalled, uninstall } from './service.js';
-import { checkMetricool, scheduleOnTikTok } from '../publish/metricool.js';
+import { scheduleOnTikTok } from '../publish/metricool.js';
 import { readStats } from '../publish/stats.js';
-import { git } from '../tiktok/pages.js';
-import { PAGES_DIR } from '../config.js';
 import { varietyAlerts, writeCalendar } from '../planning/calendar.js';
 import { listVeilles, loadVeille, runRediger, runVeille, today } from '../planning/veille.js';
 import { getJob, isRunning, recentJobs, startJob } from './jobs.js';
 
 const PORT = Number(process.env.STUDIO_PORT) || 4321;
-const veilleHour = () => Number(process.env.VEILLE_HEURE || 8); // veille automatique chaque jour à partir de cette heure
 const UI_DIR = join(ROOT, 'src/studio/ui');
 const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.ttf': 'font/ttf', '.svg': 'image/svg+xml' };
 const IMAGE_EXT = new Set(['.png', '.jpg', '.jpeg', '.webp']);
@@ -76,17 +70,6 @@ function judged(dir) {
   return dir;
 }
 
-/** Veille automatique : une fois par jour, à partir de VEILLE_HOUR (rattrapée au réveil de l'ordinateur). */
-let lastAutoVeille = null;
-function scheduleVeille() {
-  const d = today();
-  if (new Date().getHours() < veilleHour() || lastAutoVeille === d || loadVeille(d)) return;
-  if (isRunning(j => j.kind === 'veille')) return;
-  lastAutoVeille = d;
-  console.log(`[veille] lancement automatique pour le ${d}`);
-  launchVeille(d);
-}
-
 /** Prochain jour sans post, à partir de demain. */
 function nextFreeDate() {
   const taken = new Set(listPosts().map(postDate));
@@ -94,14 +77,6 @@ function nextFreeDate() {
   do d.setDate(d.getDate() + 1); while (taken.has(d.toLocaleDateString('sv-SE')));
   return d.toLocaleDateString('sv-SE');
 }
-
-// Dernière vérification du compte Metricool (compte TikTok relié)
-const METRICOOL_FILE = join(ROOT, '.studio', 'metricool.json');
-mkdirSync(join(ROOT, '.studio'), { recursive: true });
-let metricoolState = existsSync(METRICOOL_FILE) ? JSON.parse(readFileSync(METRICOOL_FILE, 'utf8')) : null;
-
-// Connexion TikTok en cours (une seule à la fois)
-let pendingAuth = null;
 
 async function rawBody(req, max = 25 * 1024 * 1024) {
   const chunks = []; let size = 0;
@@ -142,7 +117,6 @@ const routes = [
   ['GET', /^\/api\/etat$/, () => ({
     tiktokConfigure: ['TIKTOK_CLIENT_KEY', 'TIKTOK_CLIENT_SECRET', 'TIKTOK_REDIRECT_URI', 'PAGES_BASE_URL'].every(k => process.env[k]),
     tiktokConnecte: existsSync(TOKENS_FILE),
-    veilleHeure: veilleHour(),
   })],
   ['GET', /^\/api\/posts\/([^/]+)$/, m => detail(postDir(m[1]))],
   ['PUT', /^\/api\/posts\/([^/]+)$/, async (m, req) => {
@@ -177,9 +151,6 @@ const routes = [
     return startJob({ kind: 'programmer', label: `Programmation TikTok : ${loadConfig(dir).sujet}`, agent: true, meta: { slug: basename(dir) } },
       log => scheduleOnTikTok(dir, { date, auto: !!auto, onLog: log }));
   }],
-  ['GET', /^\/api\/metricool$/, () => metricoolState],
-  ['POST', /^\/api\/metricool\/verifier$/, () => startJob({ kind: 'metricool', label: 'Vérification de Metricool', agent: true },
-    async log => { const r = await checkMetricool({ onLog: log }); metricoolState = { ...r, verifie: new Date().toISOString() }; writeFileSync(METRICOOL_FILE, JSON.stringify(metricoolState)); return r; })],
   ['POST', /^\/api\/demo$/, () => {
     if (isRunning(j => j.kind === 'demo')) throw httpError(409, 'La démo est déjà en cours de mise à jour');
     return startJob({ kind: 'demo', label: 'Mise à jour de la démo en ligne' }, log => new Promise((resolve, reject) => {
@@ -207,40 +178,6 @@ const routes = [
   }],
   ['POST', /^\/api\/rediger$/, async (m, req) => launchRediger(await body(req))],
 
-  ['GET', /^\/api\/reglages$/, () => readSettings()],
-  ['PUT', /^\/api\/reglages$/, async (m, req) => { writeSettings(await body(req)); return readSettings(); }],
-  ['GET', /^\/api\/tiktok$/, async () => {
-    const env = k => !!process.env[k];
-    const out = { cles: env('TIKTOK_CLIENT_KEY') && env('TIKTOK_CLIENT_SECRET'), redirection: env('TIKTOK_REDIRECT_URI'), pages: false, connecte: false, compte: null, erreur: null };
-    if (process.env.PAGES_BASE_URL) {
-      const res = await fetch(new URL('callback.html', process.env.PAGES_BASE_URL.replace(/\/?$/, '/')), { method: 'HEAD' }).catch(() => null);
-      out.pages = res?.status === 200;
-    }
-    try { out.compte = await connectedUser(); out.connecte = !!out.compte; } catch (e) { out.erreur = e.message; }
-    return out;
-  }],
-  ['POST', /^\/api\/tiktok\/connexion$/, () => { pendingAuth = authorization(); return { url: pendingAuth.url }; }],
-  ['POST', /^\/api\/tiktok\/verification$/, async (m, req) => {
-    // Fichier de vérification du préfixe d'URL fourni par TikTok : copié à la racine du site puis publié
-    const name = basename(decodeURIComponent(req.headers['x-filename'] ?? ''));
-    if (!/^[\w.-]+\.txt$/.test(name)) throw httpError(400, 'Choisis le fichier .txt fourni par TikTok');
-    writeFileSync(join(PAGES_DIR, name), await rawBody(req, 64 * 1024));
-    try {
-      git('add', join('docs', name));
-      git('commit', '-m', `Vérification TikTok : ${name}`);
-      git('push');
-      return { message: `Fichier publié. Attends 1 à 2 minutes puis clique sur « Verify » dans TikTok.` };
-    } catch {
-      return { message: `Fichier copié dans docs/${name}, mais pas encore publié sur GitHub (dépôt pas encore configuré ?).` };
-    }
-  }],
-  ['POST', /^\/api\/tiktok\/deconnexion$/, () => { logout(); return { ok: true }; }],
-
-  ['GET', /^\/api\/service$/, () => ({ installe: isInstalled() })],
-  ['POST', /^\/api\/service$/, () => { install(); return { installe: true }; }],
-  ['DELETE', /^\/api\/service$/, () => { uninstall(); return { installe: false }; }],
-  ['GET', /^\/api\/guide$/, () => ({ markdown: readFileSync(join(ROOT, 'guides/tiktok.md'), 'utf8') })],
-
   ['GET', /^\/api\/jobs$/, () => recentJobs()],
   ['GET', /^\/api\/jobs\/([\w-]+)$/, m => getJob(m[1]) ?? (() => { throw httpError(404, 'Tâche inconnue'); })()],
 ];
@@ -264,17 +201,6 @@ const server = createServer(async (req, res) => {
       }
     }
     if (req.method !== 'GET') { res.writeHead(405).end(); return; }
-    if (path === '/tiktok/callback') {
-      let result = 'ok';
-      try {
-        if (url.searchParams.get('error')) throw new Error(url.searchParams.get('error_description') ?? url.searchParams.get('error'));
-        if (!pendingAuth || url.searchParams.get('state') !== pendingAuth.state) throw new Error('Demande de connexion expirée : recommence depuis Réglages');
-        await exchangeCode(url.searchParams.get('code'), pendingAuth);
-      } catch (e) { result = e.message; }
-      pendingAuth = null;
-      res.writeHead(302, { Location: `/#/reglages?tiktok=${encodeURIComponent(result)}` }).end();
-      return;
-    }
     let m;
     if ((m = path.match(/^\/media\/([^/]+)\/(.+)$/))) return sendFile(res, safeJoin(postDir(m[1]), m[2]));
     if ((m = path.match(/^\/telecharger\/([^/]+)$/))) {
@@ -313,8 +239,6 @@ server.on('error', err => {
 
 server.listen(PORT, '127.0.0.1', () => {
   const address = `http://localhost:${PORT}`;
-  console.log(`🎛  Studio ouvert sur ${address}  (veille automatique chaque jour à partir de ${veilleHour()} h)`);
+  console.log(`🎛  Studio ouvert sur ${address}`);
   if (!process.env.STUDIO_NO_OPEN) execFile('open', [address], () => {});
-  scheduleVeille();
-  setInterval(scheduleVeille, 10 * 60_000);
 });

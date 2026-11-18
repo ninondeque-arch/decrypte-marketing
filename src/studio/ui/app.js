@@ -1,5 +1,6 @@
 // Décrypte Studio : interface locale (aucune dépendance).
-// Pages : #/veille · #/posts · #/post/<dossier>/<onglet> · #/reglages · #/guide
+// Pages : #/veille · #/posts · #/post/<dossier>/<onglet>
+// Les réglages (connexion TikTok, Metricool, heure de la veille, démarrage auto) se font dans Claude Code : voir le README.
 
 const $ = sel => document.querySelector(sel);
 const view = $('#view');
@@ -97,13 +98,11 @@ async function route() {
   if (state.dirty && !stayingOnPost && !(await confirmLeave())) { history.replaceState(null, '', state.currentHash); return; }
   if (!stayingOnPost) { state.post = null; state.dirty = false; }
   state.currentHash = location.hash;
-  const section = r.name === 'post' ? 'posts' : r.name === 'guide' ? 'reglages' : r.name;
+  const section = r.name === 'post' ? 'posts' : r.name;
   document.querySelectorAll('.nav-link').forEach(a => a.setAttribute('aria-current', a.dataset.route === section ? 'page' : 'false'));
   try {
     if (r.name === 'posts') await renderPosts(r);
     else if (r.name === 'post') await renderPost(r);
-    else if (r.name === 'reglages') await renderSettings(r);
-    else if (r.name === 'guide') await renderGuide();
     else await renderVeille(r);
   } catch (e) {
     show(el('div', { class: 'empty' }, el('strong', {}, 'Oups'), e.message));
@@ -115,7 +114,6 @@ async function refreshGlobal() {
   const [{ posts, alerts, nextDate }, etat] = await Promise.all([api('/api/posts'), api('/api/etat')]);
   Object.assign(state, { posts, alerts, nextDate, etat });
   $('#badge-posts').textContent = posts.length || '';
-  $('#dot-reglages').hidden = !!(etat.tiktokConfigure && etat.tiktokConnecte);
 }
 
 // ================= VEILLE =================
@@ -160,13 +158,13 @@ async function renderVeille(r) {
 
   show(
     el('div', { class: 'page-head' },
-      el('div', {}, el('p', { class: 'eyebrow' }, `Actualité et cas cultes du marketing · nouvelle veille chaque jour à ${state.etat.veilleHeure ?? 8} h`), el('h1', { class: 'page-title' }, 'Veille')),
+      el('div', {}, el('p', { class: 'eyebrow' }, 'Actualité et cas cultes du marketing · lancée quand tu veux'), el('h1', { class: 'page-title' }, 'Veille')),
       el('div', { class: 'page-actions' }, select,
-        el('button', { class: 'btn btn-primary', type: 'button', disabled: !!running, onclick: launchVeille }, running ? 'Veille en cours…' : 'Relancer la veille'))),
+        el('button', { class: 'btn btn-primary', type: 'button', disabled: !!running, onclick: launchVeille }, running ? 'Veille en cours…' : 'Lancer une veille'))),
     sujets.length ? el('div', { class: 'cards' }, cards)
       : el('div', { class: 'empty' }, el('strong', {}, running ? 'Veille en cours' : 'Pas encore de veille'),
         running ? `Claude cherche l’actualité marketing et des cas cultes (environ 10 minutes). ${running.lastLog ?? ''}`
-          : 'Elle se lance automatiquement chaque matin. Tu peux aussi la lancer maintenant.'));
+          : 'Clique sur « Lancer une veille » : Claude cherche l’actualité marketing et des cas cultes (environ 10 minutes).'));
 }
 
 /** Note « 18-25 ans » d'un sujet de veille : la cible connaît-elle la marque, le produit ou la star ? */
@@ -819,27 +817,6 @@ function scheduleFlow() {
   } }]);
 }
 
-function draftFlow() {
-  const e = state.etat;
-  if (!e.tiktokConfigure || !e.tiktokConnecte) {
-    modal('TikTok pas encore connecté', el('p', {}, 'Il faut d’abord renseigner tes clés TikTok et te connecter. Tout se fait dans les réglages, une seule fois.'),
-      [{ label: 'Plus tard' }, { label: 'Aller aux réglages', primary: true, run: () => { closeModal(); go('#/reglages'); } }]);
-    return;
-  }
-  if (state.dirty) { toast('Enregistre et génère d’abord tes modifications (⌘S)'); return; }
-  if (!judgeGate()) return;
-  modal('Envoyer en brouillon ?', [
-    el('p', {}, 'Ce qui va se passer :'),
-    el('ol', {},
-      el('li', {}, 'Les slides sont converties en JPEG et mises en ligne sur ton site GitHub Pages.'),
-      el('li', {}, 'TikTok les récupère et dépose le carrousel et sa légende dans ta boîte de réception.'),
-      el('li', {}, 'Rien n’est publié : tu ajoutes le son et tu publies depuis l’appli.')),
-  ], [{ label: 'Annuler' }, { label: 'Envoyer', primary: true, run: async () => {
-    try { const job = await api(`/api/posts/${encodeURIComponent(state.post.slug)}/brouillon`, { method: 'POST' }); closeModal(); await pollJobs(); showJob(job.id); }
-    catch (err) { toast(err.message); }
-  } }]);
-}
-
 function publishedFlow() {
   modal('Marquer comme publié ?', el('p', {}, 'À faire une fois le post publié depuis l’appli TikTok.'), [
     { label: 'Annuler' },
@@ -850,107 +827,6 @@ function publishedFlow() {
       route();
     } },
   ]);
-}
-
-// ================= RÉGLAGES =================
-async function renderSettings(r) {
-  const result = r.params.get('tiktok');
-  if (result) { toast(result === 'ok' ? 'Compte TikTok connecté' : `Connexion TikTok : ${result}`); history.replaceState(null, '', '#/reglages'); state.currentHash = '#/reglages'; }
-  show(el('div', { class: 'page-head' }, el('div', {}, el('p', { class: 'eyebrow' }, 'Configuration'), el('h1', { class: 'page-title' }, 'Réglages'))), el('p', { class: 'hint' }, 'Chargement…'));
-  const [values, tk, service, mc] = await Promise.all([api('/api/reglages'), api('/api/tiktok'), api('/api/service'), api('/api/metricool')]);
-  const checking = state.jobs.find(j => j.kind === 'metricool' && !j.endedAt);
-
-  const field = (labelText, key, { type = 'text', placeholder = '' } = {}) => {
-    const i = el('input', { type, id: `set-${key}`, placeholder, autocomplete: 'off' });
-    i.value = type === 'password' ? '' : values[key] ?? '';
-    return el('label', { class: 'field' }, el('span', { class: 'field-label' }, labelText), i);
-  };
-  const collect = () => Object.fromEntries(['TIKTOK_CLIENT_KEY', 'TIKTOK_CLIENT_SECRET', 'PAGES_BASE_URL', 'TIKTOK_REDIRECT_URI', 'VEILLE_HEURE'].map(k => [k, $(`#set-${k}`)?.value ?? '']));
-  const saveSettings = async (silent = false) => {
-    const v = collect();
-    if (v.PAGES_BASE_URL && !v.PAGES_BASE_URL.endsWith('/')) v.PAGES_BASE_URL += '/';
-    v.TIKTOK_REDIRECT_URI = v.PAGES_BASE_URL ? `${v.PAGES_BASE_URL}callback.html` : v.TIKTOK_REDIRECT_URI;
-    await api('/api/reglages', { method: 'PUT', body: v });
-    await refreshGlobal();
-    if (!silent) { toast('Réglages enregistrés'); route(); }
-  };
-  const step = (n, done, title, ...content) => el('div', { class: 'step' }, el('div', { class: `step-n ${done ? 'done' : ''}`, 'aria-label': done ? 'Étape terminée' : `Étape ${n}` }, done ? '✓' : n), el('div', { class: 'step-body' }, el('h3', { class: 'step-title' }, title), content));
-  const redirect = values.PAGES_BASE_URL ? `${values.PAGES_BASE_URL}callback.html` : values.TIKTOK_REDIRECT_URI;
-  const copyRow = (labelText, value) => value && el('div', { class: 'field' }, el('span', { class: 'field-label' }, labelText),
-    el('div', { class: 'copy-row' }, el('input', { type: 'text', value, readonly: true, 'aria-label': labelText }), el('button', { class: 'btn btn-small', type: 'button', onclick: () => copy(value) }, 'Copier')));
-  const hours = el('select', { id: 'set-VEILLE_HEURE' }, [6, 7, 8, 9, 10, 11, 12].map(h => el('option', { value: String(h) }, `${h} h`)));
-  hours.value = values.VEILLE_HEURE || '8';
-
-  show(
-    el('div', { class: 'page-head' },
-      el('div', {}, el('p', { class: 'eyebrow' }, 'Configuration'), el('h1', { class: 'page-title' }, 'Réglages')),
-      el('div', { class: 'page-actions' }, el('a', { class: 'btn', href: '#/guide' }, 'Guide pas à pas'), el('button', { class: 'btn btn-primary', type: 'button', onclick: () => saveSettings() }, 'Enregistrer'))),
-    el('div', { class: 'settings' },
-      el('section', { class: 'panel-card' },
-        el('h2', { class: 'panel-title' }, 'Publication sur TikTok'),
-        el('p', { class: 'hint' }, 'Le studio programme tes carrousels via Metricool, qui a déjà l’autorisation de TikTok : rien à faire valider.'),
-        step(1, true, 'Ton compte Metricool',
-          el('p', { class: 'hint' }, 'Compte gratuit (20 posts programmés par mois), avec ton TikTok connecté dans ', el('a', { href: 'https://app.metricool.com', target: '_blank', rel: 'noopener' }, 'app.metricool.com'), '.')),
-        step(2, !!mc?.tiktok, 'Le lien entre Claude et Metricool',
-          el('p', { class: 'hint' }, 'Le connecteur Metricool de Claude (claude.ai > Paramètres > Connecteurs). C’est lui que le studio utilise.'),
-          mc?.tiktok ? el('div', { class: 'account' }, el('div', { style: 'flex:1' }, el('strong', {}, `Compte TikTok relié : ${mc.tiktok}`), el('p', { class: 'hint' }, `Vérifié le ${new Date(mc.verifie).toLocaleString('fr-FR')}`))) : null,
-          el('div', {}, el('button', { class: 'btn btn-small', type: 'button', disabled: !!checking, onclick: async () => {
-            try { const job = await api('/api/metricool/verifier', { method: 'POST' }); await pollJobs(); toast('Vérification en cours (10 s environ)'); const wait = setInterval(async () => { const j = await api(`/api/jobs/${job.id}`); if (j.endedAt) { clearInterval(wait); toast(j.error ? `Metricool : ${j.error}` : `Compte TikTok relié : ${j.result.tiktok}`); route(); } }, 2000); }
-            catch (e) { toast(e.message); }
-          } }, checking ? 'Vérification…' : 'Vérifier la connexion'))),
-        step(3, false, 'L’appli Metricool sur ton téléphone',
-          el('p', { class: 'hint' }, 'Installe l’appli Metricool et active ses notifications : à l’heure prévue, elle te prévient pour que tu publies toi-même avec le son tendance.'))),
-      el('details', { class: 'panel-card advanced' },
-        el('summary', {}, 'Option avancée : API TikTok directe (demande une validation de TikTok)'),
-        el('p', { class: 'hint' }, 'Pour envoyer en brouillon sans Metricool. Nécessite une appli développeur TikTok, validée par TikTok pour un usage public.'),
-        step(1, tk.cles, 'Les clés de ton appli TikTok',
-          el('p', { class: 'hint' }, 'Sur ', el('a', { href: 'https://developers.tiktok.com/apps', target: '_blank', rel: 'noopener' }, 'developers.tiktok.com'), ', ouvre ton appli : les clés sont en haut de la page. Pour les tests, prends celles de la Sandbox.'),
-          el('div', { class: 'row' }, field('Client key', 'TIKTOK_CLIENT_KEY'), field('Client secret', 'TIKTOK_CLIENT_SECRET', { type: 'password', placeholder: values.TIKTOK_CLIENT_SECRET ? 'Déjà enregistré (laisser vide pour garder)' : '' })),
-          el('div', {}, el('button', { class: 'btn btn-small', type: 'button', onclick: () => saveSettings() }, 'Enregistrer les clés'))),
-        step(2, tk.pages, 'Le site qui héberge tes images',
-          el('p', { class: 'hint' }, 'TikTok ne prend les photos que depuis une adresse en ligne : ton site GitHub Pages, gratuit. ', el('a', { href: '#/guide' }, 'Comment le créer')),
-          field('Adresse de ton site GitHub Pages', 'PAGES_BASE_URL', { type: 'url', placeholder: 'https://ton-compte.github.io/decrypte-marketing/' }),
-          values.PAGES_BASE_URL && el('div', { class: `check ${tk.pages ? 'ok' : 'warn'}` }, tk.pages ? 'Site en ligne' : 'Site introuvable pour l’instant : publie le projet sur GitHub et active Pages (voir le guide).'),
-          copyRow('À coller dans TikTok > Login Kit > Redirect URI', redirect),
-          copyRow('À déclarer dans TikTok > URL properties (préfixe d’URL)', values.PAGES_BASE_URL),
-          values.PAGES_BASE_URL && el('label', { class: 'field' }, el('span', { class: 'field-label' }, 'Fichier de vérification donné par TikTok (URL properties > Verify)'),
-            el('input', { type: 'file', accept: '.txt', onchange: async e => {
-              const file = e.target.files[0]; if (!file) return;
-              try {
-                const res = await fetch('/api/tiktok/verification', { method: 'POST', headers: { 'X-Filename': encodeURIComponent(file.name) }, body: file });
-                const data = await res.json(); if (!res.ok) throw new Error(data.error);
-                toast(data.message);
-              } catch (err) { toast(err.message); }
-            } })),
-          el('input', { type: 'hidden', id: 'set-TIKTOK_REDIRECT_URI', value: redirect ?? '' }),
-          el('div', {}, el('button', { class: 'btn btn-small', type: 'button', onclick: () => saveSettings() }, 'Enregistrer l’adresse'))),
-        step(3, tk.connecte, 'Ton compte TikTok',
-          tk.connecte
-            ? el('div', { class: 'account' }, tk.compte?.avatar_url && el('img', { src: tk.compte.avatar_url, alt: '' }),
-              el('div', { style: 'flex:1' }, el('strong', {}, tk.compte?.display_name ?? 'Compte connecté'), el('p', { class: 'hint' }, 'Les brouillons arriveront dans ta boîte de réception TikTok.')),
-              el('button', { class: 'btn btn-small btn-ghost', type: 'button', onclick: async () => { await api('/api/tiktok/deconnexion', { method: 'POST' }); await refreshGlobal(); route(); } }, 'Se déconnecter'))
-            : [el('div', {}, el('button', { class: 'btn btn-primary', type: 'button', disabled: !(tk.cles && redirect), onclick: async () => {
-                try { await saveSettings(true); const { url } = await api('/api/tiktok/connexion', { method: 'POST' }); location.href = url; } catch (e) { toast(e.message); }
-              } }, 'Se connecter à TikTok')),
-              !(tk.cles && redirect) && el('p', { class: 'hint' }, 'Remplis d’abord les étapes 1 et 2.')],
-          tk.erreur && el('div', { class: 'check err' }, tk.erreur))),
-      el('section', { class: 'panel-card' },
-        el('h2', { class: 'panel-title' }, 'Veille automatique'),
-        el('label', { class: 'field' }, el('span', { class: 'field-label' }, 'Heure de la veille quotidienne'), hours),
-        el('p', { class: 'hint' }, 'Si ton Mac dort à cette heure-là, la veille se lance à son réveil.'),
-        el('div', {}, el('button', { class: 'btn btn-small', type: 'button', onclick: () => saveSettings() }, 'Enregistrer'))),
-      el('section', { class: 'panel-card' },
-        el('h2', { class: 'panel-title' }, 'Studio toujours disponible'),
-        service.installe
-          ? [el('div', { class: 'check ok' }, 'Le studio démarre tout seul à chaque ouverture de session : http://localhost:4321 est toujours disponible et la veille part chaque matin.'),
-             el('div', {}, el('button', { class: 'btn btn-small btn-ghost', type: 'button', onclick: async () => { await api('/api/service', { method: 'DELETE' }); toast('Démarrage automatique désactivé'); route(); } }, 'Désactiver le démarrage automatique'))]
-          : [el('p', { class: 'hint' }, 'Pour l’instant, le studio s’arrête quand ton Mac redémarre. Active le démarrage automatique : il sera toujours ouvert sur http://localhost:4321 et la veille partira chaque matin toute seule. Tu peux le désactiver ici à tout moment.'),
-             el('div', {}, el('button', { class: 'btn btn-primary', type: 'button', onclick: async () => { try { await api('/api/service', { method: 'POST' }); toast('Démarrage automatique activé'); route(); } catch (e) { toast(e.message); } } }, 'Activer le démarrage automatique'))])));
-}
-
-async function renderGuide() {
-  const { markdown: md } = await api('/api/guide');
-  show(el('a', { class: 'back', href: '#/reglages' }, '← Réglages'), el('section', { class: 'panel-card sources' }, markdown(md)));
 }
 
 // ================= ACTIVITÉ =================

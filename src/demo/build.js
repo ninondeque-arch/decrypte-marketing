@@ -71,7 +71,6 @@ const data = {
   today: veilleDates[0] ?? null,
   veilleDates,
   veilles: Object.fromEntries(veilleDates.map(d => [d, loadVeille(d)])),
-  guide: readFileSync(join(ROOT, 'guides/tiktok.md'), 'utf8'),
 };
 writeFileSync(join(OUT, 'demo-data.js'), `window.DEMO_DATA = ${JSON.stringify(data).replace(/</g, '\\u003c')};\n`);
 console.log(`Démo construite dans demo/ : ${Object.keys(posts).length} posts, ${veilleDates.length} veille(s).`);

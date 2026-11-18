@@ -20,6 +20,8 @@ Génère des carrousels TikTok (1080×1440, voir `src/config.js`) pour mon compt
 5. `npm run brouillon -- <post>` : envoi dans la boîte de réception TikTok (jamais publié automatiquement).
 6. `npm run stats` : stats TikTok via Metricool → `posts/<post>/stats.json` et `performances.md` (généré, ne pas éditer).
 
+Pas de page Réglages dans le studio : l'utilisatrice n'a rien à régler ni aucune commande à lancer. Metricool passe par le connecteur Claude ; les options avancées sont dans `.env`.
+
 `npm test` avant tout commit. `<post>` peut être un morceau du nom de dossier.
 
 ## Agent juge (`src/agent/juge.js`)
