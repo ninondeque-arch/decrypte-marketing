@@ -32,11 +32,13 @@ export function counter(ctx, i, n, P) {
 }
 
 /** Titre de section posé sur un aplat (« LE CONTEXTE »). Renvoie sa hauteur. */
-export function label(ctx, text, x, y, P, size = 92) {
+export function label(ctx, text, x, y, P, size = 92, { measureOnly = false } = {}) {
+  const h = size * 1.32;
+  if (measureOnly) return h;
   ctx.save();
   ctx.font = `${size}px Anton`;
   const t = nbsp(text.toUpperCase());
-  const w = ctx.measureText(t).width, h = size * 1.32;
+  const w = ctx.measureText(t).width;
   ctx.fillStyle = P.boxBg;
   ctx.fillRect(x, y, w + 56, h);
   ctx.fillStyle = P.boxInk;

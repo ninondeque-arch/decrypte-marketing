@@ -11,6 +11,7 @@ import { validatePost } from '../editorial/validate.js';
 import { toJpeg } from '../images/compress.js';
 import { varietyAlerts } from '../planning/calendar.js';
 import { listVeilles, loadVeille } from '../planning/veille.js';
+import { readStats } from '../publish/stats.js';
 
 const OUT = join(ROOT, 'demo');
 const UI = join(ROOT, 'src/studio/ui');
@@ -59,6 +60,7 @@ for (const dir of listPosts()) {
     sources: existsSync(join(dir, 'sources.md')) ? readFileSync(join(dir, 'sources.md'), 'utf8') : '',
     rendered: Math.round(statSync(slides[0]).mtimeMs), validation: validatePost(dir, cfg),
     juge: readJudgement(dir), // résultat du juge, affiché en lecture seule
+    stats: readStats(dir),
   };
 }
 const veilleDates = listVeilles();

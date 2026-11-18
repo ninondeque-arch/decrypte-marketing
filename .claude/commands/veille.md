@@ -10,6 +10,16 @@ Date de la veille : **$ARGUMENTS** (si vide, la date du jour).
 ## 1. Contexte
 - Lis `calendrier.md` : sujets déjà traités, secteurs et rubriques récents, alertes de variété.
 - Lis les fichiers `veille/*.json` des 30 derniers jours pour ne pas reproposer un sujet déjà présenté.
+- Lis `performances.md` s'il existe (stats TikTok des posts publiés) : privilégie ce qui a marché (rubriques, secteurs, types d'accroche, sujets portés par une star ou une marque connue).
+
+## Le filtre « 18-25 ans »
+Le compte plafonne autour de 750-800 vues par carrousel, sauf quand le sujet parle d'une star que les jeunes connaissent (Rare Beauty et Selena Gomez : 2 355 vues). Pour chaque sujet envisagé, réponds honnêtement : **« Est-ce qu'un ou une 18-25 ans connaît cette marque, ce produit ou cette star ? »**
+- 5 : tout le monde la connaît et en parle (star mondiale, marque qu'ils utilisent tous les jours, jeu ou série du moment).
+- 4 : très connue de la plupart des 18-25 ans.
+- 3 : connue d'une partie d'entre eux seulement.
+- 1 ou 2 : marque B2B, de niche, ou qui parle surtout à leurs parents.
+
+Privilégie la culture pop : stars, créateurs et créatrices, séries, films, musique, jeux vidéo, et les marques que les jeunes utilisent vraiment (appli, mode, beauté, food, sneakers, tech). Une campagne brillante d'une marque inconnue d'eux passe après.
 
 ## 2. Recherche
 Fais au moins 8 recherches web différentes sur l'actualité des **7 derniers jours**, en français et en anglais :
@@ -28,6 +38,7 @@ Cherche aussi des **cas cultes du passé** : campagnes, lancements, stratégies 
 
 ## 3. Sélection
 Retiens **8 sujets** : environ **5 d'actualité** (`"type": "actu"`) et **3 cas cultes** (`"type": "culte"`). Règles :
+- **ne propose que des sujets notés 4 ou 5 au filtre « 18-25 ans »**. Si tu n'en trouves vraiment pas 8 après tes recherches, complète avec des sujets notés 3 et dis-le dans le résumé final, jamais en dessous ;
 - environ 5 « Le marketing derrière la culture pop », 2 « Pourquoi tu l'as acheté » et 1 « Le flop » ;
 - au moins 2 startups et au moins 6 secteurs différents ;
 - sujet d'actualité : moins de 7 jours. Cas culte : histoire marquante et bien documentée ;
@@ -54,6 +65,7 @@ Retiens **8 sujets** : environ **5 d'actualité** (`"type": "actu"`) et **3 cas 
       "pourquoi_maintenant": "Sujet viral cette semaine, chiffres d'audience publiés par Skift",
       "chiffres_cles": ["80 000 vues en 5 jours", "moins de 10 000 $ de promotion"],
       "sources": [{ "titre": "Skift", "url": "https://…", "date": "2026-10-30" }],
+      "note_jeunes": { "note": 4, "justification": "Le sujet passe par Trump, que tous les 18-25 ans connaissent, même si Visit Norway leur parle peu." },
       "potentiel": 5
     }
   ]
@@ -63,8 +75,9 @@ Retiens **8 sujets** : environ **5 d'actualité** (`"type": "actu"`) et **3 cas 
 Précisions sur les champs :
 - `rubrique` : exactement « Le marketing derrière la culture pop », « Pourquoi tu l'as acheté » ou « Le flop ».
 - `type` : « actu » ou « culte ». Pour un cas culte, `actu` donne la date ou l'époque des faits, et `pourquoi_maintenant` explique pourquoi l'histoire captive encore (ou l'écho actuel s'il y en a un).
-- `potentiel` : de 1 à 5. Les sujets sont triés du plus fort au plus faible potentiel.
+- `note_jeunes` : la note du filtre « 18-25 ans » (de 1 à 5) et une phrase de justification qui nomme la marque, le produit ou la star concernés.
+- `potentiel` : de 1 à 5. Les sujets sont triés par `note_jeunes.note` décroissante, puis du plus fort au plus faible potentiel.
 - `chiffres_cles` : uniquement des chiffres lus dans les sources, sinon une liste vide.
 - `id` : court, en minuscules, avec des tirets.
 
-Termine par une ligne de résumé : le nombre de sujets et les secteurs couverts.
+Termine par une ligne de résumé : le nombre de sujets, les secteurs couverts et la répartition des notes « 18-25 ans ».

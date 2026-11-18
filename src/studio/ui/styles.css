@@ -285,3 +285,18 @@ code, kbd { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: .
 .radio-card input { margin-top: 4px; accent-color: var(--ink); }
 details.advanced summary { cursor: pointer; font-weight: 700; color: var(--muted); }
 details.advanced[open] summary { margin-bottom: 16px; }
+
+/* Veille : note « 18-25 ans » */
+.youth { margin: 0; display: grid; gap: 4px; padding: 8px 10px; border-radius: 8px; border-left: 4px solid var(--line); background: var(--paper); font-size: 13px; }
+.youth-high { border-left-color: var(--ok); }
+.youth-mid { border-left-color: var(--warn); }
+.youth-low { border-left-color: var(--err); }
+.youth-score { font-weight: 800; }
+.youth-why { color: var(--muted); }
+
+/* Post : stats TikTok */
+.stats-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; margin-top: 16px; padding: 12px 16px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); }
+.stat { display: grid; gap: 2px; }
+.stat strong { font: 26px/1 var(--display); }
+.stat span { font-size: 12px; color: var(--muted); }
+.stats-bar .hint { flex-basis: 100%; }

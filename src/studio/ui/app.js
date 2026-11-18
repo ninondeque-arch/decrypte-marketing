@@ -61,9 +61,10 @@ const RULES = { hook: 9, prose: 24 };
 const RUBRIQUES = ['Le marketing derrière la culture pop', "Pourquoi tu l'as acheté", 'Le flop'];
 const STATUTS = ['à rédiger', 'prêt', 'programmé', 'brouillon', 'publié'];
 const RUBRIC_CLASS = { 'Le flop': 'tag-flop', "Pourquoi tu l'as acheté": 'tag-achat' };
-const TYPE_NAMES = { hook: 'Accroche', text: 'Texte', quote: 'Citation', list: 'Liste', stats: 'Chiffres', outro: 'Résultat' };
+const TYPE_NAMES = { hook: 'Accroche', text: 'Texte', lesson: 'Leçon', quote: 'Citation', list: 'Liste', stats: 'Chiffres', outro: 'Conclusion' };
 const TYPE_TEMPLATES = {
   text: () => ({ type: 'text', label: 'Titre', body: 'Deux ou trois lignes.', highlight: [] }),
+  lesson: () => ({ type: 'lesson', label: 'Leçon', title: 'La leçon en une phrase complète.', body: 'Deux à quatre phrases courtes.', quote: '', attribution: '', highlight: [] }),
   quote: () => ({ type: 'quote', label: 'La citation', quote: 'Une phrase marquante.', attribution: 'Qui, où, quand', body: '', highlight: [] }),
   list: () => ({ type: 'list', label: 'La mécanique', items: ['Premier point', 'Deuxième point', 'Troisième point'], highlight: [] }),
   stats: () => ({ type: 'stats', label: 'Les chiffres', items: [{ value: '…', text: 'un chiffre sourcé' }], source: 'Source : …' }),
@@ -148,6 +149,7 @@ async function renderVeille(r) {
         s.startup && el('span', { class: 'tag tag-startup' }, 'Startup'),
         el('span', { class: 'potential', title: `Potentiel ${stars}/5`, 'aria-label': `Potentiel ${stars} sur 5` }, '★'.repeat(stars) + '☆'.repeat(5 - stars))),
       el('h2', { class: 'card-title' }, s.sujet),
+      youthNote(s.note_jeunes),
       s.accroche && el('p', { class: 'card-hook' }, el('span', { class: 'card-label' }, 'Accroche'), s.accroche),
       s.angle && el('p', { class: 'card-text' }, el('span', { class: 'card-label' }, 'Angle'), s.angle),
       s.pourquoi_maintenant && el('p', { class: 'card-text' }, el('span', { class: 'card-label' }, s.type === 'culte' ? 'Pourquoi ça marche encore' : 'Pourquoi maintenant'), s.actu ? `${s.actu}. ${s.pourquoi_maintenant}` : s.pourquoi_maintenant),
@@ -165,6 +167,15 @@ async function renderVeille(r) {
       : el('div', { class: 'empty' }, el('strong', {}, running ? 'Veille en cours' : 'Pas encore de veille'),
         running ? `Claude cherche l’actualité marketing et des cas cultes (environ 10 minutes). ${running.lastLog ?? ''}`
           : 'Elle se lance automatiquement chaque matin. Tu peux aussi la lancer maintenant.'));
+}
+
+/** Note « 18-25 ans » d'un sujet de veille : la cible connaît-elle la marque, le produit ou la star ? */
+function youthNote(n) {
+  if (!n?.note) return null;
+  const note = Math.max(1, Math.min(5, n.note));
+  return el('p', { class: `youth youth-${note >= 4 ? 'high' : note === 3 ? 'mid' : 'low'}` },
+    el('span', { class: 'youth-score', title: 'Est-ce qu’un ou une 18-25 ans connaît cette marque, ce produit ou cette star ?' }, `18-25 ans · ${note}/5`),
+    n.justification && el('span', { class: 'youth-why' }, n.justification));
 }
 
 function updateVeilleBadge(sujets) {
@@ -313,11 +324,22 @@ async function renderPost(r) {
         c.statut !== 'publié' && el('button', { class: 'btn btn-ghost', type: 'button', onclick: publishedFlow }, 'Marquer publié'))),
     c.programmation && el('div', { class: 'check ok' }, `Programmé sur TikTok le ${new Date(c.programmation.date).toLocaleString('fr-FR', { dateStyle: 'full', timeStyle: 'short' })}${c.programmation.auto ? ' (publication automatique)' : ' (notification : tu publies toi-même avec le son)'} · `,
       el('a', { href: c.programmation.plannerUrl, target: '_blank', rel: 'noopener' }, 'Voir dans Metricool')),
+    statsBar(p.stats),
     el('div', { class: 'checks', id: 'checks' }),
     el('nav', { class: 'tabs', 'aria-label': 'Sections du post' },
       tabs.map(([key, label]) => el('a', { class: 'tab', href: postHash(slug, key), 'aria-current': key === tab ? 'page' : 'false' }, label))),
     panel());
   renderChecks();
+}
+
+/** Stats TikTok du post (npm run stats), si déjà relevées. */
+function statsBar(st) {
+  if (!st) return null;
+  const n = v => Number(v ?? 0).toLocaleString('fr-FR');
+  const items = [['Vues', n(st.vues)], ['J’aime', n(st.jaime)], ['Taux j’aime/vue', `${String(st.taux_jaime ?? 0).replace('.', ',')} %`], ['Commentaires', n(st.commentaires)], ['Partages', n(st.partages)]];
+  return el('div', { class: 'stats-bar', 'aria-label': 'Statistiques TikTok' },
+    items.map(([label, value]) => el('div', { class: 'stat' }, el('strong', {}, value), el('span', {}, label))),
+    el('p', { class: 'hint' }, `Relevé Metricool du ${frDate(st.releve)}`, st.url ? ' · ' : '', st.url && el('a', { href: st.url, target: '_blank', rel: 'noopener' }, 'voir sur TikTok')));
 }
 
 function renderChecks() {
@@ -490,12 +512,13 @@ function slideFields(s, rerender) {
   };
 
   const byType = {
-    hook: () => [textField('Accroche', 'title', { rows: 2, count: () => ({ n: countWords(s.title), max: RULES.hook }) }), hookChoices(), highlight(), textField('Bouton', 'cta'), photoField()],
-    text: () => [textField('Titre de section', 'label'), textField('Texte', 'body', { rows: 4, count: prose }), highlight(), photoField()],
+    hook: () => [textField('Accroche (question de 4 à 6 mots, avec la marque ou la star)', 'title', { rows: 2, count: () => ({ n: countWords(s.title), max: RULES.hook }) }), hookChoices(), textField('Ligne de fait (crée la tension)', 'fact', { rows: 2 }), highlight(), textField('Bouton', 'cta'), photoField()],
+    text: () => [textField('Titre de section', 'label'), textField('Texte', 'body', { rows: 4, count: prose }), textField('Source affichée (facultative)', 'source'), highlight(), photoField()],
+    lesson: () => [textField('Repère (ex. « Leçon 1 »)', 'label'), textField('Titre : la leçon en une phrase complète', 'title', { rows: 2 }), textField('Texte (2 à 4 phrases courtes)', 'body', { rows: 4, count: prose }), textField('Citation réelle (facultative, présente dans les sources)', 'quote', { rows: 2 }), textField('Auteur, contexte', 'attribution'), highlight(), photoField()],
     quote: () => [textField('Titre de section', 'label'), textField('Citation', 'quote', { rows: 2, count: prose }), textField('Auteur, contexte', 'attribution'), textField('Explication', 'body', { rows: 2, count: prose }), highlight(), photoField()],
     list: () => [textField('Titre de section', 'label'), listField(), highlight(), photoField()],
     stats: () => [textField('Titre de section', 'label'), statsField(), textField('Source affichée', 'source')],
-    outro: () => [textField('Titre', 'title'), textField('Leçon marketing', 'lesson', { rows: 2, count: prose }), textField('Conclusion', 'conclusion', { rows: 2, count: prose }), highlight(), textField('Appel à l’action', 'cta', { rows: 2 })],
+    outro: () => [textField('Titre', 'title'), textField('Leçon générale (une phrase)', 'lesson', { rows: 2, count: prose }), textField('Phrase complémentaire (facultative)', 'conclusion', { rows: 2, count: prose }), highlight(), textField('Signature ou appel à l’action', 'cta', { rows: 2 })],
   }[s.type];
   return [...(byType ? byType() : [el('p', {}, `Type « ${s.type} » non modifiable ici.`)]), paletteField()];
 }
@@ -611,6 +634,7 @@ function judgePanel() {
     el('p', {}, `Passage ${j.passage} · ${frDate(j.date)}`),
     j.override_humain && el('div', { class: 'check ok' }, `Validé quand même par toi le ${frDate(j.override_date)} : tu as le dernier mot.`),
     intro, scores,
+    j.comparaison && el('div', { class: 'check' }, `📈 ${j.comparaison}`),
     el('h3', { class: 'judge-subtitle' }, `Corrections proposées (${j.corrections.length})`), corrections,
     history, actions);
 }

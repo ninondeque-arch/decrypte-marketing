@@ -43,12 +43,15 @@ flowchart LR
    - cherche le cas sur le web et lit les sources ;
    - récupère les visuels officiels (site de la marque, captures de la campagne) ;
    - relève les couleurs de la marque ;
-   - rédige 6 à 8 slides, 3 variantes d'accroche, la légende et `sources.md`.
+   - lit `performances.md` pour reprendre les bonnes pratiques des posts qui ont le mieux marché ;
+   - rédige 8 slides (voir « La structure d'un carrousel »), 3 variantes d'accroche, la légende et `sources.md`.
 2. **Génération** (`npm run images`). Contrôle des règles éditoriales, rendu des PNG sans navigateur, compression, aperçu avec les zones masquées par TikTok.
 3. **Relecture par l'agent juge** (`npm run juger`). Une IA indépendante note le carrousel et le renvoie en correction s'il n'est pas au niveau ; `/rediger` corrige et refait relire, 3 passages au maximum.
 4. **Envoi en brouillon** (`npm run brouillon`). Les slides passent par l'API officielle TikTok : elles arrivent dans la boîte de réception, jamais publiées automatiquement.
 
 Pour préparer la semaine, `/lot 3` propose des sujets d'actualité qui respectent la variété du fil, puis rédige ceux que tu choisis.
+
+5. **Retour des performances** (`npm run stats`). Les vues, j'aime, commentaires et partages de chaque post publié remontent de TikTok via Metricool dans `posts/<post>/stats.json`, et `performances.md` en tire un classement et les points communs des meilleurs posts. La veille et le juge le lisent avant de travailler.
 
 ## Les choix qui comptent
 
@@ -65,7 +68,7 @@ Pour préparer la semaine, `/lot 3` propose des sujets d'actualité qui respecte
 - `apercu-zones.png` montre ces zones en vert.
 
 **Écrit pour TikTok.**
-- Accroche de moins de 10 mots, moins de 25 mots par slide.
+- Moins de 25 mots de texte par slide, 1 à 2 passages surlignés.
 - Les mots-clés sont surlignés en blocs inversés.
 - Typographie française (espaces insécables avant `? ! : %`).
 
@@ -73,8 +76,25 @@ Pour préparer la semaine, `/lot 3` propose des sujets d'actualité qui respecte
 - Après la rédaction, une seconde IA relit le post dans une **session séparée** : elle ne voit jamais le raisonnement de l'agent rédacteur, seulement le résultat (`slides-config.json`, `legende.txt`, `sources.md`, `apercu.png`).
 - Elle est **en lecture seule** (outils Read, Glob, Grep et WebFetch, aucun MCP) et ouvre les sources citées pour vérifier chaque chiffre.
 - Six critères notés de 1 à 5 avec une justification : fidélité aux sources, accroche, clarté et rythme, leçon marketing, ton, légende. Chaque problème vient avec une correction proposée, bloquante ou non.
+- Il lit `performances.md` et ajoute une phrase « Comparé aux posts qui ont marché : … », qui n'entre pas dans le verdict.
 - **Validé** seulement si toutes les notes sont à 4 ou plus et qu'aucune correction n'est bloquante. Une erreur de fidélité aux sources est toujours bloquante. La règle est appliquée par le code, pas par l'IA.
 - Le résultat et l'historique des passages sont dans `posts/<post>/juge.json`. Tant qu'il n'y a pas de « validé », l'envoi en brouillon et la programmation Metricool sont **refusés**, sauf si tu cliques sur « Valider quand même » dans le studio : l'humain garde le dernier mot.
+
+**Des sujets que les 18-25 ans connaissent.** Le compte plafonne vers 750-800 vues par carrousel, sauf quand le sujet parle d'une star connue des jeunes (Rare Beauty et Selena Gomez : 2 355 vues). La veille note donc chaque sujet de 1 à 5 : « Est-ce qu'un ou une 18-25 ans connaît cette marque, ce produit ou cette star ? », avec une justification, et ne propose que les sujets notés 4 ou 5.
+
+**La structure d'un carrousel (8 slides).**
+1. **Couverture** : une question de 4 à 6 mots avec le nom de la marque ou de la star, plus une ligne de fait qui crée la tension (paradoxe, chiffre qui choque, équation surprenante). Jamais un résumé.
+2. **Pourquoi maintenant** : la tendance et un chiffre clé, avec sa source écrite sur la slide.
+3. **Le cas** : ce que la marque a fait, le résultat, et une phrase qui annonce les leçons.
+4. à 6. **Une leçon par slide** : la leçon en titre, en une phrase complète ; 2 à 4 phrases courtes ; une citation réelle si les sources en ont une (gabarit `lesson`).
+7. **Cas comparables** : 1 ou 2 autres marques ou stars qui ont fait pareil, avec le résultat de chacune. S'il n'y en a pas dans les sources, une 4e leçon à la place.
+8. **Conclusion** : la leçon générale en une phrase, et la signature du compte.
+
+Chaque titre se comprend seul, une idée par slide, 1 à 2 passages surlignés. `npm run verifier` bloque toute citation ou tout chiffre absent de `sources.md`. La légende reprend l'accroche, résume le cas en 2 à 3 phrases et finit par une question à deux choix.
+
+**Une question de fin qui fait choisir son camp.** La légende se termine par « Arnaque ou coup de génie ? » ou « Tu achètes ou pas ? », jamais par une question ouverte et molle. Le juge le vérifie dans le critère « légende ».
+
+**On reprend ce qui a marché.** `npm run stats` met à jour `performances.md` (classement et points communs des meilleurs posts). `/veille`, `/lot`, `/rediger` et le juge le lisent avant de travailler. Lance-le régulièrement, par exemple une fois par semaine.
 
 **Un humain dans la boucle.** Tu choisis l'accroche, tu valides l'aperçu, tu ajoutes le son et tu publies toi-même.
 
@@ -106,12 +126,13 @@ npm run studio:installer    # (une fois) démarrage automatique à chaque sessio
 
 Le studio est le point d'entrée quotidien, sans terminal. Trois pages :
 
-- **Veille.** Chaque matin, 8 sujets d'actualité et cas cultes, liés au marketing ou aux réseaux sociaux, avec leur angle, leurs chiffres et leurs sources. **Générer le slideshow** lance recherche, rédaction et rendu (5 à 15 min).
+- **Veille.** Chaque matin, 8 sujets d'actualité et cas cultes, liés au marketing ou aux réseaux sociaux, avec leur angle, leurs chiffres, leurs sources et leur note « 18-25 ans » justifiée. **Générer le slideshow** lance recherche, rédaction et rendu (5 à 15 min).
 - **Posts.** La galerie des carrousels avec leur couverture, filtrable par statut, plus les alertes de variété du fil. Chaque post a sa page :
   - **Slides** : aperçu avec les zones TikTok, et un éditeur par slide (textes avec compteur de mots, variantes d'accroche, mots mis en valeur, visuels importés par glisser-déposer, cadrage, couleurs). Les slides s'ajoutent, se dupliquent, se déplacent et se suppriment. **Enregistrer et générer** (⌘S).
   - **Légende** : modifiable librement, ou **✨ Proposer 3 légendes** écrites par Claude à partir des slides.
   - **Sources** : rendu lisible ou modification à la main.
-  - **Relecture du juge** : verdict, note et justification par critère, corrections proposées, nombre de passages. **Faire relire par le juge** lance la relecture (suivie dans le journal d'activité) ; **Valider quand même** enregistre ta validation si tu n'es pas d'accord avec le juge.
+  - **Stats TikTok** (une fois le post publié et `npm run stats` lancé) : vues, j'aime, taux de j'aime par vue, commentaires et partages, en haut de la fiche.
+  - **Relecture du juge** : verdict, note et justification par critère, comparaison aux posts qui ont marché, corrections proposées, nombre de passages. **Faire relire par le juge** lance la relecture (suivie dans le journal d'activité) ; **Valider quand même** enregistre ta validation si tu n'es pas d'accord avec le juge.
   - **Infos et couleurs** : rubrique, secteur, statut, et palettes de la marque avec sélecteurs de couleur et contrôle de lisibilité.
   - **Envoyer en brouillon** et **Marquer publié**.
 - **Réglages.** La connexion TikTok en 3 étapes (clés, site GitHub Pages, bouton « Se connecter à TikTok »), l'heure de la veille et le démarrage automatique du studio.
@@ -138,6 +159,7 @@ Un post peut aussi être créé **à la main** : la structure est prête, il n'y
 | `npm run images -- <post>` | Contrôles + PNG 1080×1920 + compression + aperçus |
 | `npm run brouillon -- <post>` | Envoi du carrousel et de la légende dans la boîte de réception TikTok |
 | `npm run publie -- <post>` | Marque le post comme publié |
+| `npm run stats` | Stats TikTok des posts publiés (Metricool) → `stats.json` et `performances.md` |
 | `npm run calendrier` | Régénère `calendrier.md` |
 | `npm run tiktok:connexion` | Connexion OAuth (PKCE) |
 

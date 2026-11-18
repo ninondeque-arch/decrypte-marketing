@@ -34,6 +34,8 @@ SLIDE.MAXW = SLIDE.RIGHT - SLIDE.LEFT;
 export const RULES = {
   minSlides: 6,
   maxSlides: 8,
+  slides: 8, // structure : couverture, pourquoi maintenant, le cas, 3 leçons, cas comparables (ou 4e leçon), conclusion
+  maxHighlights: 2, // 1 à 2 passages surlignés par slide
   maxHookWords: 9, // « moins de 10 mots »
   maxWordsPerSlide: 24, // « moins de 25 mots », hors listes et appel à l'action
   minContrast: 4.5, // WCAG AA

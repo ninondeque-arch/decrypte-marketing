@@ -20,6 +20,7 @@
     "juger": "node src/cli.js juger",
     "brouillon": "node src/cli.js brouillon",
     "publie": "node src/cli.js publie",
+    "stats": "node src/cli.js stats",
     "calendrier": "node src/cli.js calendrier",
     "tiktok:connexion": "node src/cli.js tiktok-connexion",
     "tiktok:verification": "node src/cli.js tiktok-verification",

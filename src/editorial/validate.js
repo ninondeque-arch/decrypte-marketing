@@ -7,14 +7,14 @@ import { countWords } from '../render/typo.js';
 
 /** Textes affichés d'une slide (hors appel à l'action, qui n'est pas une affirmation). */
 export function slideTexts(s) {
-  return [s.title, s.quote, s.attribution, s.body, ...(s.items ?? []).flatMap(it => (typeof it === 'string' ? [it] : [it.value, it.text])), s.lesson, s.conclusion, s.source]
+  return [s.title, s.fact, s.quote, s.attribution, s.body, ...(s.items ?? []).flatMap(it => (typeof it === 'string' ? [it] : [it.value, it.text])), s.lesson, s.conclusion, s.source]
     .filter(Boolean);
 }
 
 /** Texte compté pour la règle des 25 mots (les listes et chiffres clés en sont exclus). */
 function proseOf(s) {
   if (s.type === 'quote') return [s.quote, s.body].filter(Boolean).join(' ');
-  if (s.type === 'text') return s.body ?? '';
+  if (s.type === 'text' || s.type === 'lesson') return s.body ?? '';
   if (s.type === 'outro') return [s.lesson, s.conclusion].filter(Boolean).join(' ');
   return '';
 }
@@ -25,6 +25,10 @@ const digitsOnly = s => s.replace(/(\d)[\s .](?=\d{3}\b)/g, '$1').replace(/(\d)
 export function numbersIn(text) {
   return [...digitsOnly(text).matchAll(/\d+(?:\.\d+)?/g)].map(m => m[0]);
 }
+
+/** Texte comparable pour retrouver une citation : minuscules, sans accents ni ponctuation, espaces simples. */
+export const quoteKey = text => String(text ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+  .replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
 
 /**
  * Valide un post.
@@ -38,8 +42,9 @@ export function validatePost(postDir, cfg) {
   // Structure
   if (slides.length < RULES.minSlides || slides.length > RULES.maxSlides) errors.push(`${slides.length} slides : il en faut entre ${RULES.minSlides} et ${RULES.maxSlides}`);
   if (slides[0]?.type !== 'hook') errors.push('la slide 1 doit être une accroche (type « hook »)');
-  if (slides.at(-1)?.type !== 'outro') errors.push('la dernière slide doit être « Résultat ? » (type « outro »)');
-  if (slides.at(-2)?.type !== 'stats') errors.push('l\'avant-dernière slide doit présenter les chiffres (type « stats »)');
+  if (slides.at(-1)?.type !== 'outro') errors.push('la dernière slide doit être la conclusion (type « outro »)');
+  if (slides.length !== RULES.slides) warnings.push(`${slides.length} slides : la structure en prévoit ${RULES.slides} (couverture, pourquoi maintenant, le cas, 3 leçons, cas comparables, conclusion)`);
+  slides.forEach((s, i) => { if (s.type === 'lesson' && !s.title?.trim()) errors.push(`${at(i)} : une leçon a besoin d'un titre (la leçon en une phrase complète)`); });
   for (const k of ['sujet', 'rubrique', 'secteur', 'statut']) if (!cfg[k]) errors.push(`champ « ${k} » manquant`);
 
   // Longueurs
@@ -48,17 +53,26 @@ export function validatePost(postDir, cfg) {
   slides.forEach((s, i) => {
     const n = countWords(proseOf(s));
     if (n > RULES.maxWordsPerSlide) errors.push(`${at(i)} : ${n} mots (max ${RULES.maxWordsPerSlide} hors listes)`);
+    if (s.type !== 'stats') {
+      const n = s.highlight?.length ?? 0;
+      if (n === 0) warnings.push(`${at(i)} : aucun passage surligné (1 à ${RULES.maxHighlights} attendus)`);
+      if (n > RULES.maxHighlights) warnings.push(`${at(i)} : ${n} passages surlignés (${RULES.maxHighlights} maximum)`);
+    }
     for (const h of s.highlight ?? []) if (!slideTexts(s).some(t => t.includes(h))) warnings.push(`${at(i)} : l'expression surlignée « ${h} » n'apparaît pas dans le texte`);
     const ph = s.photo;
     if (ph && !existsSync(join(postDir, ph.src))) errors.push(`${at(i)} : image introuvable « ${ph.src} »`);
     if (ph && !ph.credit) warnings.push(`${at(i)} : photo sans crédit`);
   });
 
-  // Aucun chiffre sans source : chaque nombre affiché doit figurer dans sources.md
+  // Aucun chiffre ni aucune citation sans source : chacun doit figurer dans sources.md
   const sourcesFile = join(postDir, 'sources.md');
   if (!existsSync(sourcesFile)) errors.push('sources.md manquant');
   else {
-    const sources = digitsOnly(readFileSync(sourcesFile, 'utf8'));
+    const raw = readFileSync(sourcesFile, 'utf8');
+    const sources = digitsOnly(raw), quotes = quoteKey(raw);
+    slides.forEach((s, i) => {
+      if (s.quote && !quotes.includes(quoteKey(s.quote))) errors.push(`${at(i)} : la citation « ${s.quote} » n'apparaît pas dans sources.md`);
+    });
     slides.forEach((s, i) => {
       for (const n of new Set(slideTexts(s).flatMap(numbersIn))) {
         if (!sources.includes(n)) errors.push(`${at(i)} : le nombre « ${n} » n'apparaît pas dans sources.md`);

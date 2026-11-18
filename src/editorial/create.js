@@ -9,14 +9,16 @@ export function slugify(text) {
     .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40).replace(/-+$/, '') || 'post';
 }
 
-/** Modèle de départ : la structure attendue, avec des textes à remplacer. */
+/** Modèle de départ : la structure en 8 slides, avec des textes à remplacer. */
 export const blankSlides = () => [
-  { type: 'hook', title: 'Ton accroche en moins de 10 mots ?', highlight: [], cta: 'On décrypte →' },
-  { type: 'text', label: 'Le contexte', body: 'Deux ou trois lignes pour poser le décor.', highlight: [] },
-  { type: 'text', label: "L'idée", body: "L'idée de la campagne en une phrase claire.", highlight: [] },
-  { type: 'list', label: 'La mécanique', items: ['Premier ressort', 'Deuxième ressort', 'Troisième ressort'], highlight: [] },
-  { type: 'stats', label: 'Les chiffres', items: [{ value: '…', text: 'un chiffre sourcé' }], source: 'Source : …' },
-  { type: 'outro', title: 'Résultat ?', lesson: 'La leçon marketing en une phrase forte.', conclusion: 'Une phrase de conclusion.', cta: 'Abonne-toi et dis-moi en commentaire quelle marque on décrypte ensuite !', highlight: [] },
+  { type: 'hook', title: 'La marque a fait quoi ?', fact: 'Une ligne de fait qui crée la tension.', highlight: [], cta: 'On décrypte →' },
+  { type: 'text', label: 'Pourquoi maintenant', body: 'La tendance et un chiffre clé.', source: 'Source : …', highlight: [] },
+  { type: 'text', label: 'Le cas', body: 'Ce que la marque a fait, le résultat, et ce qu\'on va en retenir.', highlight: [] },
+  { type: 'lesson', label: 'Leçon 1', title: 'La première leçon en une phrase complète.', body: 'Deux à quatre phrases courtes.', highlight: [] },
+  { type: 'lesson', label: 'Leçon 2', title: 'La deuxième leçon en une phrase complète.', body: 'Deux à quatre phrases courtes.', highlight: [] },
+  { type: 'lesson', label: 'Leçon 3', title: 'La troisième leçon en une phrase complète.', body: 'Deux à quatre phrases courtes.', highlight: [] },
+  { type: 'list', label: 'Cas comparables', items: ['Marque ou star : ce qu\'elle a fait → son résultat', 'Marque ou star : ce qu\'elle a fait → son résultat'], highlight: [] },
+  { type: 'outro', title: 'À retenir', lesson: 'La leçon générale en une phrase.', cta: 'Derrière la Hype · abonne-toi pour le prochain décryptage', highlight: [] },
 ];
 
 /** Crée posts/<date>_<sujet>/ et renvoie le nom du dossier. */

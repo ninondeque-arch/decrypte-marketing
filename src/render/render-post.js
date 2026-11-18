@@ -13,23 +13,28 @@ const { W, H, RIGHT, BOTTOM, TOP, ICONS_Y } = SLIDE;
 /** Palette d'une slide : choix explicite, sinon séquence du thème. */
 export const paletteFor = (theme, slide, i) => theme.palettes[slide.palette ?? theme.sequence[i % theme.sequence.length]];
 
+/** Dessine une slide sur un nouveau canevas. */
+async function drawSlide(postDir, config, slide, i) {
+  const P = paletteFor(config.theme, slide, i);
+  const canvas = createCanvas(W, H);
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = P.bg;
+  ctx.fillRect(0, 0, W, H);
+  const draw = templates[slide.type];
+  if (!draw) throw new Error(`Slide ${i + 1} : type « ${slide.type} » inconnu (${Object.keys(templates).join(', ')})`);
+  await draw({ ctx, slide, P, postDir });
+  return canvas;
+}
+
 /**
  * Rend toutes les slides d'un post.
  * @returns {Promise<string[]>} chemins des PNG écrits
  */
 export async function renderPost(postDir, config) {
-  const n = config.slides.length;
   const canvases = [];
   const files = [];
   for (const [i, slide] of config.slides.entries()) {
-    const P = paletteFor(config.theme, slide, i);
-    const canvas = createCanvas(W, H);
-    const ctx = canvas.getContext('2d');
-    ctx.fillStyle = P.bg;
-    ctx.fillRect(0, 0, W, H);
-    const draw = templates[slide.type];
-    if (!draw) throw new Error(`Slide ${i + 1} : type « ${slide.type} » inconnu (${Object.keys(templates).join(', ')})`);
-    await draw({ ctx, slide, P, postDir });
+    const canvas = await drawSlide(postDir, config, slide, i);
     const file = join(postDir, `slide-${i + 1}.png`);
     writeFileSync(file, canvas.toBuffer('image/png'));
     files.push(file);

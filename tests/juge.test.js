@@ -4,7 +4,7 @@ import { mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { draft } from '../src/actions.js';
-import { assertJudged, CRITERES, JUGE_TOOLS, judgePost, overrideJudgement, parseJudgement, readJudgement, saveJudgement, verdictFor } from '../src/agent/juge.js';
+import { assertJudged, COMPARAISON_DEBUT, CRITERES, judgePrompt, JUGE_TOOLS, judgePost, overrideJudgement, parseJudgement, readJudgement, saveJudgement, verdictFor } from '../src/agent/juge.js';
 
 const theme = JSON.parse(readFileSync(new URL('../assets/theme-defaut.json', import.meta.url)));
 
@@ -112,4 +112,21 @@ test('garde-fou : un post validé ou validé par l\'humaine passe le juge', asyn
   assert.equal(next.override_humain, undefined);
   assert.equal(next.historique.at(-1).override_humain, true);
   assert.throws(() => assertJudged(dir), /corrections/);
+});
+
+test('le juge lit performances.md s\'il existe et exige une question qui fait choisir son camp', () => {
+  const dir = fixture();
+  const perf = join(dir, 'performances.md');
+  assert.doesNotMatch(judgePrompt(dir, { performances: perf }), new RegExp(perf.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+  writeFileSync(perf, '# Performances');
+  const prompt = judgePrompt(dir, { performances: perf });
+  assert.ok(prompt.includes(perf));
+  assert.match(prompt, /choisir son camp/);
+  assert.match(prompt, /Comparé aux posts qui ont marché/);
+});
+
+test('parseJudgement garde la comparaison aux posts qui ont marché, toujours préfixée', () => {
+  assert.equal(parseJudgement(answer({ comparaison: `${COMPARAISON_DEBUT}même rubrique que Rare Beauty.` })).comparaison, `${COMPARAISON_DEBUT}même rubrique que Rare Beauty.`);
+  assert.equal(parseJudgement(answer({ comparaison: 'star connue des 18-25 ans.' })).comparaison, `${COMPARAISON_DEBUT}star connue des 18-25 ans.`);
+  assert.equal(parseJudgement(answer()).comparaison, undefined);
 });

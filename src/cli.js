@@ -38,6 +38,7 @@ const commands = {
     console.log(`\n⚖️  Verdict : ${j.verdict.toUpperCase()} (passage ${j.passage})`);
     for (const [k, label] of Object.entries(CRITERES)) console.log(`   ${j.scores[k].note}/5  ${label} : ${j.scores[k].justification}`);
     if (j.corrections.length) console.log('\nCorrections :');
+    if (j.comparaison) console.log(`\n📈 ${j.comparaison}`);
     for (const c of j.corrections) console.log(`   ${c.bloquant ? '⛔' : '•'} ${typeof c.slide === 'number' ? `Slide ${c.slide}` : c.slide ?? 'Général'} : ${c.probleme}\n     → ${c.correction_proposee}`);
   },
 
@@ -54,6 +55,14 @@ const commands = {
     const dir = resolvePost(query);
     markPublished(dir);
     console.log(`✅ ${basename(dir)} marqué comme publié`);
+  },
+
+  /** Relève les stats TikTok des posts publiés (Metricool) et régénère performances.md. */
+  async stats() {
+    const { runStats } = await import('./publish/stats.js');
+    const { trouves, manquants } = await runStats({ onLog: console.log });
+    console.log(`\n📈 Stats enregistrées pour ${trouves.length} post${trouves.length > 1 ? 's' : ''} · performances.md mis à jour`);
+    if (manquants.length) console.log(`⚠️  Vidéo TikTok introuvable pour : ${manquants.join(', ')}`);
   },
 
   async calendrier() {

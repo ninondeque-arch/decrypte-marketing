@@ -16,6 +16,7 @@ import { authorization, connectedUser, exchangeCode, logout } from '../tiktok/oa
 import { readSettings, writeSettings } from './settings.js';
 import { install, isInstalled, uninstall } from './service.js';
 import { checkMetricool, scheduleOnTikTok } from '../publish/metricool.js';
+import { readStats } from '../publish/stats.js';
 import { git } from '../tiktok/pages.js';
 import { PAGES_DIR } from '../config.js';
 import { varietyAlerts, writeCalendar } from '../planning/calendar.js';
@@ -55,7 +56,7 @@ function detail(dir) {
   const imgDir = join(dir, 'images');
   const images = existsSync(imgDir) ? readdirSync(imgDir).filter(f => IMAGE_EXT.has(extname(f).toLowerCase())).sort().map(f => `images/${f}`) : [];
   const rendered = existsSync(join(dir, 'slide-1.png')) ? statSync(join(dir, 'slide-1.png')).mtimeMs : 0;
-  return { ...summary(dir), config: loadConfig(dir), legende: read('legende.txt'), sources: read('sources.md'), images, rendered, validation: verify(dir), juge: readJudgement(dir) };
+  return { ...summary(dir), config: loadConfig(dir), legende: read('legende.txt'), sources: read('sources.md'), images, rendered, validation: verify(dir), juge: readJudgement(dir), stats: readStats(dir) };
 }
 
 // ---------- tâches Claude Code ----------
